@@ -1,0 +1,62 @@
+html, body {
+    min-height: 100%;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    background: url('/media/bg_home.JPG') no-repeat center center fixed;
+    background-size: cover;
+    padding-top: 70px; 
+}
+
+.navbar-class {
+    background-color: rgba(255, 213, 197, 0.9) !important;
+}
+
+.navbar {
+    background-color: rgba(255, 213, 197, 0.9) !important;
+}
+
+.fixed-top-desktop-only {
+    background-color: rgba(255, 213, 197, 0.9) !important;
+}
+
+
+.fixed-top-desktop-only {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1030;
+}
+
+.text-box {
+    background-color: rgba(255, 213, 197, 0.9); 
+    padding: 20px;
+    margin-left: 15%; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    max-width: 40%; 
+}
+
+.shop-now-button {
+    background-color: #48a868;
+    color: #fff;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.shop-now-button:hover {
+    background-color: #3a8f58;
+}
+
+@media (max-width: 768px) {
+    .text-box {
+        margin-left: 0;
+        max-width: 100%;
+        padding: 10px;
+        border-radius: 0;
+    }
+}
+
+
