@@ -1,11 +1,30 @@
 {% extends "base.html" %}
-
 {% load static %}
 
-{% block content %}
-
-<h1 class="display-7 text-danger">Welcome to Meu Aroma Handmake Soap</h1>
-<!-- Add some content  here -->
-
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
 {% endblock %}
 
+{% block content %}
+<div class="container-fluid h-100 py-5">
+    <div class="row h-100 align-items-center">
+        <div class="col-lg-7 text-center text-lg-left">
+            <h1 class="display-4 text-dark font-weight-bold mb-4">
+                Discover the Essence of Nature
+            </h1>
+            <p class="lead text-muted">
+                Dive into our Handcrafted Soaps - a Fusion of Pure Essential Oils and the Finest Natural Ingredients.
+                Each Bar, a Symphony of Scents and Gentleness, Lovingly Created for Even the Most Sensitive Skin.
+                Embrace Nature's Kindness in Every Lather!
+            </p>
+            <div class="mt-4">
+                <a href="" class="btn btn-primary btn-lg rounded-pill text-uppercase">Shop Now</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
