@@ -73,8 +73,49 @@ body {
     color: white;
 }
 
-/* Responsive Design Adjustments */
+/* Custom Navigation Bar Styles */
+.custom-nav-collapse {
+    background-color: rgba(255, 213, 197, 0.95);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.custom-navbar-nav .custom-nav-item .custom-nav-link {
+    color: #5c743d; 
+    margin-right: 1rem;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar-nav .custom-nav-item .custom-nav-link:hover,
+.custom-navbar-nav .custom-nav-item .custom-nav-link:focus {
+    color: #f97f51;
+}
+
+.custom-dropdown-menu {
+    border-color: #f97f51;
+    background-color: #fff;
+}
+
+/* Custom Shop Now Button */
+.btn-custom-shop {
+    background-color: #f97f51;
+    color: #fff;
+    border-radius: 30px;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.btn-custom-shop:hover {
+    background-color: #e5673f;
+    color: #fff;
+}
+
+/* Media Queries for Responsive Design */
 @media (max-width: 768px) {
+    .custom-navbar-nav .custom-nav-item {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
     .text-box {
         position: static; 
         margin: 15px;
@@ -82,7 +123,6 @@ body {
     }
 }
 
-/* Fixed Top Navbar only on Medium and Up */
 @media (min-width: 992px) {
     .navbar-class {
         top: 0;

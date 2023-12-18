@@ -1,0 +1,53 @@
+<ul class="list-inline custom-mobile-header d-block d-lg-none">
+    <li class="list-inline-item">
+        <a class="nav-link mobile-search-link" href="#" id="mobile-search-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="icon-container text-center">
+                <i class="fas fa-search fa-lg icon-style"></i>
+                <p class="icon-label">Search</p>
+            </div>
+        </a>
+        <div class="dropdown-menu custom-dropdown-search w-100" aria-labelledby="mobile-search-toggle">
+            <form class="form-inline" method="GET" action="">
+                <div class="input-group w-100">
+                    <input class="form-control custom-input" type="text" name="q" placeholder="Search our site">
+                    <div class="input-group-append">
+                        <button class="btn custom-search-btn" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </li>
+    <li class="list-inline-item dropdown">
+        <a class="nav-link mobile-account-link" href="#" id="mobile-account-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div class="icon-container text-center">
+                <i class="fas fa-user fa-lg icon-style"></i>
+                <p class="icon-label">My Account</p>
+            </div>
+        </a>
+        <div class="dropdown-menu custom-dropdown-account" aria-labelledby="mobile-account-toggle">
+            {% if request.user.is_authenticated %}
+                <!-- User specific links -->
+                {% if request.user.is_superuser %}
+                    <a href="#" class="dropdown-item">Product Management</a>
+                {% endif %}
+                <a href="#" class="dropdown-item">My Profile</a>
+                <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+            {% else %}
+                <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
+                <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
+            {% endif %}
+        </div>
+    </li>
+    <li class="list-inline-item">
+        <a class="nav-link mobile-shopping-bag-link" href="#">
+            <div class="icon-container text-center">
+                <i class="fas fa-shopping-bag fa-lg icon-style"></i>
+                <p class="icon-label">
+                    {% if grand_total %}€{{ grand_total|floatformat:2 }}{% else %}0.00{% endif %}
+                </p>
+            </div>
+        </a>
+    </li>
+</ul>
