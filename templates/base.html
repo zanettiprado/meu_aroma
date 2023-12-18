@@ -43,61 +43,9 @@
 </head>
 
 <body>
-  <header class="ccontainer-fluid fixed-top navbar-class">
-    <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
-      <div class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-start">
-        <a href="{% url 'home' %}" class="navbar-brand">
-          <img src="/media/logo.PNG" alt="Meu Aroma" style="height: 100px;">
-        </a>
-      </div>
-
-      <!-- Search Bar Section -->
-      <div class="col-12 col-md-4 my-3 my-md-0">
-        <form method="GET" action="" class="d-flex">
-          <input type="text" name="q" class="form-control" placeholder="Search our site">
-          <button type="submit" class="btn btn-outline-primary ml-2">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-      </div>
-
-      <!-- Account and Shopping Bag Section -->
-      <div class="col-12 col-md-4 d-flex align-items-center justify-content-center justify-content-md-end">
-        <ul class="navbar-nav">
-          <!-- User Account Dropdown -->
-          <li class="nav-item dropdown mx-2">
-            <a class="nav-link dropdown-toggle" href="#" id="user-options" data-toggle="dropdown" aria-haspopup="true"
-              aria-expanded="false">
-              <i class="fas fa-user fa-lg"></i> My Account
-            </a>
-            <div class="dropdown-menu" aria-labelledby="user-options">
-              {% if request.user.is_authenticated %}
-              {% if request.user.is_superuser %}
-              <a href="" class="dropdown-item">Product Management</a>
-              {% endif %}
-              <a href="" class="dropdown-item">My Profile</a>
-              <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-              {% else %}
-              <a href="{% url 'account_signup' %}" class="dropdown-item">Register</a>
-              <a href="{% url 'account_login' %}" class="dropdown-item">Login</a>
-              {% endif %}
-            </div>
-          </li>
-
-          <!-- Shopping Bag Icon -->
-          <li class="nav-item mx-2">
-            <a class="nav-link" href="">
-              <i class="fas fa-shopping-bag fa-lg"></i>
-              {% if grand_total %}
-              <span class="badge badge-pill badge-info">€{{ grand_total|floatformat:2 }}</span>
-              {% else %}
-                € 0.00
-              {% endif %}
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+  <header class="navbar-class">
+    {% block page_nav %}
+    {% endblock %}
   </header>
 
   {% if messages %}

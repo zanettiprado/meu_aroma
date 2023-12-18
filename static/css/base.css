@@ -1,3 +1,4 @@
+/* Base Elements */
 html, body {
     min-height: 100%;
     font-family: 'Lato', sans-serif;
@@ -6,57 +7,86 @@ html, body {
 body {
     background: url('/media/bg_home.JPG') no-repeat center center fixed;
     background-size: cover;
-    padding-top: 70px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 56px; 
+    margin-bottom: -56px; 
 }
 
+/* Navigation Bar Customizations */
 .navbar-class {
-    background-color: rgba(255, 213, 197, 0.9) !important;
-}
-
-.navbar {
-    background-color: rgba(255, 213, 197, 0.9) !important;
-}
-
-.fixed-top-desktop-only {
-    background-color: rgba(255, 213, 197, 0.9) !important;
-}
-
-
-.fixed-top-desktop-only {
+    background-color: rgba(255, 213, 197, 0.9); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    width: 100%;
     z-index: 1030;
 }
 
-.text-box {
-    background-color: rgba(255, 213, 197, 0.9); 
-    padding: 20px;
-    margin-left: 15%; 
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
-    max-width: 40%; 
+/* Logo Image */
+.navbar-brand img {
+    height: 80px; 
 }
 
+/* Search Bar Customizations */
+.input-group .form-control {
+    border: 2px solid #ccc; 
+    border-radius: .25rem;
+}
+
+.input-group-append .btn {
+    background-color: #e9ecef;
+    border: 2px solid #ccc; 
+}
+
+/* Account and Shopping Bag Icons */
+.fas {
+    color: #5c743d; 
+}
+
+/* Main Content Customizations */
+.text-box {
+    background-color: #c4ee76; 
+    opacity: 80%;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+    position: absolute; 
+    left: 50px; 
+    top: 180px; 
+    width: calc(100% - 100px); 
+    max-width: 600px; 
+}
+
+/* Shop Now Button */
 .shop-now-button {
-    background-color: #48a868;
-    color: #fff;
+    background-color: #df522e; 
     border: none;
-    transition: background-color 0.3s ease;
+    padding: 10px 20px;
+    border-radius: 50px; 
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .shop-now-button:hover {
-    background-color: #3a8f58;
+    background-color: #e5673f; 
+    color: white;
 }
 
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
     .text-box {
-        margin-left: 0;
-        max-width: 100%;
-        padding: 10px;
-        border-radius: 0;
+        position: static; 
+        margin: 15px;
+        width: auto;
     }
 }
 
-
+/* Fixed Top Navbar only on Medium and Up */
+@media (min-width: 992px) {
+    .navbar-class {
+        top: 0;
+        right: 0;
+        left: 0;
+    }
+}
