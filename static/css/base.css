@@ -14,7 +14,18 @@ body {
     margin-bottom: -56px; 
 }
 
-/* Navigation Bar Customizations */
+/* Overlay for the image */
+.overlay {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.8);
+    z-index: -1;
+}
+
+/* Navigation Bar */
 .navbar-class {
     background-color: rgba(255, 213, 197, 0.9); 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
@@ -23,12 +34,11 @@ body {
     z-index: 1030;
 }
 
-/* Logo Image */
 .navbar-brand img {
     height: 80px; 
 }
 
-/* Search Bar Customizations */
+/* Search Bar */
 .input-group .form-control {
     border: 2px solid #ccc; 
     border-radius: .25rem;
@@ -39,12 +49,12 @@ body {
     border: 2px solid #ccc; 
 }
 
-/* Account and Shopping Bag Icons */
+/* Icons Customizations */
 .fas {
     color: #5c743d; 
 }
 
-/* Main Content Customizations */
+/* Main Content Box */
 .text-box {
     background-color: #c4ee76; 
     opacity: 80%;
@@ -58,7 +68,7 @@ body {
     max-width: 600px; 
 }
 
-/* Shop Now Button */
+/* Button Customizations */
 .shop-now-button {
     background-color: #df522e; 
     border: none;
@@ -73,7 +83,7 @@ body {
     color: white;
 }
 
-/* Custom Navigation Bar Styles */
+/* Custom Navigation Bar Styles for Dropdowns */
 .custom-nav-collapse {
     background-color: rgba(255, 213, 197, 0.95);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -96,7 +106,7 @@ body {
     background-color: #fff;
 }
 
-/* Custom Shop Now Button */
+/* Shop Now Button */
 .btn-custom-shop {
     background-color: #f97f51;
     color: #fff;
@@ -110,7 +120,7 @@ body {
     color: #fff;
 }
 
-/* Media Queries for Responsive Design */
+/* Responsive Design Adjustments */
 @media (max-width: 768px) {
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;

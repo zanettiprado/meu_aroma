@@ -44,8 +44,9 @@
 
 <body>
   <header class="navbar-class">
-    {% block page_nav %}
-    {% endblock %}
+
+    {% include 'includes/navbar.html' %}
+    
   </header>
 
   {% if messages %}
