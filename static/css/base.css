@@ -122,6 +122,9 @@ body {
 
 /* Responsive Design Adjustments */
 @media (max-width: 768px) {
+    body {
+        padding-top: 210px; /* Adjust based on the views later / adjust the nav bar for lg screens after */
+    }
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;
         margin-bottom: 0.5rem;
@@ -131,9 +134,19 @@ body {
         margin: 15px;
         width: auto;
     }
+    .navbar-class {
+        top: 0;
+        right: 0;
+        left: 0;
+    }
 }
 
-@media (min-width: 992px) {
+@media (min-width: 700px) {
+
+    body {
+        padding-top: 150px; /* Adjust based on the views later  */
+    }
+
     .navbar-class {
         top: 0;
         right: 0;

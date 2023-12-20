@@ -12,11 +12,11 @@
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <div class="card product-card h-100 shadow-sm">
                 {% if product.image %}
-                <a href="#">
+                <a href="{% url 'product_detail' product.id %}">
                     <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}">
                 </a>
                 {% else %}
-                <a href="#">
+                <a href="{% url 'product_detail' product.id %}">
                     <img src="{{ MEDIA_URL }}noimage.png" class="card-img-top" alt="No image available">
                 </a>
                 {% endif %}
