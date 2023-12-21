@@ -4,21 +4,58 @@
 {% include 'includes/navbar.html' %}
 
 {% block content %}
+
 <div class="container-fluid h-100">
-    <div class="row h-100 align-items-center">
-        <div class="col-lg-8 position-relative">
-            <div class="text-box">
-                <h1 class="display-4 font-weight-bold mb-4">
-                    Discover the Essence of Nature
-                </h1>
-                <p class="lead banner-text">
-                    Dive into our Handcrafted Soaps - a Fusion of Pure Essential Oils and the Finest Natural
-                    Ingredients. Each Bar, a Symphony of Scents and Gentleness, Lovingly Created for Even the Most
-                    Sensitive Skin. Embrace Nature's Kindness in Every Lather!
-                </p>
-                <a href="{% url 'products' %}" class="btn shop-now-button">Shop Now</a>
+    <div class="hero-section">
+        <div class="row h-100 align-items-center">
+            <div class="col-lg-8 position-relative">
+                <div class="text-box">
+                    <h3 class="font-weight-bold mb-4">
+                        Discover the Essence of Nature
+                    </h3>
+                    <p class="lead banner-text">
+                        and enjoy a blend of sensation!
+                    </p>
+                    <a href="{% url 'products' %}" class="btn shop-now-button">Shop Now</a>
+                </div>
             </div>
         </div>
     </div>
+    <section id="store-history" class="my-5">
+        <div class="container">
+            <h2>What we can offer </h2>
+            <p>Dive into our Handcrafted Soaps - a Fusion of Pure Essential Oils and the Finest Natural
+                Ingredients. Each Bar, a Symphony of Scents and Gentleness, Lovingly Created for Even the Most
+                Sensitive Skin. Embrace Nature's Kindness in Every Lather!.</p>
+        </div>
+    </section>
+
+    <div class="info-boxes d-flex justify-content-around">
+        <!-- Contact Us Box -->
+        <div class="info-box">
+            <h3>Contact Us</h3>
+            <p>Form to contact us added in the future</p>
+        </div>
+
+        <!-- Sign Up for Newsletter Box -->
+        <div class="info-box">
+            <h3>Sign Up for Our Newsletter</h3>
+            <p>subscribe to updates for special offers, news, and more.</p>
+            <!-- Newsletter Form (Simplified for Example) -->
+            <form action="#" method="post">
+                <!-- Newsletter Form later -->
+                {% csrf_token %}
+                <input type="email" name="email" placeholder="Your Email">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+
+        <!-- Third Information Box -->
+        <div class="info-box">
+            <h3>More Information</h3>
+            <p>Whatever additional information you choose to include later.</p>
+        </div>
+    </div>
+
 </div>
 {% endblock %}

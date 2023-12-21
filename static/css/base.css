@@ -1,96 +1,118 @@
 /* Base Elements */
 html, body {
-    min-height: 100%;
-    font-family: 'Lato', sans-serif;
+    min-height: 100vh;
+    font-family: 'Oswald', sans-serif;
 }
 
 body {
-    background: url('/media/bg_home.JPG') no-repeat center center fixed;
     background-size: cover;
+    min-height: 100vh;
+    padding-top: 56px;
+    margin-bottom: -56px;
+}
+
+/* Hero Section Styles */
+.hero-section {
+    background: url('/media/bg_home.JPG') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 56px; 
-    margin-bottom: -56px; 
+    position: relative;
+    z-index: 1;
+    animation: hero-zoom 2s 1 alternate;
 }
 
-/* Overlay for the image */
+@keyframes hero-zoom {
+    from {
+        transform: scale(0.5);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+/* Background Overlay */
 .overlay {
     height: 100%;
     width: 100%;
     top: 0;
     left: 0;
-    position: fixed;
+    position: absolute;
     background: rgba(255, 255, 255, 0.8);
     z-index: -1;
 }
 
-/* Navigation Bar */
+/* Navigation Bar Styles */
 .navbar-class {
-    background-color: rgba(255, 213, 197, 0.9); 
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    background-color: rgba(255, 213, 197, 0.9);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     width: 100%;
     z-index: 1030;
 }
 
 .navbar-brand img {
-    height: 80px; 
+    height: 80px;
 }
 
-/* Search Bar */
+/* Search Bar Styles */
 .input-group .form-control {
-    border: 2px solid #ccc; 
+    border: 2px solid #ccc;
     border-radius: .25rem;
 }
 
 .input-group-append .btn {
     background-color: #e9ecef;
-    border: 2px solid #ccc; 
+    border: 2px solid #ccc;
 }
 
-/* Icons Customizations */
+/* Icon Customizations */
 .fas {
-    color: #5c743d; 
+    color: #5c743d;
 }
 
-/* Main Content Box */
+/* Main Content Box Styles */
 .text-box {
-    background-color: #c4ee76; 
+    background-color: #c4ee76;
     opacity: 80%;
     padding: 20px;
+    text-align: center;
     border-radius: 8px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
-    position: absolute; 
-    left: 50px; 
-    top: 180px; 
-    width: calc(100% - 100px); 
-    max-width: 600px; 
+    position: absolute;
+    width: 310px;
+    height: 240px;
+    font-size: 220%;
+    padding: 20px;
+    top: 20%;
+    right: 15%x;
 }
 
 /* Button Customizations */
 .shop-now-button {
-    background-color: #df522e; 
+    background-color: #df522e;
     border: none;
     padding: 10px 20px;
-    border-radius: 50px; 
+    border-radius: 50px;
     font-weight: bold;
     text-transform: uppercase;
 }
 
 .shop-now-button:hover {
-    background-color: #e5673f; 
+    background-color: #e5673f;
     color: white;
 }
 
-/* Custom Navigation Bar Styles for Dropdowns */
+/* Dropdown Styles */
 .custom-nav-collapse {
     background-color: rgba(255, 213, 197, 0.95);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .custom-navbar-nav .custom-nav-item .custom-nav-link {
-    color: #5c743d; 
+    color: #5c743d;
     margin-right: 1rem;
     font-size: 1.1em;
     transition: color 0.3s ease;
@@ -106,7 +128,7 @@ body {
     background-color: #fff;
 }
 
-/* Shop Now Button */
+/* Custom Button Styles */
 .btn-custom-shop {
     background-color: #f97f51;
     color: #fff;
@@ -120,19 +142,111 @@ body {
     color: #fff;
 }
 
+/* Section Wrapper */
+.section-wrapper {
+    width: 100%;
+    padding: 50px 15px;
+    margin-top: 100vh;
+}
+
+/* History Section Styles */
+#store-history {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    margin: 2rem auto;
+    width: 80%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#store-history h2 {
+    color: #5c743d;
+    margin-bottom: 20px;
+}
+
+#store-history p {
+    font-size: 1.1em;
+    color: #333;
+}
+
+/* Info Boxes Styles */
+.info-boxes {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.info-box {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    padding: 20px;
+    width: 30%;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.info-box h3 {
+    color: #5c743d;
+}
+
+.info-box p {
+    font-size: 1em;
+    color: #666;
+}
+
+.info-box form input[type=email] {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 24px);
+    border: 1px solid #ccc;
+}
+
+.info-box form button {
+    background-color: #df522e;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info-box form button:hover {
+    background-color: #e5673f;
+}
+
 /* Responsive Design Adjustments */
+@media (max-width: 992px) {
+    #store-history {
+        width: 90%;
+    }
+
+    .info-box {
+        width: 45%;
+    }
+}
+
 @media (max-width: 768px) {
     body {
-        padding-top: 210px; /* Adjust based on the views later / adjust the nav bar for lg screens after */
+        padding-top: 250px;
     }
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;
         margin-bottom: 0.5rem;
     }
     .text-box {
-        position: static; 
         margin: 15px;
-        width: auto;
+        width: 180px;
+        height: 340px;
+
+        
+    }
+    .info-box {
+        width: 100%;
     }
     .navbar-class {
         top: 0;
@@ -142,11 +256,9 @@ body {
 }
 
 @media (min-width: 700px) {
-
     body {
-        padding-top: 150px; /* Adjust based on the views later  */
+        padding-top: 200px;
     }
-
     .navbar-class {
         top: 0;
         right: 0;
