@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% include 'includes/navbar.html' %}
+
+{% block content %}
+<div class="container py-4">
+    <!-- Shopping Bag Heading -->
+    <div class="row">
+        <div class="col-12">
+            <hr>
+            <h2 class="text-center">Shopping Bag</h2>
+            <hr>
+        </div>
+    </div>
+
+    <!-- Shopping Bag Contents -->
+    <div class="row">
+        <div class="col-12">
+            {% if bag_items %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Update/Remove</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamically generated bag items will go here -->
+                </tbody>
+            </table>
+            {% else %}
+            <p class="text-center">Your bag is empty. <a href="{% url 'products' %}">See our products.</a></p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
