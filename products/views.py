@@ -7,6 +7,7 @@ def all_products(request):
     products = Product.objects.all()
     query = None
     categories = None
+    sort = None
 
     if request.GET:
         if 'category' in request.GET:
@@ -22,6 +23,18 @@ def all_products(request):
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+
+        # Sorting logic
+        if 'sort' in request.GET:
+            sort = request.GET['sort']
+            if sort == 'price_asc':
+                products = products.order_by('price')
+            elif sort == 'price_desc':
+                products = products.order_by('-price')
+            elif sort == 'name_az':
+                products = products.order_by('name')
+            elif sort == 'name_za':
+                products = products.order_by('-name')
 
     context = {
         'products': products,

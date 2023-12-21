@@ -7,6 +7,18 @@
 <div class="overlay"></div>
 <div class="container py-4">
     <h2 class="text-center mb-4">Explore Our Unique Soap Collection</h2>
+
+    <!-- Sorting Dropdown -->
+    <div class="sorting-dropdown mb-4">
+        <select id="sort-by" onchange="sortProducts()" class="form-control">
+            <option value="">Sort by</option>
+            <option value="price_asc">Price (Low to High)</option>
+            <option value="price_desc">Price (High to Low)</option>
+            <option value="name_az">Name (A to Z)</option>
+            <option value="name_za">Name (Z to A)</option>
+        </select>
+    </div>
+
     <div class="row">
         {% for product in products %}
         <div class="col-12 col-md-6 col-lg-4 mb-4">
@@ -47,4 +59,16 @@
         {% endfor %}
     </div>
 </div>
+
+<script>
+    // JavaScript to handle the sorting redirection
+    function sortProducts() {
+        var sortingMethod = document.getElementById('sort-by').value;
+        var currentUrl = window.location.href;
+        var newUrl = new URL(currentUrl);
+        newUrl.searchParams.set('sort', sortingMethod);
+        window.location.href = newUrl; 
+    }
+</script>
+
 {% endblock %}
