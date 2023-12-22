@@ -108,6 +108,31 @@ body {
     color: white;
 }
 
+.btn-custom-add {
+    color: white; /* Text Color */
+    background-color: #28a745; /* Green Background */
+    border: 2px solid #28a745; /* Green Border */
+}
+
+.btn-custom-add:hover {
+    color: #28a745; /* Text Color on Hover */
+    background-color: white; /* Background on Hover */
+    border: 2px solid #28a745; /* Border on Hover */
+}
+
+.btn-custom-back {
+    color: white; /* Text Color */
+    background-color: #007bff; /* Blue Background */
+    border: 2px solid #007bff; /* Blue Border */
+}
+
+.btn-custom-keep:hover {
+    color: #007bff; /* Text Color on Hover */
+    background-color: white; /* Background on Hover */
+    border: 2px solid #007bff; /* Border on Hover */
+}
+
+
 /* Dropdown Styles */
 .custom-nav-collapse {
     background-color: rgba(255, 213, 197, 0.95);
