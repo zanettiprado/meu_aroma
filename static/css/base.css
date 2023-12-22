@@ -11,6 +11,9 @@ body {
     margin-bottom: -56px;
 }
 
+.section-2 {
+    background: url('/media/bg4.png') no-repeat center center;
+}
 /* Hero Section Styles */
 .hero-section {
     background: url('/media/bg_home.JPG') no-repeat center center;
@@ -151,7 +154,7 @@ body {
 
 /* History Section Styles */
 #store-history {
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 213, 197, 0.95);
     padding: 40px;
     margin: 2rem auto;
     width: 80%;
@@ -180,7 +183,7 @@ body {
 }
 
 .info-box {
-    background-color: #f8f8f8;
+    background-color: rgba(255, 213, 197, 0.95);
     border: 1px solid #ddd;
     padding: 20px;
     width: 30%;
@@ -224,6 +227,44 @@ body {
     margin: auto;
 }
 
+/* footer.css */
+.site-footer {
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.social-icons {
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin-right: 15px;
+}
+
+.facebook {
+    color: #4267B2;
+}
+
+.instagram {
+    color: #C13584;
+}
+
+.newsletter {
+    color: #ff9807;
+}
+
+.fab {
+    font-size: 28px;
+}
+
+.footer-text {
+    color: #666;
+    font-size: 16px;
+}
+
 /* Responsive Design Adjustments */
 @media (max-width: 992px) {
     #store-history {
@@ -257,6 +298,9 @@ body {
         top: 0;
         right: 0;
         left: 0;
+    }
+    .social-icons a {
+        margin-right: 10px;
     }
 }
 
