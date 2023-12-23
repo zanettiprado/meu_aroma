@@ -76,6 +76,22 @@ body {
     color: #5c743d;
 }
 
+/* Delivery Banner Styles */
+#delivery-banner {
+    background-color: #97dd00;  
+    padding: 20px 20px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+}
+
+
+#delivery-banner h4 {
+    margin: 0;
+    color: #fff;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
 /* Main Content Box Styles */
 .text-box {
     background-color: #c4ee76;
@@ -109,27 +125,27 @@ body {
 }
 
 .btn-custom-add {
-    color: white; /* Text Color */
-    background-color: #28a745; /* Green Background */
-    border: 2px solid #28a745; /* Green Border */
+    color: white; 
+    background-color: #28a745; 
+    border: 2px solid #28a745; 
 }
 
 .btn-custom-add:hover {
-    color: #28a745; /* Text Color on Hover */
-    background-color: white; /* Background on Hover */
-    border: 2px solid #28a745; /* Border on Hover */
+    color: #28a745;
+    background-color: white; 
+    border: 2px solid #28a745;
 }
 
 .btn-custom-back {
-    color: white; /* Text Color */
-    background-color: #007bff; /* Blue Background */
-    border: 2px solid #007bff; /* Blue Border */
+    color: white; 
+    background-color: #007bff;
+    border: 2px solid #007bff;
 }
 
 .btn-custom-keep:hover {
-    color: #007bff; /* Text Color on Hover */
-    background-color: white; /* Background on Hover */
-    border: 2px solid #007bff; /* Border on Hover */
+    color: #007bff;
+    background-color: white; 
+    border: 2px solid #007bff;
 }
 
 
@@ -255,7 +271,7 @@ body {
 /* footer.css */
 .site-footer {
     background-color: white;
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
 }
