@@ -82,6 +82,7 @@ body {
     padding: 20px 20px;
     text-align: center;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+    animation: hero-zoom 2s 1 alternate;
 }
 
 
@@ -94,12 +95,12 @@ body {
 
 /* Main Content Box Styles */
 .text-box {
-    background-color: #c4ee76;
+    background-color: #97dd00;
     opacity: 80%;
     padding: 20px;
     text-align: center;
     border-radius: 8px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
     position: absolute;
     width: 310px;
     height: 240px;
@@ -315,12 +316,13 @@ body {
     .info-box {
         width: 45%;
     }
+    #delivery-banner {
+        font-size: 0.8em;   
+    }
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 250px;
-    }
+
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;
         margin-bottom: 0.5rem;
@@ -346,12 +348,13 @@ body {
 }
 
 @media (min-width: 700px) {
-    body {
-        padding-top: 200px;
-    }
+
     .navbar-class {
         top: 0;
         right: 0;
         left: 0;
+    }
+    #delivery-banner {
+        font-size: 0.8em;  
     }
 }
