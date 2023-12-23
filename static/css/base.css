@@ -317,12 +317,14 @@ body {
         width: 45%;
     }
     #delivery-banner {
-        font-size: 0.8em;   
+        font-size: 0.8em;
     }
 }
 
 @media (max-width: 768px) {
-
+    body {
+        padding-top: 250px;
+    }
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;
         margin-bottom: 0.5rem;
@@ -348,7 +350,9 @@ body {
 }
 
 @media (min-width: 700px) {
-
+    body {
+        padding-top: 200px;
+    }
     .navbar-class {
         top: 0;
         right: 0;
