@@ -2,6 +2,8 @@ from django.shortcuts import render, reverse, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
+from .forms import QuantityForm
+
 
 def all_products(request):
     products = Product.objects.all()
@@ -44,9 +46,25 @@ def all_products(request):
 
     return render(request, 'products/products.html', context)
 
+
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    if request.method == 'POST':
+        form = QuantityForm(request.POST)
+        if form.is_valid():
+            
+            return redirect('some_cart_url')  
+        else:
+            context = {
+                'product': product,
+                'form': form
+            }
+            return render(request, 'product_detail.html', context)
+    else:
+        form = QuantityForm(initial={'quantity': 1})
+    
     context = {
-        'product': product
+        'product': product,
+        'form': form
     }
     return render(request, 'product_detail.html', context)

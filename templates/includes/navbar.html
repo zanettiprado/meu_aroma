@@ -53,8 +53,8 @@
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="{% url 'view_bag' %}">
                         <i class="fas fa-shopping-bag fa-lg bag-item"></i>
-                        {% if grand_total %}
-                        <span class="badge badge-pill badge-info">€{{ grand_total|floatformat:2 }}</span>
+                        {% if total %}
+                        <span class="badge badge-pill badge-info">€{{ total|floatformat:2 }}</span>
                         {% else %}
                         € 0.00
                         {% endif %}
