@@ -15,6 +15,7 @@
         </div>
     </div>
 
+    <!--Check if there are any items in the shopping bag -->
     <div class="row">
         <div class="col">
             {% if bag_items %}
@@ -29,6 +30,8 @@
                             <th scope="col">Update/Remove</th>
                         </tr>
                     </thead>
+                    
+                    <!-- Table body where each item in the bag is listed -->
                     <tbody>
                         {% for item in bag_items %}
                         <tr>
@@ -45,6 +48,8 @@
                             <td class="py-3">
                                 <p class="my-0">€{{ item.product.price|multiply:item.quantity|floatformat:"2" }}</p>
                             </td>
+
+                            <!-- Links to update the quantity or remove the item from the bag -->
                             <td class="py-3">
                                 <a href="#" class="update-link">Update</a> |
                                 <a href="#" class="remove-link">Remove</a>
@@ -54,6 +59,8 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <!-- Section for displaying the total cost, delivery charges, and grand total -->
                     <div class="text-right">
                         <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
                         <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
@@ -77,6 +84,8 @@
                         </a>
                     </div>
                 {% else %}
+
+                <!-- Message displayed if the shopping bag is empty -->
                     <p class="text-center lead mb-5">Your bag is empty.</p>
                     <div class="text-center">
                         <a href="{% url 'products' %}" class="btn btn-outline-black rounded-0 btn-lg">
