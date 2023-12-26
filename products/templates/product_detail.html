@@ -60,7 +60,8 @@
                 <form id="removeItemForm" action="{% url 'remove_from_bag' product.id %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="product_id" value="{{ product.id }}">
-                    <button type="submit" class="btn btn-danger btn-custom mb-5">Remove all from from Bag</button>
+                    <input type="hidden" name="origin" value="product_detail">
+                    <button type="submit" class="btn btn-warning btn-custom">Remove from Bag</button>
                 </form>
                 {% endif %}
             </div>

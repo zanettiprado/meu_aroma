@@ -53,8 +53,7 @@ def all_products(request):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    # from here is nem 
-    #from here 
+
     bag = request.session.get('bag', {})
 
     if request.method == 'POST':
@@ -70,26 +69,41 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'form': form,
-        'is_in_bag': str(product_id) in bag  # Add this line
+        'is_in_bag': str(product_id) in bag  
     }
     return render(request, 'product_detail.html', context)
+
 
 def remove_from_bag(request, item_id):
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         product_id = request.POST.get('product_id', None)
+        origin = request.POST.get('origin', 'product_detail')  
         
         if product_id and product_id in bag:
             bag.pop(product_id)
             request.session['bag'] = bag
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'success', 'message': 'Item removed'})
-            # Redirect back to the same product detail page
-            return redirect(reverse('product_detail', kwargs={'product_id': product_id}))
+            
+            
+            if origin == 'bag':
+                redirect_url = reverse('view_bag')  
+            else:
+                redirect_url = reverse('product_detail', kwargs={'product_id': product_id})
+
+            return redirect(redirect_url)
+
         else:
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'error', 'message': 'Item not in bag'})
             messages.error(request, "The item wasn't in your bag.")
-            # Redirect back to the same product detail page even if there's an error
-            return redirect(reverse('product_detail', kwargs={'product_id': product_id}))
+            
+           
+            if origin == 'bag':
+                redirect_url = reverse('view_bag')  
+            else:
+                redirect_url = reverse('product_detail', kwargs={'product_id': product_id})
+
+            return redirect(redirect_url)
     return HttpResponseBadRequest("Only POST requests are allowed on this endpoint.")
