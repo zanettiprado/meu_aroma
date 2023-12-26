@@ -6,6 +6,7 @@
 <div class="overlay"></div>
 <div class="container-fluid">
     <div class="row detail-row">
+        <!-- Product Image Section -->
         <div class="col-12 col-md-6 col-lg-4 offset-lg-2">
             <div class="image-container my-5">
                 {% if product.image %}
@@ -17,19 +18,31 @@
                 {% endif %}
             </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
-            <form action="{% url 'add_to_bag' product.id %}" method="post" class="product-form">
-                {% csrf_token %}
 
-                <!-- Quantity Section -->
+        <!-- Product Details Section -->
+        <div class="col-12 col-md-6 col-lg-4">
+            <div class="product-details">
+                <h2>{{ product.name }}</h2>
+                <p><strong>Description:</strong> {{ product.description }}</p>
+                <p><strong>Price:</strong> €{{ product.price }}</p>
+                {% if product.category %}
+                <p><strong>Category:</strong> {{ product.category.name }}</p>
+                {% endif %}
+                {% if product.rating %}
+                <p><strong>Rating:</strong> {{ product.rating }}</p>
+                {% endif %}
+                <!-- Add more details as needed -->
+            </div>
+
+            <!-- Add to Bag Form -->
+            <form action="{% url 'add_to_bag' product.id %}" method="post" class="product-form mt-3">
+                {% csrf_token %}
                 <div class="form-row">
                     <div class="col-12">
-                        <p class="mt-3"><strong>Quantity:</strong></p>
+                        <p><strong>Quantity:</strong></p>
                         <div class="form-group w-50">
                             <div class="input-group">
-                                <!-- Updated Quantity Input -->
                                 {{ form.quantity }}
-                                <!-- Error Display -->
                                 {% if form.quantity.errors %}
                                     <div class="error-q">{{ form.quantity.errors }}</div>
                                 {% endif %}
@@ -37,37 +50,32 @@
                         </div>
                     </div>
 
-                    <!-- Buttons -->
+                    <!-- Action Buttons -->
                     <div class="col-12 button-container">
-                        <!-- Keep Shopping Button -->
                         <a href="{% url 'products' %}" class="btn btn-custom-back btn-custom">
-                            <span class="icon">
-                                <i class="fas fa-chevron-left"></i>
-                            </span>
-                            <span class="text-uppercase">Keep Shopping</span>
+                            <i class="fas fa-chevron-left"></i> Keep Shopping
                         </a>
-                        <!-- Submit Button for Add to Bag -->
                         <input type="submit" class="btn btn-custom-add btn-custom text-uppercase" value="Add to Bag">
                     </div>
-                    <!-- Hidden Redirect URL Field -->
                     <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
             </form>
 
             <!-- Remove from Bag Form -->
+            {% if is_in_bag %}
             <div class="button-container">
-                {% if is_in_bag %}
                 <form id="removeItemForm" action="{% url 'remove_from_bag' product.id %}" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="product_id" value="{{ product.id }}">
                     <input type="hidden" name="origin" value="product_detail">
                     <button type="submit" class="btn btn-warning btn-custom">Remove from Bag</button>
                 </form>
-                {% endif %}
             </div>
+            {% endif %}
         </div>
     </div>
 </div>
+
 {% endblock %}
 
 <script>

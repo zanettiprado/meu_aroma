@@ -53,7 +53,6 @@ def all_products(request):
 
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-
     bag = request.session.get('bag', {})
 
     if request.method == 'POST':
@@ -69,9 +68,9 @@ def product_detail(request, product_id):
     context = {
         'product': product,
         'form': form,
-        'is_in_bag': str(product_id) in bag  
+        'is_in_bag': str(product_id) in bag  # Check if the product is in the bag
     }
-    return render(request, 'product_detail.html', context)
+    return render(request, 'product_detail.html', context)  # Pass the entire context
 
 
 def remove_from_bag(request, item_id):
