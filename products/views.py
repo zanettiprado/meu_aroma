@@ -1,8 +1,11 @@
-from django.shortcuts import render, reverse, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .models import Product, Category
 from .forms import QuantityForm
+from django.http import JsonResponse, HttpResponseBadRequest
+from django.urls import reverse
+import logging
 
 
 def all_products(request):
@@ -47,24 +50,46 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
+
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
+    # from here is nem 
+    #from here 
+    bag = request.session.get('bag', {})
+
     if request.method == 'POST':
         form = QuantityForm(request.POST)
         if form.is_valid():
-            
-            return redirect('some_cart_url')  
+            return redirect(request.POST.get('redirect_url', reverse('products')))  
         else:
-            context = {
-                'product': product,
-                'form': form
-            }
+            context = {'product': product, 'form': form}
             return render(request, 'product_detail.html', context)
     else:
         form = QuantityForm(initial={'quantity': 1})
     
     context = {
         'product': product,
-        'form': form
+        'form': form,
+        'is_in_bag': str(product_id) in bag  # Add this line
     }
     return render(request, 'product_detail.html', context)
+
+def remove_from_bag(request, item_id):
+    if request.method == 'POST':
+        bag = request.session.get('bag', {})
+        product_id = request.POST.get('product_id', None)
+        
+        if product_id and product_id in bag:
+            bag.pop(product_id)
+            request.session['bag'] = bag
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'status': 'success', 'message': 'Item removed'})
+            # Redirect back to the same product detail page
+            return redirect(reverse('product_detail', kwargs={'product_id': product_id}))
+        else:
+            if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
+                return JsonResponse({'status': 'error', 'message': 'Item not in bag'})
+            messages.error(request, "The item wasn't in your bag.")
+            # Redirect back to the same product detail page even if there's an error
+            return redirect(reverse('product_detail', kwargs={'product_id': product_id}))
+    return HttpResponseBadRequest("Only POST requests are allowed on this endpoint.")

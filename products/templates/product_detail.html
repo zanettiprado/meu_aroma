@@ -17,42 +17,79 @@
                 {% endif %}
             </div>
         </div>
-        <form action="{% url 'add_to_bag' product.id %}" method="post" class="product-form">
-            {% csrf_token %}
+        <div class="col-12 col-md-6 col-lg-4">
+            <form action="{% url 'add_to_bag' product.id %}" method="post" class="product-form">
+                {% csrf_token %}
 
-            <!-- Quantity Section -->
-            <div class="form-row">
-                <div class="col-12">
-                    <p class="mt-3"><strong>Quantity:</strong></p>
-                    <div class="form-group w-50">
-                        <div class="input-group">
-                            <!-- Updated Quantity Input -->
-                            {{ form.quantity }}
-                            <!-- Error Display -->
-                            {% if form.quantity.errors %}
-                                <div class="error-q">{{ form.quantity.errors }}</div>
-                            {% endif %}
+                <!-- Quantity Section -->
+                <div class="form-row">
+                    <div class="col-12">
+                        <p class="mt-3"><strong>Quantity:</strong></p>
+                        <div class="form-group w-50">
+                            <div class="input-group">
+                                <!-- Updated Quantity Input -->
+                                {{ form.quantity }}
+                                <!-- Error Display -->
+                                {% if form.quantity.errors %}
+                                    <div class="error-q">{{ form.quantity.errors }}</div>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Buttons -->
-                <div class="col-12">
-                    <!-- Keep Shopping Button -->
-                    <a href="{% url 'products' %}" class="btn btn-custom-back">
-                        <span class="icon">
-                            <i class="fas fa-chevron-left"></i>
-                        </span>
-                        <span class="text-uppercase">Keep Shopping</span>
-                    </a>
-                    <!-- Submit Button -->
-                    <input type="submit" class="btn btn-custom-add text-uppercase" value="Add to Bag">
+                    <!-- Buttons -->
+                    <div class="col-12 button-container">
+                        <!-- Keep Shopping Button -->
+                        <a href="{% url 'products' %}" class="btn btn-custom-back btn-custom">
+                            <span class="icon">
+                                <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="text-uppercase">Keep Shopping</span>
+                        </a>
+                        <!-- Submit Button for Add to Bag -->
+                        <input type="submit" class="btn btn-custom-add btn-custom text-uppercase" value="Add to Bag">
+                    </div>
+                    <!-- Hidden Redirect URL Field -->
+                    <input type="hidden" name="redirect_url" value="{{ request.path }}">
                 </div>
+            </form>
+
+            <!-- Remove from Bag Form -->
+            <div class="button-container">
+                {% if is_in_bag %}
+                <form id="removeItemForm" action="{% url 'remove_from_bag' product.id %}" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="product_id" value="{{ product.id }}">
+                    <button type="submit" class="btn btn-danger btn-custom mb-5">Remove all from from Bag</button>
+                </form>
+                {% endif %}
             </div>
-            <!-- Hidden Redirect URL Field -->
-            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-        </form>
+        </div>
     </div>
 </div>
-</div>
 {% endblock %}
+
+<script>
+    document.getElementById('removeItemForm').onsubmit = function (event) {
+        event.preventDefault(); 
+        removeFromBag();
+    };
+
+    function removeFromBag() {
+        var productId = document.querySelector('#removeItemForm [name="product_id"]').value;
+        var csrfToken = document.querySelector('#removeItemForm [name="csrfmiddlewaretoken"]').value;
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', `{% url 'remove_from_bag' product.id %}`, true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.setRequestHeader('X-CSRFToken', csrfToken);
+        xhr.onload = function () {
+            if (xhr.status == 200) {
+                alert('Item removed successfully!');
+                location.reload();
+            } else {
+                alert('An error occurred.');
+            }
+        };
+        xhr.send('product_id=' + productId);
+    }
+</script>
