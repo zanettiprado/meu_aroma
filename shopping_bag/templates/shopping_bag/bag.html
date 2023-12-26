@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <!--Check if there are any items in the shopping bag -->
+    <!-- Check if there are any items in the shopping bag -->
     <div class="row">
         <div class="col">
             {% if bag_items %}
@@ -27,15 +27,34 @@
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Subtotal</th>
-                            <th scope="col">Update/Remove</th>
+                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for item in bag_items %}
-                        <tr>
-                            <td class="p-3">
-                                <img class="img-fluid rounded" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
-                                <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                        <tr class="mb-2">
+                            <!-- Product Info -->
+                            <td class="mt-3 mb-3 p-4">
+                                <div class="d-flex">
+                                    <!-- Image Container -->
+                                    <div class="bag-image-container mr-3">
+                                        <a href="{% url 'product_detail' item.product.id %}">
+                                            <img class="product-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                        </a>
+                                    </div>
+                                    <!-- Description Container -->
+                                    <div class="description-container p-3">
+                                        <p class="my-0">
+                                            <a href="{% url 'product_detail' item.product.id %}">
+                                                <strong>{{ item.product.name }}</strong>
+                                            </a>
+                                        </p>
+                                        <p><strong>Description:</strong></p>
+                                        <p class="product-description">
+                                            {{ item.product.description|truncatewords:20 }}
+                                        </p>
+                                    </div>
+                                </div>
                             </td>
                             <td class="py-3">
                                 <p class="my-0">€{{ item.product.price }}</p>
@@ -47,7 +66,6 @@
                                 <p class="my-0">€{{ item.product.price|multiply:item.quantity|floatformat:"2" }}</p>
                             </td>
                             <td class="py-3">
-                                
                                 <!-- Remove from Bag Form for each item -->
                                 <form action="{% url 'remove_from_bag' item.item_id %}" method="post" class="removeItemForm">
                                     {% csrf_token %}
@@ -61,13 +79,23 @@
                     </tbody>
                 </table>
             </div>
-            <!-- ... existing content for total cost, delivery charges, etc. ... -->
+            <!-- Action buttons at the bottom -->
+            <div class="bag-actions text-right mt-4">
+                <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-chevron-left"></i> Keep Shopping
+                </a>
+                <a href="#" class="btn btn-success btn-lg">
+                    Proceed to Checkout <i class="fas fa-shopping-cart"></i>
+                </a>
+            </div>
             {% else %}
-
             <!-- Message displayed if the shopping bag is empty -->
             <p class="text-center lead mb-5">Your bag is empty.</p>
-
-            <!-- ... existing content for empty bag message ... -->
+            <div class="text-center">
+                <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg">
+                    <i class="fas fa-chevron-left"></i> Keep Shopping
+                </a>
+            </div>
             {% endif %}
         </div>
     </div>
@@ -76,6 +104,7 @@
 {% endblock %}
 
 <script>
+
 document.querySelectorAll('.removeItemForm').forEach(function(form) {
     form.onsubmit = function(event) {
         event.preventDefault(); 
