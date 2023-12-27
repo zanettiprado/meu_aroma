@@ -1,31 +1,47 @@
-{% if not on_bag_page %}
 <div aria-live="polite" aria-atomic="true" class="toast-container">
-    <div class="toast show text-white" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
-        <div class="toast-header text-white bg-success ">
-            <strong class="mr-auto">Success!</strong>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+    <div class="toast custom-toast shadow" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        
+        <div class="toast-header bg-info text-white">
+            <i class="fas fa-bell mr-2"></i>
+            <strong class="mr-auto">Checkout Update</strong>
+            <button type="button" class="close text-white" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+
         <div class="toast-body">
-            {{ message }}
-
+            <p class="text-info">{{ message }}</p>
             <hr>
-
-            <!-- Bag Items Summary -->
-            <h6>Items in your bag:</h6>
-            <ul>
-                {% for item in bag_items %}
-                <li>{{ item.product.name }} - Quantity: {{ item.quantity }}</li>
-                {% endfor %}
-            </ul>
             
-            <!-- Total Price -->
-            <p>Total Price: <strong>€{{ total }}</strong></p>
+            {% if total %}
+            <h6 class="text-secondary">Your Bag Summary ({{ bag_items|length }} items):</h6>
+            <div class="bag-items" style="max-height: 200px; overflow-y: auto;">
+                {% for item in bag_items %}
+                <div class="d-flex justify-content-start align-items-center my-2">
+                    <div class="image-container mr-3">
+                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 60px;">
+                    </div>
+                    <div class="item-details">
+                        <p class="mb-1 font-weight-bold">{{ item.product.name }}</p>
+                        <p class="mb-1 text-muted">Qty: {{ item.quantity }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="total-section mt-2">
+                <div class="d-flex justify-content-between">
+                    <span class="text-secondary">Total:</span>
+                    <span class="text-info">€{{ total|floatformat:2 }}</span>
+                </div>
+                {% if free_delivery_delta > 0 %}
+                <div class="alert alert-warning mt-2" role="alert">
+                    Just €{{ free_delivery_delta }} away from Free Delivery!
+                </div>
+                {% endif %}
+                <a href="#" class="btn btn-info btn-block mt-3">Proceed to Secure Checkout</a>
+            </div>
+            {% endif %}
 
-            <!-- Checkout Button -->
-            <a href="#" class="btn btn-success btn-sm">Fast Checkout</a>
         </div>
     </div>
 </div>
-{% endif %}
