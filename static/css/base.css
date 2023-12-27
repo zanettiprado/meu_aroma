@@ -71,6 +71,21 @@ body {
     border: 2px solid #ccc;
 }
 
+.update-button, .remove-button {
+    font-size: small;
+    text-decoration: underline;
+    padding: 5px;
+}
+
+.update-button {
+    color: #007bff;
+}
+
+.remove-button {
+    color: red;
+}
+
+
 /* Icon Customizations */
 .fas {
     color: #5c743d;
@@ -104,7 +119,7 @@ body {
 }
 
 .card-body {
-    flex-grow: 1; /* Allows the body to fill the space, pushing the footer down */
+    flex-grow: 1;
 }
 
 /* Delivery Banner Styles */

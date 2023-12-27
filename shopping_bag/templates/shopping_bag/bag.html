@@ -27,7 +27,6 @@
                             <th scope="col">Price</th>
                             <th scope="col">Qty</th>
                             <th scope="col">Subtotal</th>
-                            <th scope="col">Remove</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +43,16 @@
                                     </div>
                                     <!-- Description Container -->
                                     <div class="description-container p-3">
+                                        <!-- Action Buttons -->
+                                        <div class="bag-action-buttons">
+                                            <a href="{% url 'product_detail' item.product.id %}" class="btn update-button btn-sm">Update</a>
+                                            <form action="{% url 'remove_from_bag' item.item_id %}" method="post" class="d-inline-block">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="product_id" value="{{ item.item_id }}">
+                                                <input type="hidden" name="origin" value="bag">
+                                                <button type="submit" class="btn remove-button btn-sm">Remove</button>
+                                            </form>
+                                        </div>
                                         <p class="my-0">
                                             <a href="{% url 'product_detail' item.product.id %}">
                                                 <strong>{{ item.product.name }}</strong>
@@ -65,21 +74,11 @@
                             <td class="py-3">
                                 <p class="my-0">€{{ item.product.price|multiply:item.quantity|floatformat:"2" }}</p>
                             </td>
-                            <td class="py-3">
-                                <!-- Remove from Bag Form for each item -->
-                                <form action="{% url 'remove_from_bag' item.item_id %}" method="post" class="removeItemForm">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="product_id" value="{{ item.item_id }}">
-                                    <input type="hidden" name="origin" value="bag">
-                                    <button type="submit" class="btn btn-danger btn-sm">Remove</button>
-                                </form>
-                            </td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
             </div>
-            <!-- Action buttons at the bottom -->
             <div class="bag-actions text-right mt-4">
                 <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg">
                     <i class="fas fa-chevron-left"></i> Keep Shopping
@@ -89,7 +88,6 @@
                 </a>
             </div>
             {% else %}
-            <!-- Message displayed if the shopping bag is empty -->
             <p class="text-center lead mb-5">Your bag is empty.</p>
             <div class="text-center">
                 <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg">
@@ -104,7 +102,7 @@
 {% endblock %}
 
 <script>
-
+// JavaScript for removing items
 document.querySelectorAll('.removeItemForm').forEach(function(form) {
     form.onsubmit = function(event) {
         event.preventDefault(); 
