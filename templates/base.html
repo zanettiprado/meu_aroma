@@ -52,7 +52,9 @@
   <div class="message-container">
     {% for message in messages %}
       {% if message.tags == 'success' %}
-        {% include 'includes/toasts/success_message.html' %}
+        {% with last_added_product=last_added_product last_added_quantity=last_added_quantity %}
+          {% include 'includes/toasts/success_message.html' %}
+        {% endwith %}
       {% elif message.tags == 'error' %}
         {% include 'includes/toasts/error_message.html' %}
       {% elif message.tags == 'info' %}
@@ -77,9 +79,15 @@
   {% block postloadjs %}
 
   <script>
-    $(document).ready(function () {
-      $('.toast').toast('show');
+    $(document).ready(function() {
+    // Initialize all toasts
+    $('.toast').toast('show');
+
+    // remove the toast from the DOM when it's hidden
+    $('.toast').on('hidden.bs.toast', function () {
+      $(this).remove();
     });
+  });
   </script>
   
   {% endblock %}

@@ -28,6 +28,8 @@ def all_products(request):
 
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
+            if products.count() == 0:
+                messages.info(request, "No products found matching your criteria.")
 
         # Sorting logic
         if 'sort' in request.GET:
@@ -50,7 +52,6 @@ def all_products(request):
     return render(request, 'products/products.html', context)
 
 
-
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     bag = request.session.get('bag', {})
@@ -58,51 +59,58 @@ def product_detail(request, product_id):
     if request.method == 'POST':
         form = QuantityForm(request.POST)
         if form.is_valid():
-            return redirect(request.POST.get('redirect_url', reverse('products')))  
+            quantity = form.cleaned_data['quantity']
+            bag[product_id] = bag.get(product_id, 0) + quantity
+            request.session['bag'] = bag
+            messages.success(request, f"{quantity} of {product.name} added to your bag.")
+            return redirect(request.POST.get('redirect_url', reverse('products')))
         else:
+            messages.error(request, "There was an error with your form. Please check your input.")
             context = {'product': product, 'form': form}
             return render(request, 'product_detail.html', context)
     else:
         form = QuantityForm(initial={'quantity': 1})
-    
+
     context = {
         'product': product,
         'form': form,
-        'is_in_bag': str(product_id) in bag  
+        'is_in_bag': str(product_id) in bag
     }
     return render(request, 'product_detail.html', context)
 
 
-def remove_from_bag(request, item_id):
+def remove_from_bag(request, item_id): # remember to include the info why this is here and not in the bag
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         product_id = request.POST.get('product_id', None)
-        origin = request.POST.get('origin', 'product_detail')  
-        
+        origin = request.POST.get('origin', 'product_detail')
+
         if product_id and product_id in bag:
             bag.pop(product_id)
             request.session['bag'] = bag
+
+            messages.success(request, "Product removed from your bag successfully.")
+
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'success', 'message': 'Item removed'})
-            
-            
+
             if origin == 'bag':
-                redirect_url = reverse('view_bag')  
+                redirect_url = reverse('view_bag')
             else:
                 redirect_url = reverse('product_detail', kwargs={'product_id': product_id})
 
             return redirect(redirect_url)
-
         else:
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return JsonResponse({'status': 'error', 'message': 'Item not in bag'})
+
             messages.error(request, "The item wasn't in your bag.")
-            
-           
+
             if origin == 'bag':
-                redirect_url = reverse('view_bag')  
+                redirect_url = reverse('view_bag')
             else:
                 redirect_url = reverse('product_detail', kwargs={'product_id': product_id})
 
             return redirect(redirect_url)
-    return HttpResponseBadRequest("Only POST requests are allowed on this endpoint.")
+    # Handle non-POST requests
+    return HttpResponseBadRequest("Invalid request. Only POST requests are allowed on this endpoint.")

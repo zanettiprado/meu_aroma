@@ -1,9 +1,7 @@
+{% if not on_bag_page %}
 <div aria-live="polite" aria-atomic="true" class="toast-container">
-    <!-- Toast -->
-    <div class="toast show text-white" role="alert" aria-live="assertive" aria-atomic="true"
-        data-autohide="false">
-        <div class="toast-header bg-success text-white">
-            <!-- Custom top visual touch -->
+    <div class="toast show text-white" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+        <div class="toast-header text-white bg-success ">
             <strong class="mr-auto">Success!</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -11,7 +9,23 @@
         </div>
         <div class="toast-body">
             {{ message }}
+
+            <hr>
+
+            <!-- Bag Items Summary -->
+            <h6>Items in your bag:</h6>
+            <ul>
+                {% for item in bag_items %}
+                <li>{{ item.product.name }} - Quantity: {{ item.quantity }}</li>
+                {% endfor %}
+            </ul>
+            
+            <!-- Total Price -->
+            <p>Total Price: <strong>€{{ total }}</strong></p>
+
+            <!-- Checkout Button -->
+            <a href="#" class="btn btn-success btn-sm">Fast Checkout</a>
         </div>
     </div>
 </div>
-
+{% endif %}
