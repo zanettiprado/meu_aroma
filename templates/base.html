@@ -49,7 +49,19 @@
   </header>
 
   {% if messages %}
-  <div class="message-container"></div>
+  <div class="message-container">
+    {% for message in messages %}
+      {% if message.tags == 'success' %}
+        {% include 'includes/toasts/success_message.html' %}
+      {% elif message.tags == 'error' %}
+        {% include 'includes/toasts/error_message.html' %}
+      {% elif message.tags == 'info' %}
+        {% include 'includes/toasts/info_message.html' %}
+      {% elif message.tags == 'warning' %}
+        {% include 'includes/toasts/warning_message.html' %}
+      {% endif %}
+    {% endfor %}
+  </div>
   {% endif %}
 
   {% block page_header %}
@@ -63,6 +75,13 @@
 
 
   {% block postloadjs %}
+
+  <script>
+    $(document).ready(function () {
+      $('.toast').toast('show');
+    });
+  </script>
+  
   {% endblock %}
 
   {% include 'footer.html' %}
@@ -70,3 +89,4 @@
 </body>
 
 </html>
+

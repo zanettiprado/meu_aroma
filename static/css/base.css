@@ -85,6 +85,23 @@ body {
     color: red;
 }
 
+ /* Toast messages */
+ .toast-container {
+    position: fixed;
+    top: 11.7rem;
+    right: 0.5rem;
+    z-index: 1050;
+  }
+  
+  /* General toast styling */
+  .toast {
+    min-width: 250px;
+  }
+
+  .toast-body {
+    color: black;
+  }
+
 
 /* Icon Customizations */
 .fas {
