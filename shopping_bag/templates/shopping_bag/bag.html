@@ -79,14 +79,29 @@
                     </tbody>
                 </table>
             </div>
-            <div class="bag-actions text-right mt-4">
-                <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg">
-                    <i class="fas fa-chevron-left"></i> Keep Shopping
-                </a>
-                <a href="#" class="btn btn-success btn-lg">
-                    Proceed to Checkout <i class="fas fa-shopping-cart"></i>
-                </a>
+            <div class="bag-summary mt-4 p-4 bg-light rounded">
+                <div class="text-right">
+                    <h6><strong>Bag Total: €{{ total|floatformat:2 }}</strong></h6>
+                    <h6>Delivery: €{{ delivery|floatformat:2 }}</h6>
+                    <h4 class="mt-4"><strong>Grand Total: €{{ grand_total|floatformat:2 }}</strong></h4>
+                    {% if free_delivery_delta > 0 %}
+                        <p class="mb-1 text-danger">
+                            Spend just €{{ free_delivery_delta|floatformat:2 }} more for free delivery!
+                        </p>
+                    {% endif %}
+                </div>
+                <div class="mt-4 d-flex justify-content-between">
+                    <a href="{% url 'products' %}" class="btn btn-outline-info rounded btn-lg">
+                        <i class="fas fa-chevron-left mr-2"></i>
+                        Keep Shopping
+                    </a>
+                    <a href="#" class="btn btn-success rounded btn-lg">
+                        Secure Checkout
+                        <i class="fas fa-lock ml-2 text-white"></i>
+                    </a>
+                </div>
             </div>
+
             {% else %}
             <p class="text-center lead mb-5">Your bag is empty.</p>
             <div class="text-center">
@@ -98,7 +113,6 @@
         </div>
     </div>
 </div>
-
 {% endblock %}
 
 <script>
