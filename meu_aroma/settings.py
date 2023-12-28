@@ -47,7 +47,12 @@ INSTALLED_APPS = [
     'products',
     'shopping_bag',
     'checkout',
+    
+# 3rd party
+    'crispy_forms',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -76,11 +81,16 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'shopping_bag.context.bag_contents'
+                'shopping_bag.context.bag_contents',
+                'django.template.context_processors.media',
+            ],
+            'builtins': [
+                'crispy_forms.templatetags.crispy_forms_tags',
             ],
         },
     },
 ]
+
 
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
