@@ -37,6 +37,7 @@ def checkout(request):
         'order_form': order_form,
         'bag_items': bag_items,
         'total': total,
+        'stripe_public_key': 'pk_test_51OCThxLpd5rBVeUVgpNPdrYuaFVeEyUbNL9lYcXYkOL1RiHAoOdLCcfFsdT08qLte1Lol9CoNQco0q0uGDxgw6Q200MZnK19Mm'
     }
 
     return render(request, 'checkout/checkout.html', context)
