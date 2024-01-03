@@ -241,6 +241,15 @@ body {
     margin-right: 5px;
   }
 
+  #payment-details {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    background-color: #f8f9fa;
+    padding: 20px;
+    margin-top: 20px;
+}
+
 /* Dropdown Styles */
 .custom-nav-collapse {
     background-color: rgba(255, 213, 197, 0.95);

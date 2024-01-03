@@ -29,7 +29,7 @@ def all_products(request):
             queries = Q(name__icontains=query) | Q(description__icontains=query)
             products = products.filter(queries)
             if products.count() == 0:
-                messages.info(request, "No products found matching your criteria.")
+                messages.error(request, "No products found matching your criteria.")
 
         # Sorting logic
         if 'sort' in request.GET:
