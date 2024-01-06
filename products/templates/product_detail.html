@@ -28,7 +28,12 @@
                 {% if product.category %}
                 <p><strong>Category:</strong> {{ product.category.name }}</p>
                 {% endif %}
-                <!-- Add more details as needed -->
+                {% if request.user.is_superuser %}
+                <div class="superuser-controls">
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this product?');">Delete</a>
+                </div>
+                {% endif %}
             </div>
 
             <!-- Add to Bag Form -->

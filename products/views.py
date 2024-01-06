@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required 
 from .models import Product, Category
 from .forms import QuantityForm
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
 from .forms import ProductForm
+
 import logging
 
 
@@ -116,7 +118,7 @@ def remove_from_bag(request, item_id): # remember to include the info why this i
     # Handle non-POST requests
     return HttpResponseBadRequest("Invalid request. Only POST requests are allowed on this endpoint.")
 
-
+@login_required 
 def add_product(request):
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
@@ -137,7 +139,7 @@ def add_product(request):
 
     return render(request, template, context)
 
-
+@login_required 
 def edit_product(request, product_id):
 
     product = get_object_or_404(Product, pk=product_id)
@@ -159,6 +161,22 @@ def edit_product(request, product_id):
         'is_editing_product': True,
         'product': product,
 
+    }
+
+    return render(request, template, context)
+
+@login_required 
+def delete_product(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        product.delete()
+        messages.success(request, 'Product successfully deleted!')
+        return redirect(reverse('products')) 
+
+    template = 'products/delete_product.html'
+    context = {
+        'product': product,
     }
 
     return render(request, template, context)

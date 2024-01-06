@@ -58,6 +58,13 @@
                     <small class="text-muted">Not yet rated</small>
                     {% endif %}
                 </div>
+                 <!-- Superuser Edit/Delete Buttons -->
+                 {% if request.user.is_superuser %}
+                 <div class="card-footer bg-white text-right">
+                     <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn-sm">Edit</a>
+                     <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm">Delete</a>
+                 </div>
+                 {% endif %}
             </div>
         </div>
         {% empty %}
