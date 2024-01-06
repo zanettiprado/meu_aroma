@@ -33,9 +33,15 @@
                     </li>
                 </ul>
             </div>
-            <a href="{% url 'products' %}" class="btn btn-success btn-lg btn-block">
-                <i class="fas fa-arrow-circle-left mr-2"></i>Continue Shopping
-            </a>
+                {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-success btn-lg btn-block">
+                    <i class="fa-solid fa-arrow-right mr-2"></i>Back to Profile
+                </a>
+                {% else %}
+                    <a href="{% url 'products' %}" class="btn btn-success btn-lg btn-block">
+                        <i class="fas fa-arrow-circle-left mr-2"></i>Continue Shopping
+                    </a>
+                {% endif %}
         </div>
     </div>
 </div>

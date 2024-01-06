@@ -173,6 +173,26 @@ body {
     right: 15%x;
 }
 
+/* Profile Customizations */
+.profile-wrapper {
+    padding: 20px;
+    background-color: #f9f9f9; /* Light background */
+    border-radius: 4px; /* Rounded corners */
+}
+
+.default-delivery-information, .order-history {
+    margin-top: 20px;
+}
+
+.form-actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.order-history {
+    max-height: 421px;
+    overflow-y: auto;
+}
 /* Button Customizations */
 .shop-now-button {
     background-color: #df522e;
