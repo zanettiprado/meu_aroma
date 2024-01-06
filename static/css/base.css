@@ -139,6 +139,16 @@ body {
     flex-grow: 1;
 }
 
+/* Add product form*/
+.custom-class {
+    border-color: #333;  
+    background-color: #f8f9fa;  
+}
+
+.another-class {
+    border-radius: 0.25rem;  
+}
+
 /* Delivery Banner Styles */
 #delivery-banner {
     background-color: #97dd00;  

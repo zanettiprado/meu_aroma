@@ -6,10 +6,10 @@
                 All Products
             </a>
             <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="nav-products">
-                <a href="{% url 'products' %}?category=Featured%20Products" class="dropdown-item">Featured Products</a>
+                <a href="{% url 'products' %}" class="dropdown-item">Full Catalog</a>
                 <a href="{% url 'products' %}?category=New%20Arrivals" class="dropdown-item">New Arrivals</a>
                 <a href="{% url 'products' %}?category=Best%20Sellers" class="dropdown-item">Best Sellers</a>
-                <a href="{% url 'products' %}" class="dropdown-item">Full Catalog</a>
+                <a href="{% url 'products' %}?category=Featured%20Products" class="dropdown-item">Featured Products</a>
             </div>
         </li>
         

@@ -5,6 +5,7 @@ from .models import Product, Category
 from .forms import QuantityForm
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
+from .forms import ProductForm
 import logging
 
 
@@ -114,3 +115,24 @@ def remove_from_bag(request, item_id): # remember to include the info why this i
             return redirect(redirect_url)
     # Handle non-POST requests
     return HttpResponseBadRequest("Invalid request. Only POST requests are allowed on this endpoint.")
+
+
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            messages.success(request, f'Added product: {product.name}')
+            return redirect('product_detail', product_id=product.id) 
+        else:
+            messages.error(request, 'Failed to add product. Please ensure the form is valid.')
+    else:
+        form = ProductForm()
+        
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+        'is_adding_product': True,
+    }
+
+    return render(request, template, context)
