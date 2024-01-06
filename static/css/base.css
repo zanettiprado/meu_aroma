@@ -149,6 +149,36 @@ body {
     border-radius: 0.25rem;  
 }
 
+/* Add image container edit image */
+.span-btn {
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+}
+
+/* Style the file input itself */
+.span-btn input[type="file"] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+/* Style for the custom checkbox */
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+    color: #fff;
+    border-color: #dc3545;
+    background-color: #dc3545;
+}
 /* Delivery Banner Styles */
 #delivery-banner {
     background-color: #97dd00;  
