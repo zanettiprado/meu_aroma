@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-4">
+                <h2 class="logo-font">My Profile</h2>
+                <p class="lead text-muted">Manage your personal information and orders.</p>
+            </div>
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Profile Information Section -->
+        <div class="col-lg-8 offset-lg-2 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-primary text-white">
+                    <i class="fas fa-user"></i> Profile Information
+                </div>
+                <div class="card-body">
+                    <!-- Dummy Content - Replace with dynamic content as needed -->
+                    <p><strong>Username:</strong> User123</p>
+                    <p><strong>Email:</strong> lalala@kakakak</p>
+                    <p><strong>Phone Number:</strong> +1234567890</p>
+                    <p><strong>Address:</strong> 123 bain dublin </p>
+                    <!-- Add more profile details here -->
+                    
+                    <!-- Button to Edit Profile - Link to the actual edit page -->
+                    <a href="#" class="btn btn-primary mt-4">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
