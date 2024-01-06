@@ -17,3 +17,7 @@ class StripeWH_Handler:
         return HttpResponse(content=f'Webhook received: {event["type"]}', status=200)
 
     # Add more handlers as needed for different Stripe events
+    
+    
+    
+    # return to fix this later one 
