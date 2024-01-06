@@ -1,0 +1,55 @@
+
+
+
+
+.login-wrapper, .signup-wrapper {
+    max-width: 700px;
+    margin: auto;
+    padding: 20px;
+}
+
+.socialaccount_providers li, .social-signup li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.login-or {
+    margin: 20px 0;
+    font-weight: bold;
+}
+
+.form-actions {
+    margin-top: 20px;
+}
+
+
+.signup-wrapper, .social-signup ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.social-signup li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+
+.container .text-center p {
+    /* Styles for the text inside the container */
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.logo-font {
+    font-weight: bold;
+    /* Add more styles if needed */
+}
+
+.signup-closed-wrapper {
+    padding: 20px;
+    border: 1px solid #ddd; 
+    background-color: #f9f9f9; 
+    border-radius: 4px; 
+    margin-top: 20px;
+}
