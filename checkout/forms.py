@@ -5,9 +5,8 @@ class OrderForm(forms.ModelForm):
     class Meta:
         model = Order
         fields = (
-            'full_name', 'email', 'phone_number',
-            'postcode', 'town_or_city', 'street_address1',
-            'street_address2', 'country', 'county'
+            'full_name', 'email', 'phone_number', 'street_address1',
+            'street_address2', 'town_or_city', 'county', 'country', 'postcode'
         )
 
     def __init__(self, *args, **kwargs):
@@ -21,8 +20,8 @@ class OrderForm(forms.ModelForm):
             'town_or_city': 'Town or City',
             'street_address1': 'Street Address 1',
             'street_address2': 'Street Address 2',
-            'country': 'Country',
             'county': 'County, State or Locality',
+            'country': 'Country',
         }
 
         # Set autofocus on the first field // return to check out if need change

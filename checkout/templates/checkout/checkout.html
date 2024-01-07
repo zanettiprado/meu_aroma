@@ -22,6 +22,7 @@
                 <div class="card-header bg-info text-white">
                     <i class="fas fa-shopping-cart"></i> Your Order
                 </div>
+
                 <ul class="list-group list-group-flush">
                     {% for item in bag_items %}
                     <li class="list-group-item">
@@ -38,6 +39,10 @@
                     {% empty %}
                     <li class="list-group-item text-center">Your cart is empty.</li>
                     {% endfor %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Delivery:</span>
+                        <strong class="text-danger">€{{ delivery|floatformat:2 }}</strong>
+                    </li>
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (EUR)</span>
                         <strong>€{{ grand_total|floatformat:2 }}</strong>
@@ -68,22 +73,22 @@
                             {{ order_form.phone_number | as_crispy_field }}
                         </div>
                         <div class="form-group">
-                            {{ order_form.country | as_crispy_field }}
-                        </div>
-                        <div class="form-group">
-                            {{ order_form.postcode | as_crispy_field }}
-                        </div>
-                        <div class="form-group">
-                            {{ order_form.town_or_city | as_crispy_field }}
-                        </div>
-                        <div class="form-group">
                             {{ order_form.street_address1 | as_crispy_field }}
                         </div>
                         <div class="form-group">
                             {{ order_form.street_address2 | as_crispy_field }}
                         </div>
                         <div class="form-group">
+                            {{ order_form.town_or_city | as_crispy_field }}
+                        </div>
+                        <div class="form-group">
                             {{ order_form.county | as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            {{ order_form.postcode | as_crispy_field }}
+                        </div>
+                        <div class="form-group">
+                            {{ order_form.country | as_crispy_field }}
                         </div>
 
                         <!-- Payment Details -->
@@ -91,6 +96,12 @@
                         <div id="payment-details" class="highlighted-section">
                             <div class="alert alert-info" role="alert">
                                 <h4 class="alert-heading">Please Review Your Order</h4>
+                                <p>Delivery: €{{ delivery|floatformat:2 }}</p>
+                                {% if free_delivery_delta > 0 %}
+                                <p class="text-danger">
+                                    Spend just €{{ free_delivery_delta|floatformat:2 }} more for free delivery!
+                                </p>
+                                {% endif %}
                                 <p>Before proceeding, please confirm the details and total cost of your order. Your card
                                     will be charged the amount below.</p>
                                 <hr>
