@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+if os.path.exists("env.py"):
+  import env 
 import stripe
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -181,3 +183,6 @@ STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
 STRIPE_WH_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
+print(STRIPE_WH_SECRET)
+print(STRIPE_PUBLIC_KEY)
+print(STRIPE_SECRET_KEY)
