@@ -210,7 +210,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FREE_DELIVERY_THRESHOLD = 60
 STANDARD_DELIVERY_PERCENTAGE = 10
 
-stripe.api_key = "My_secret_key_here" 
+
 STRIPE_CURRENCY = 'usd'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')
 STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
