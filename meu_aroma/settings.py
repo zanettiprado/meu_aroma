@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-xqv%0w+&p^2k5pi6$d8*oil#!)4by^&7*6=l5_4k_%)%so9m$%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io', 'meuaroma.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io', 'meuaroma-7872e870b93d.herokuapp.com', 'meuaroma.herokuapp.com', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io']
 
