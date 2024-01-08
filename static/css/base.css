@@ -15,6 +15,10 @@ body {
     background: url('/media/bg4.png') no-repeat center center;
 }
 /* Hero Section Styles */
+
+.navtop {
+    /* position: absolute; */
+}
 .hero-section {
     background: url('/media/bg_home.JPG') no-repeat center center;
     background-size: cover;
@@ -26,6 +30,18 @@ body {
     z-index: 1;
     animation: hero-zoom 2s 1 alternate;
 }
+
+.bag-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.bag-price {
+    margin-top: 10px;
+}
+
 
 @keyframes hero-zoom {
     from {
@@ -310,6 +326,22 @@ body {
     margin-top: 20px;
 }
 
+.navbar-account-bag {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    
+}
+
+.navbar-account-bag li {
+    display: inline-block;
+    margin-left: 15px; /* Adjust spacing between items */
+}
+
+.list-inline-item {
+    display: inline-block;
+}
+
 /* Dropdown Styles */
 .custom-nav-collapse {
     background-color: rgba(255, 213, 197, 0.95);
@@ -473,7 +505,10 @@ body {
     #store-history {
         width: 90%;
     }
-
+    .logo-m {
+        display: flex;
+        justify-content: center;
+    }
     .info-box {
         width: 45%;
     }

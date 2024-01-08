@@ -8,7 +8,7 @@
 <div class="h-100">
     <div class="hero-section">
         <div class="row h-100 align-items-center">
-            <div class="col-lg-8 position-relative">
+            <div class="col-12 col-md-10 col-lg-8 position-relative">
                 <div class="text-box">
                     <h3 class="font-weight-bold mb-4">
                         Discover the Essence of Nature
@@ -27,7 +27,7 @@
 
     <!-- History box  -->
     <div class="section-2">
-        <section id="store-history" class="">
+        <section id="store-history">
             <div class="container">
                 <h2>What we can offer </h2>
                 <p>Dive into our Handcrafted Soaps - a Fusion of Pure Essential Oils and the Finest Natural
@@ -36,7 +36,7 @@
             </div>
         </section>
 
-        <div class="info-boxes d-flex justify-content-around">
+        <div class="info-boxes d-flex flex-wrap justify-content-around">
             <!-- Contact Us Box -->
             <div class="info-box">
                 <h3>Contact Us</h3>
@@ -47,12 +47,10 @@
             <div class="info-box">
                 <h3>Sign Up for Our Newsletter</h3>
                 <p>subscribe to updates for special offers, news, and more.</p>
-                <!-- Newsletter Form (Simplified for Example) -->
                 <form action="#" method="post">
-                    <!-- Newsletter Form later -->
                     {% csrf_token %}
                     <input type="email" name="email" placeholder="Your Email">
-                    <button type="submit">Subscribe</button>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
                 </form>
             </div>
 

@@ -1,10 +1,11 @@
-
 <div class="ccontainer-fluid fixed-top navbar-class">
-    <div id="topnav" class="row bg-white pt-lg-2 d-none d-lg-flex">
+    <div id="topnav" class="row bg-white pt-lg-2  d-lg-flex">
         <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 text-center text-lg-left">
-            <a href="{% url 'home' %}" class="nav-link main-logo-link">
-                <img src="/media/logo.PNG" alt="Meu Aroma" style="height: 100px;">
-            </a>
+            <ul class="list-inline logo-m list-unstyled text-center text-lg-right my-0 navbar-account-bag">
+                <a href="{% url 'home' %}" class="nav-link main-logo-link">
+                    <img src="/media/logo.PNG" alt="Meu Aroma" style="height: 100px;">
+                </a>
+            </ul>
         </div>
 
         <!-- Search Bar Section -->
@@ -25,9 +26,9 @@
         </div>
 
         <!-- Account and Shopping Bag Section -->
-        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0">
-            <ul class="list-inline list-unstyled text-center text-lg-right my-0">
-                <li class="list-inline-item dropdown">
+        <div class="col-12 col-lg-4 my-auto py-1 py-lg-0 d-none d-lg-block">
+            <ul class="list-inline list-inline-item list-unstyled text-center text-lg-right my-0">
+                <li class="list-inline-item dropdown">        
                     <a class="text-black nav-link" href="#" id="user-options" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <div class="text-center">
@@ -35,6 +36,7 @@
                             <p class="my-0">My Account</p>
                         </div>
                     </a>
+
                     <div class="dropdown-menu" aria-labelledby="user-options">
                         {% if request.user.is_authenticated %}
                         {% if request.user.is_superuser %}
@@ -49,17 +51,20 @@
                     </div>
                 </li>
 
-                <!-- Shopping Bag Icon -->
                 <li class="nav-item mx-2">
                     <a class="nav-link" href="{% url 'view_bag' %}">
-                        <i class="fas fa-shopping-bag fa-lg bag-item"></i>
-                        {% if total %}
-                        <span class="badge badge-pill badge-info">€{{ total|floatformat:2 }}</span>
-                        {% else %}
-                        € 0.00
-                        {% endif %}
+                        <div class="bag-icon-container">
+                            <i class="fas fa-shopping-bag fa-lg bag-item"></i>
+                            {% if total %}
+                            <span class="bag-price">€{{ total|floatformat:2 }}</span>
+                            {% else %}
+                            <span class="bag-price">€0.00</span>
+                            {% endif %}
+                        </div>
                     </a>
                 </li>
+                
+
             </ul>
         </div>
     </div>
@@ -82,4 +87,3 @@
     </nav>
 </div>
 </button>
-
