@@ -15,10 +15,6 @@ body {
     background: url('/media/bg4.png') no-repeat center center;
 }
 /* Hero Section Styles */
-
-.navtop {
-    /* position: absolute; */
-}
 .hero-section {
     background: url('/media/bg_home.JPG') no-repeat center center;
     background-size: cover;
@@ -41,7 +37,6 @@ body {
 .bag-price {
     margin-top: 10px;
 }
-
 
 @keyframes hero-zoom {
     from {
