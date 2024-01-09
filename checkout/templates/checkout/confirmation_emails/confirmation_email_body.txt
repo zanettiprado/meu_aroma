@@ -1,0 +1,29 @@
+Dear {{ order.full_name }},
+
+We hope this email finds you well and that you're as excited as we are about your recent purchase at Meu Aroma. We're thrilled to confirm your order details:
+
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Summary:
+Total Products: ${{ order.order_total }}
+Delivery Cost: ${{ order.delivery_cost }}
+Grand Total: ${{ order.grand_total }}
+
+Shipping Address:
+{{ order.street_address1 }}
+{{ order.town_or_city }}
+
+Contact Information:
+Phone Number: {{ order.phone_number }}
+Email: {{ contact_email }}
+
+Your order is now in our capable hands and will be carefully prepared and shipped to your provided address. We aim to ensure your satisfaction every step of the way.
+
+If you have any inquiries or require assistance with anything related to your order, please don't hesitate to reach out to us at {{ contact_email }}. Our dedicated customer support team is here to assist you.
+
+Thank you for choosing Meu Aroma for your soap needs. We truly appreciate your business and look forward to serving you again in the future.
+
+Sincerely,
+
+Meu Aroma Customer Service Team

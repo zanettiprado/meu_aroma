@@ -107,8 +107,6 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 
@@ -218,3 +216,15 @@ STRIPE_WH_SECRET = os.getenv('STRIPE_WEBHOOK_SECRET', '')
 print(STRIPE_WH_SECRET)
 print(STRIPE_PUBLIC_KEY)
 print(STRIPE_SECRET_KEY)
+
+if 'DEVELOPMENT' in os.environ:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    DEFAULT_FROM_EMAIL = 'meu_aroma@exemple.com'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_USE_TLS = True
+    EMAIL_PORT = 587
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASS')
+    DEFAULT_FROM_EMAIL = os.environ.get('EMAIL_HOST_USER')
