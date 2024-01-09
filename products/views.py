@@ -120,6 +120,10 @@ def remove_from_bag(request, item_id): # remember to include the info why this i
 
 @login_required 
 def add_product(request):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to access this page.')
+        return redirect(reverse('home'))
+    
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
@@ -141,6 +145,9 @@ def add_product(request):
 
 @login_required 
 def edit_product(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to access this page.')
+        return redirect(reverse('home'))
 
     product = get_object_or_404(Product, pk=product_id)
     if request.method == 'POST':
@@ -167,6 +174,10 @@ def edit_product(request, product_id):
 
 @login_required 
 def delete_product(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'Sorry, you are not allowed to access this page.')
+        return redirect(reverse('home'))
+    
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
