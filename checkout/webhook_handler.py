@@ -42,9 +42,7 @@ class StripeWH_Handler:
             status=200)
 
     def handle_payment_intent_succeeded(self, event):
-        """
-        Handle the payment_intent.succeeded webhook from Stripe
-        """
+      
         intent = event.data.object
         # Check if the order associated with the payment intent exists
         try:

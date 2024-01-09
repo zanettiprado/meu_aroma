@@ -28,6 +28,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
+
 DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io', 'meuaroma-7872e870b93d.herokuapp.com', 'meuaroma.herokuapp.com', 'localhost']
