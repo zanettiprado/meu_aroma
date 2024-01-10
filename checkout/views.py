@@ -11,6 +11,18 @@ from shopping_bag.context import bag_contents
 import json
 import stripe 
 
+from django.http import HttpResponse
+from django.core.mail import send_mail
+
+def send_test_email(request):
+    subject = 'Test Email'
+    message = 'This is a test email from your Django application.'
+    from_email = settings.DEFAULT_FROM_EMAIL
+    recipient_list = ['zanettiprado@gmail.com']  
+    send_mail(subject, message, from_email, recipient_list)
+    return HttpResponse('Test email sent successfully!')
+
+
 def cache_checkout_data(request):
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]

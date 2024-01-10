@@ -25,9 +25,10 @@ class Order(models.Model):
     delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
+    payment_intent_id = models.CharField(max_length=255, null=True, blank=True)
+
 
     def save(self, *args, **kwargs):
-
         if not self.order_number:
             self.order_number = uuid.uuid4().hex.upper()
         self.update_totals()
