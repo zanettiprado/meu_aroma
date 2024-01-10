@@ -46,7 +46,10 @@ def checkout(request):
     order_form = OrderForm(request.POST or None)
     if request.method == 'POST' and order_form.is_valid():
         bag = request.session.get('bag', {})
-        order = order_form.save()
+        order = order_form.save(commit=False)
+        pid = request.POST.get('client_secret').split('_secret')[0]
+        order.payment_intent_id = pid
+        order.save()
         for item_id, quantity in bag.items():
             try:
                 product = Product.objects.get(id=item_id)
