@@ -2,6 +2,7 @@ import uuid
 from django.db import models
 from django.db.models import Sum
 from django.conf import settings
+from django.utils import timezone
 from products.models import Product
 from profiles.models import UserProfile
 
@@ -26,13 +27,22 @@ class Order(models.Model):
     order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     payment_intent_id = models.CharField(max_length=255, null=True, blank=True)
+    coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
 
 
-    def save(self, *args, **kwargs):
+    def save(self, *args, **kwargs):                
         if not self.order_number:
             self.order_number = uuid.uuid4().hex.upper()
         self.update_totals()
+        
+        if self.coupon and self.coupon.is_valid():
+            discount_amount = (self.order_total * self.coupon.discount) / 100
+            self.grand_total = self.order_total + self.delivery_cost - discount_amount
+        else:
+            self.grand_total = self.order_total + self.delivery_cost
+            
         super().save(*args, **kwargs)
+    
 
     def __str__(self):
         return str(self.order_number)
@@ -66,3 +76,23 @@ class OrderLineItem(models.Model):
 
     def __str__(self):
         return f'Item: {self.product.name} on Order: {self.order.order_number}'
+
+class Coupon(models.Model):
+    code = models.CharField(max_length=15, unique=True)
+    description = models.TextField(null=True, blank=True)
+    discount = models.DecimalField(max_digits=6, decimal_places=2, help_text='Amount of discount this coupon provides')
+    valid_from = models.DateTimeField()
+    valid_to = models.DateTimeField()
+    active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.code
+
+    def is_valid(self):
+        now = timezone.now()
+        return self.active and self.valid_from <= now <= self.valid_to
+
+    class Meta:
+        verbose_name = 'Coupon'
+        verbose_name_plural = 'Coupons'
+    

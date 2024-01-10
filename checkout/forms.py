@@ -1,5 +1,9 @@
 from django import forms
 from .models import Order
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Submit, Field
+from crispy_forms.bootstrap import InlineField
+
 
 class OrderForm(forms.ModelForm):
     class Meta:
@@ -37,3 +41,15 @@ class OrderForm(forms.ModelForm):
             self.fields[field].label = False
             # Add a CSS class to all fields
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+
+class CouponApplyForm(forms.Form):
+    code = forms.CharField(label='Coupon Code', max_length=100, required=True)
+
+    def __init__(self, *args, **kwargs):
+        super(CouponApplyForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_method = 'post'
+        self.helper.layout = Layout(
+            InlineField('code', css_class='input-group mb-2 mr-sm-2'),
+            Submit('submit', 'Apply', css_class='btn btn-primary mb-2'),
+        )

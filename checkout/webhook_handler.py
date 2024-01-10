@@ -48,6 +48,8 @@ class StripeWH_Handler:
         try:
             order = Order.objects.get(payment_intent_id=intent.id)
             # Send the confirmation email for the order
+            if order.grand_total != (intent.amount / 100):
+                pass
             self._send_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook received: {event["type"]}',

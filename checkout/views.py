@@ -2,26 +2,16 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpR
 from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.contrib import messages
-from .forms import OrderForm
-from .models import Order, OrderLineItem
+from django.utils import timezone
+from .forms import OrderForm, CouponApplyForm
+from .models import Order, OrderLineItem, Coupon
 from products.models import Product
 from profiles.models import UserProfile
 from profiles.forms import UserProfileForm
 from shopping_bag.context import bag_contents
+
 import json
 import stripe 
-
-from django.http import HttpResponse
-from django.core.mail import send_mail
-
-def send_test_email(request):
-    subject = 'Test Email'
-    message = 'This is a test email from your Django application.'
-    from_email = settings.DEFAULT_FROM_EMAIL
-    recipient_list = ['zanettiprado@gmail.com']  
-    send_mail(subject, message, from_email, recipient_list)
-    return HttpResponse('Test email sent successfully!')
-
 
 def cache_checkout_data(request):
     try:
@@ -77,7 +67,8 @@ def checkout(request):
         total = current_bag['grand_total']
         stripe_total = round(total * 100)
         try:
-            intent = stripe.PaymentIntent.create(amount=stripe_total, currency=settings.STRIPE_CURRENCY)
+            intent = stripe.PaymentIntent.create(amount=stripe_total, 
+                                                 currency=settings.STRIPE_CURRENCY)
         except stripe.error.StripeError as e:
             messages.error(request, "Failed to create a payment intent: " + str(e))
             return redirect(reverse('checkout'))
@@ -108,14 +99,38 @@ def checkout(request):
             'product': Product.objects.get(id=pid),
             'subtotal': qty * Product.objects.get(id=pid).price
         } for pid, qty in bag.items()]
-
-        context = {
-            'order_form': order_form,
-            'bag_items': bag_items,
-            'total': total,
-            'stripe_public_key': stripe_public_key,
-            'client_secret': intent.client_secret if 'intent' in locals() else None,
-        }
+               
+    coupon_id = request.session.get('coupon_id', None)
+    discount_amount = 0
+    
+    if coupon_id:
+        try:
+            coupon = Coupon.objects.get(id=coupon_id)
+            if coupon.is_valid():
+                discount_amount = (current_bag['grand_total'] * coupon.discount) / 100
+                messages.success(request, "Your coupon is valid and was redeemed successfully.")
+            else:
+                messages.error(request, "Sorry, this is not a valid coupon.")
+                request.session['coupon_id'] = None  # Reset the coupon in the session
+        except Coupon.DoesNotExist:
+            messages.error(request, "Sorry, this is not a valid coupon.")
+            request.session['coupon_id'] = None  # Reset the coupon in the session
+    
+    total = current_bag['grand_total'] - discount_amount
+    stripe_total = round(total * 100)
+    
+    coupon_form = CouponApplyForm()
+        
+    context = {
+        'order_form': order_form,
+        'bag_items': bag_items,
+        'grand_total': total,
+        'stripe_public_key': stripe_public_key,
+        'client_secret': intent.client_secret if 'intent' in locals() else None,
+        'form': coupon_form,
+        
+        'discount_amount': discount_amount,
+    }
         
     return render(request, 'checkout/checkout.html', context)
 
@@ -156,3 +171,18 @@ def checkout_success(request, order_number):
     }
 
     return render(request, template, context)
+
+
+def apply_coupon_view(request):
+    if request.method == 'POST':
+        form = CouponApplyForm(request.POST)
+        if form.is_valid():
+            code = form.cleaned_data['code']
+            try:
+                coupon = Coupon.objects.get(code__iexact=code, active=True, valid_from__lte=timezone.now(), valid_to__gte=timezone.now())
+                request.session['coupon_id'] = coupon.id
+                messages.success(request, "Coupon applied successfully!")
+            except Coupon.DoesNotExist:
+                request.session['coupon_id'] = None
+                messages.error(request, "Invalid coupon code.")
+    return redirect('checkout')
