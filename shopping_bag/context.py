@@ -2,6 +2,8 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
+from checkout.models import Coupon  
+
 
 def bag_contents(request):
 
@@ -36,8 +38,22 @@ def bag_contents(request):
         delivery = 0
         free_delivery_delta = 0
 
-    grand_total = delivery + total
-    
+    # Updated the context with the cupon check if is necessary 
+    coupon_id = request.session.get('coupon_id')
+    discount_amount = 0  # Initialize the discount amount to 0
+
+    if coupon_id:
+        try:
+            coupon = Coupon.objects.get(id=coupon_id)
+            if coupon.is_valid():
+                # Calculate the discount amount based on the coupon's discount percentage
+                discount_amount = (total * coupon.discount) / 100
+        except Coupon.DoesNotExist:
+            pass  
+
+    # Apply the coupon discount to the grand total check if is correct
+    grand_total = (delivery + total) - discount_amount
+
     context = {
         'bag_items': bag_items,
         'total': total,

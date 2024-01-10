@@ -28,27 +28,8 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     payment_intent_id = models.CharField(max_length=255, null=True, blank=True)
     coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
-
-
-    def save(self, *args, **kwargs):                
-        if not self.order_number:
-            self.order_number = uuid.uuid4().hex.upper()
-        self.update_totals()
-        
-        if self.coupon and self.coupon.is_valid():
-            discount_amount = (self.order_total * self.coupon.discount) / 100
-            self.grand_total = self.order_total + self.delivery_cost - discount_amount
-        else:
-            self.grand_total = self.order_total + self.delivery_cost
-            
-        super().save(*args, **kwargs)
-    
-
-    def __str__(self):
-        return str(self.order_number)
     
     def update_totals(self):
-
         self.order_total = self.lineitems.aggregate(
             Sum('lineitem_total')
         )['lineitem_total__sum'] or 0
@@ -58,9 +39,25 @@ class Order(models.Model):
         else:
             self.delivery_cost = 0
 
-        self.grand_total = self.order_total + self.delivery_cost
+        if self.coupon and self.coupon.is_valid():
+            discount_amount = (self.order_total * self.coupon.discount) / 100
+            self.grand_total = self.order_total + self.delivery_cost - discount_amount
+        else:
+            self.grand_total = self.order_total + self.delivery_cost
+            
     
+    def save(self, *args, **kwargs):
+        if not self.order_number:
+            self.order_number = uuid.uuid4().hex.upper()
 
+        self.update_totals()
+
+        super().save(*args, **kwargs)
+        
+    def __str__(self):
+        return str(self.order_number)
+    
+    
 class OrderLineItem(models.Model):
     order = models.ForeignKey('Order', null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)

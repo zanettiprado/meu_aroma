@@ -43,6 +43,12 @@
                         <span>Delivery:</span>
                         <strong class="text-danger">€{{ delivery|floatformat:2 }}</strong>
                     </li>
+                    {% if discount_amount %}
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Discount applied:</span>
+                        <strong class="text-success">-€{{ discount_amount|floatformat:2 }}</strong>
+                    </li>
+                    {% endif %}
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Total (EUR)</span>
                         <strong>€{{ grand_total|floatformat:2 }}</strong>
@@ -61,22 +67,25 @@
                 </div>
                 <div class="card-body">
 
-                <!-- review the css style here later -->
-                    <form action="{% url 'apply_coupon' %}" method="post"> 
+                    <!-- review the css style here later -->
+                    <form action="{% url 'apply_coupon' %}" method="post">
                         {% csrf_token %}
                         <div class="input-group mb-3">
-                            <input type="text" name="code" class="form-control" placeholder="Coupon Code" aria-label="Coupon Code" aria-describedby="button-apply">
+                            <input type="text" name="code" class="form-control" placeholder="Coupon Code"
+                                aria-label="Coupon Code" aria-describedby="button-apply">
                             <div class="input-group-append">
                                 <button class="btn btn-outline-secondary" type="submit" id="button-apply">Apply</button>
                             </div>
                         </div>
                     </form>
-                    
+
                     {% if discount_amount %}
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Discount:</span>
-                        <strong class="text-success">-€{{ discount_amount|floatformat:2 }}</strong>
-                    </li>
+                    <div class="input-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Discount:</span>
+                            <strong class="text-success">-€{{ discount_amount|floatformat:2 }}</strong>
+                        </li>
+                    </div>
                     {% endif %}
 
                     <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="needs-validation"
@@ -140,7 +149,7 @@
 
                         <button class="btn btn-success btn-lg btn-block mt-4" type="submit">Complete order <i
                                 class="fas fa-lock ml-2 text-white"> &nbsp</i></button>
-                        
+
                     </form>
                 </div>
             </div>
