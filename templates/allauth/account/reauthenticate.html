@@ -2,23 +2,40 @@
 {% load allauth %}
 {% load i18n %}
 {% block reauthenticate_content %}
-    <p>{% blocktranslate %}Enter your password:{% endblocktranslate %}</p>
-    {% url 'account_reauthenticate' as action_url %}
-    {% element form form=form method="post" action=action_url %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {% if redirect_field_value %}
-                <input type="hidden"
-                       name="{{ redirect_field_name }}"
-                       value="{{ redirect_field_value }}" />
-            {% endif %}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans "Confirm" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
+<div class="container my-5">
+    <div class="row justify-content-center p-3">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h1 class="card-title">
+                        {% trans "Reauthenticate" %}
+                    </h1>
+                </div>
+                <div class="card-body">
+                    <p>{% blocktranslate %}Enter your password:{% endblocktranslate %}</p>
+                    {% url 'account_reauthenticate' as action_url %}
+                    <form method="post" action="{{ action_url }}">
+                        {% csrf_token %}
+                        {% for field in form %}
+                            <div class="form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                            </div>
+                        {% endfor %}
+                        {% if redirect_field_value %}
+                            <input type="hidden"
+                                   name="{{ redirect_field_name }}"
+                                   value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">
+                                {% trans "Confirm" %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
