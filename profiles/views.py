@@ -5,6 +5,7 @@ from checkout.models import Order
 from .models import UserProfile
 from .forms import UserProfileForm
 
+
 @login_required
 def profile(request):
     """ Display the user's profile. """
@@ -44,3 +45,8 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+@login_required
+def has_purchased_product(user, product):
+    """Check if the user has purchased the given product."""
+    return Order.objects.filter(user=user, orderlineitem__product=product).exists()

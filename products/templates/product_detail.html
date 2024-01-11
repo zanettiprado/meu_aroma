@@ -98,7 +98,17 @@
                     <button type="submit" class="btn btn-warning btn-custom">Remove from Bag</button>
                 </form>
             </div>
+            
             {% endif %}
+           <!-- feedback form -->
+            {% if user_has_purchased %}
+            <form method="post" action="{% url 'product_feedback' product.id %}">
+                {% csrf_token %}
+                {{ feedback_form|crispy }}
+                <button type="submit" class="btn btn-primary mt-2">Submit Feedback</button>
+            </form>
+          {% endif %}
+
         </div>
     </div>
 </div>

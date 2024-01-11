@@ -3,12 +3,12 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required 
 from .models import Product, Category, Inventory
-from .forms import QuantityForm, ProductForm, InventoryForm 
+from .forms import QuantityForm, ProductForm, InventoryForm, FeedbackForm 
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
+from profiles.views import has_purchased_product
 
 import logging
-
 
 def all_products(request):
     products = Product.objects.all()
@@ -60,7 +60,13 @@ def product_detail(request, product_id):
     inventory = Inventory.objects.filter(product=product).first()
     if not inventory:
         inventory = Inventory(product=product, quantity_in_stock=0, quantity_allocated=0)
-
+    
+    user_has_purchased = False
+    if request.user.is_authenticated:
+        user_has_purchased = has_purchased_product(request.user, product)
+    
+    feedback_form = FeedbackForm()
+    
     if request.method == 'POST':
         form = QuantityForm(request.POST)
         if form.is_valid():
@@ -80,8 +86,11 @@ def product_detail(request, product_id):
         'product': product,
         'inventory': inventory,
         'form': form,
-        'is_in_bag': str(product_id) in bag
+        'is_in_bag': str(product_id) in bag,
+        'feedback_form': feedback_form,
+        'user_has_purchased': user_has_purchased
     }
+    
     return render(request, 'product_detail.html', context)
 
 
@@ -223,3 +232,30 @@ def update_inventory(request, product_id):
     }
 
     return render(request, 'products/update_inventory.html', context)
+
+@login_required
+def product_feedback(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.save(commit=False)
+            feedback.product = product
+            feedback.user = request.user
+            feedback.save()
+            messages.success(request, 'Your feedback has been submitted.')
+            return redirect('product_detail', product_id=product.id)
+        else:
+            messages.error(request, 'There was an error with your feedback submission. Please check your input.')
+    else:
+        form = FeedbackForm()
+
+    context = {
+        'form': form,
+        'product': product
+    }
+
+    return render(request, 'products/product_feedback.html', context)
+
+

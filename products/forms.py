@@ -1,6 +1,6 @@
 from django import forms
 from .widgets import CustomClearableFileInput
-from .models import Product, Inventory
+from .models import Product, Inventory, Feedback
 
 class QuantityForm(forms.Form):
     quantity = forms.IntegerField(min_value=1, max_value=99, label='Quantity')
@@ -45,3 +45,12 @@ class InventoryForm(forms.ModelForm):
 
         if quantity_allocated < 0:
             self.add_error('quantity_allocated', 'Quantity allocated cannot be negative.')
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['comment']
+        widgets = {
+            'comment': forms.Textarea(attrs={'rows': 4, 'placeholder': 'Enter your feedback here'}),
+        }         
+
