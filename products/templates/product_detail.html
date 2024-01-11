@@ -50,8 +50,9 @@
                     {% endif %}
                 </p>
                 {% if request.user.is_superuser %}
-                <div class="mt-3 mb-">
-                    <a href="{% url 'products:update_inventory' product.id %}" class="btn btn-warning">Update Inventory</a>
+                <div class="mt-3 mb-2">
+                    <a href="{% url 'products:update_inventory' product.id %}" class="btn btn-warning">Update
+                        Inventory</a>
                 </div>
                 {% endif %}
 
@@ -98,16 +99,39 @@
                     <button type="submit" class="btn btn-warning btn-custom">Remove from Bag</button>
                 </form>
             </div>
-            
+
             {% endif %}
-           <!-- Feedback Section -->
+            <!-- Feedback Section -->
             {% if user_has_purchased %}
             <form method="post" action="{% url 'product_feedback' product.id %}">
                 {% csrf_token %}
                 {{ feedback_form|crispy }}
                 <button type="submit" class="btn btn-primary mt-2">Submit Feedback</button>
             </form>
-          {% endif %}
+            {% endif %}
+
+            <!-- Feedback Section -->
+            <div class="product-feedbacks container my-4">
+                <hr>
+                <h3 class="logo-font text-center mb-4">Customer Feedback</h3>
+                <hr>
+
+                {% if feedbacks %}
+                <div class="feedback-list">
+                    {% for feedback in feedbacks %}
+                    <div class="feedback mb-3 p-3 border rounded  bg-highlight">
+                        <div class="feedback-header p-2 d-flex justify-content-between text-highlight">
+                            <strong class="feedback-user">{{ feedback.user.username }}</strong>
+                            <span class="feedback-date">{{ feedback.created_at|date:"d/m/Y H:i" }}</span>
+                        </div>
+                        <p class="feedback-comment mt-2">{{ feedback.comment }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center">No feedback has been provided for this product yet.</p>
+                {% endif %}
+            </div>
 
         </div>
     </div>

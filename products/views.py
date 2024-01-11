@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Product, Category, Inventory
 from checkout.models import Order, OrderLineItem
 from profiles.models import UserProfile
-from .forms import QuantityForm, ProductForm, InventoryForm, FeedbackForm 
+from .forms import QuantityForm, ProductForm, InventoryForm, FeedbackForm, Feedback
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
 
@@ -68,7 +68,7 @@ def product_detail(request, product_id):
         has_purchased = user_has_purchased(request.user, product)
     
     feedback_form = FeedbackForm()
-    
+    feedbacks = Feedback.objects.filter(product=product)
     
     if request.method == 'POST':
         form = QuantityForm(request.POST)
@@ -92,6 +92,7 @@ def product_detail(request, product_id):
         'is_in_bag': str(product_id) in bag,
         'feedback_form': feedback_form,
         'user_has_purchased': has_purchased,
+        'feedbacks': feedbacks,
     }
     
     return render(request, 'product_detail.html', context)

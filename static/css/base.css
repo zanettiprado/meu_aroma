@@ -298,6 +298,14 @@ body {
     color: red;
 }
 
+.bg-highlight {
+    background-color: #f8d7dad3;
+}
+
+.text-highlight {
+    background-color: #da7a5da6;
+}
+
 /* stripe Styles */
 .card-error-active {
     color: #dc3545;
