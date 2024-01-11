@@ -2,11 +2,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required 
-from .models import Product, Category
-from .forms import QuantityForm
+from .models import Product, Category, Inventory
+from .forms import QuantityForm, ProductForm, InventoryForm 
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
-from .forms import ProductForm
 
 import logging
 
@@ -58,6 +57,7 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     bag = request.session.get('bag', {})
+    inventory = Inventory.objects.get(product=product)
 
     if request.method == 'POST':
         form = QuantityForm(request.POST)
@@ -76,6 +76,7 @@ def product_detail(request, product_id):
 
     context = {
         'product': product,
+        'inventory': inventory,
         'form': form,
         'is_in_bag': str(product_id) in bag
     }
@@ -115,7 +116,7 @@ def remove_from_bag(request, item_id): # remember to include the info why this i
                 redirect_url = reverse('product_detail', kwargs={'product_id': product_id})
 
             return redirect(redirect_url)
-    # Handle non-POST requests
+
     return HttpResponseBadRequest("Invalid request. Only POST requests are allowed on this endpoint.")
 
 @login_required 
@@ -191,3 +192,32 @@ def delete_product(request, product_id):
     }
 
     return render(request, template, context)
+
+
+
+@login_required
+def update_inventory(request, product_id):
+    if not request.user.is_superuser:
+        messages.error(request, 'Only store managers can update inventory.')
+        return redirect('product_detail', product_id=product_id)
+
+    product = get_object_or_404(Product, pk=product_id)
+    inventory = Inventory.objects.get(product=product)
+
+    if request.method == 'POST':
+        form = InventoryForm(request.POST, instance=inventory)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Inventory updated successfully.')
+            return redirect('product_detail', product_id=product_id)
+        else:
+            messages.error(request, 'Failed to update inventory. Please check the form.')
+    else:
+        form = InventoryForm(instance=inventory)
+
+    context = {
+        'form': form,
+        'product': product
+    }
+
+    return render(request, 'update_inventory.html', context)

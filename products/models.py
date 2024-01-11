@@ -21,3 +21,36 @@ class Product(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Inventory(models.Model):
+    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='inventory')
+    quantity_in_stock = models.PositiveIntegerField(default=0)
+    quantity_allocated = models.PositiveIntegerField(default=0)
+
+    def allocate_stock(self, quantity):
+        """Allocates stock for a purchase, reducing the quantity_in_stock."""
+        if self.quantity_in_stock >= quantity:
+            self.quantity_in_stock -= quantity
+            self.quantity_allocated += quantity
+            self.save()
+        else:
+            raise ValueError('Not enough stock available')
+
+    def deallocate_stock(self, quantity):
+        """Deallocates stock that was held for a purchase but is no longer needed."""
+        if self.quantity_allocated >= quantity:
+            self.quantity_allocated -= quantity
+            self.quantity_in_stock += quantity
+            self.save()
+        else:
+            raise ValueError('Not enough stock allocated')
+
+    def restock(self, quantity):
+        """Adds stock, increasing the quantity_in_stock."""
+        self.quantity_in_stock += quantity
+        self.save()
+
+    def __str__(self):
+        return f'Inventory for {self.product.name}'
+
