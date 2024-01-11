@@ -57,7 +57,9 @@ def all_products(request):
 def product_detail(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
     bag = request.session.get('bag', {})
-    inventory = Inventory.objects.get(product=product)
+    inventory = Inventory.objects.filter(product=product).first()
+    if not inventory:
+        inventory = Inventory(product=product, quantity_in_stock=0, quantity_allocated=0)
 
     if request.method == 'POST':
         form = QuantityForm(request.POST)

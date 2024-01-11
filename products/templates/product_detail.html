@@ -46,11 +46,11 @@
                     {% if product.inventory.quantity_in_stock > 0 %}
                     <span class="text-success">{{ product.inventory.quantity_in_stock }} in stock</span>
                     {% else %}
-                    <span class="text-danger">Out of stock</span>
+                    <span class="text-danger p-2"></span>
                     {% endif %}
                 </p>
                 {% if request.user.is_superuser %}
-                <div class="mt-3">
+                <div class="mt-3 mb-">
                     <a href="{% url 'products:update_inventory' product.id %}" class="btn btn-warning">Update Inventory</a>
                 </div>
                 {% endif %}
