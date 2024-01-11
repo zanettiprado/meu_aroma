@@ -64,8 +64,8 @@ def checkout(request):
             return redirect(reverse('products'))
 
         current_bag = bag_contents(request)
-        total = current_bag['grand_total']
-        stripe_total = round(total * 100)
+        # total = current_bag['grand_total']
+        stripe_total = round(current_bag['grand_total'] * 100)
         try:
             intent = stripe.PaymentIntent.create(amount=stripe_total, 
                                                  currency=settings.STRIPE_CURRENCY)
@@ -122,15 +122,16 @@ def checkout(request):
     coupon_form = CouponApplyForm()
         
     context = {
-        'order_form': order_form,
-        'bag_items': bag_items,
-        'grand_total': total,
-        'stripe_public_key': stripe_public_key,
-        'client_secret': intent.client_secret if 'intent' in locals() else None,
-        'form': coupon_form,
-        
-        'discount_amount': discount_amount,
-    }
+            'order_form': order_form,
+            'bag_items': current_bag['bag_items'],
+            'subtotal_after_discount': current_bag['subtotal_after_discount'],
+            'discount_amount': current_bag['discount_amount'],
+            'delivery': current_bag['delivery'],
+            'grand_total': current_bag['grand_total'],
+            'stripe_public_key': stripe_public_key,
+            'client_secret': intent.client_secret if 'intent' in locals() else None,
+            'form': coupon_form,
+        }
         
     return render(request, 'checkout/checkout.html', context)
 
@@ -181,8 +182,10 @@ def apply_coupon_view(request):
             try:
                 coupon = Coupon.objects.get(code__iexact=code, active=True, valid_from__lte=timezone.now(), valid_to__gte=timezone.now())
                 request.session['coupon_id'] = coupon.id
+                
                 messages.success(request, "Coupon applied successfully!")
             except Coupon.DoesNotExist:
                 request.session['coupon_id'] = None
                 messages.error(request, "Invalid coupon code.")
+            print(request.session['coupon_id'])
     return redirect('checkout')

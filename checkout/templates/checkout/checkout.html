@@ -23,6 +23,9 @@
                     <i class="fas fa-shopping-cart text-white"> &nbsp </i> Your Order
                 </div>
 
+
+
+
                 <ul class="list-group list-group-flush">
                     {% for item in bag_items %}
                     <li class="list-group-item">
@@ -36,24 +39,47 @@
                             <span class="text-muted">€{{ item.subtotal|floatformat:2 }}</span>
                         </div>
                     </li>
+
                     {% empty %}
                     <li class="list-group-item text-center">Your cart is empty.</li>
                     {% endfor %}
+
+                    <!-- Total Price Before Discounts -->
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Delivery:</span>
-                        <strong class="text-danger">€{{ delivery|floatformat:2 }}</strong>
+                        <span>Total Price:</span>
+                        <strong>€{{ total|floatformat:2 }}</strong>
                     </li>
-                    {% if discount_amount %}
+
+                    <!-- Discount Applied -->
                     <li class="list-group-item d-flex justify-content-between">
                         <span>Discount applied:</span>
                         <strong class="text-success">-€{{ discount_amount|floatformat:2 }}</strong>
                     </li>
-                    {% endif %}
+
+                    <!-- Subtotal After Discount -->
                     <li class="list-group-item d-flex justify-content-between">
-                        <span>Total (EUR)</span>
+                        <span>Subtotal After Discount:</span>
+                        <strong>€{{ subtotal_after_discount|floatformat:2 }}</strong>
+                    </li>
+
+                    <!-- Delivery Charge -->
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Delivery:</span>
+                        <strong class="text-danger">€{{ delivery|floatformat:2 }}</strong>
+                    </li>
+
+                    <!-- Grand Total -->
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>Total (EUR):</span>
                         <strong>€{{ grand_total|floatformat:2 }}</strong>
                     </li>
                 </ul>
+
+
+
+
+
+
             </div>
             <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg btn-block mt-3" role="button">
                 <i class="fas fa-chevron-left">&nbsp</i> Continue Shopping

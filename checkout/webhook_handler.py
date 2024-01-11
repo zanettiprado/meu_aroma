@@ -47,6 +47,7 @@ class StripeWH_Handler:
         # Check if the order associated with the payment intent exists
         try:
             order = Order.objects.get(payment_intent_id=intent.id)
+            
             # Send the confirmation email for the order
             if order.grand_total != (intent.amount / 100):
                 self._send_confirmation_email(order)
