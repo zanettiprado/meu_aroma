@@ -6,17 +6,11 @@ Order Number: {{ order.order_number }}
 Order Date: {{ order.date }}
 
 Order Summary:
-Total Products: €{{ order.order_total|floatformat:2 }}
-{% if order.coupon and order.coupon.is_valid %}
-    {% with discount_amount=order.order_total * order.coupon.discount / 100 %}
-        Discount Applied ({{ order.coupon.code }}): -€{{ discount_amount|floatformat:2 }}
-    {% endwith %}
-{% endif %}
-{% with subtotal_after_discount=order.order_total - (order.order_total * order.coupon.discount / 100) %}
-    Subtotal After Discount: €{{ subtotal_after_discount|floatformat:2 }}
-{% endwith %}
-Delivery Cost: €{{ order.delivery_cost|floatformat:2 }}
-Grand Total: €{{ order.grand_total|floatformat:2 }}
+{% for item in order.items %}
+Product: {{ item.product.name }}
+Price: €{{ item.product.price|floatformat:2 }}
+{% endfor %}
+Final Price: €{{ order.grand_total|floatformat:2 }}
 
 Shipping Address:
 {{ order.street_address1 }}

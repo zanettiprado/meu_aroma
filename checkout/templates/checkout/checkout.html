@@ -22,10 +22,6 @@
                 <div class="card-header bg-info text-white">
                     <i class="fas fa-shopping-cart text-white"> &nbsp </i> Your Order
                 </div>
-
-
-
-
                 <ul class="list-group list-group-flush">
                     {% for item in bag_items %}
                     <li class="list-group-item">
@@ -74,12 +70,6 @@
                         <strong>€{{ grand_total|floatformat:2 }}</strong>
                     </li>
                 </ul>
-
-
-
-
-
-
             </div>
             <a href="{% url 'products' %}" class="btn btn-outline-primary btn-lg btn-block mt-3" role="button">
                 <i class="fas fa-chevron-left">&nbsp</i> Continue Shopping
