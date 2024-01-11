@@ -100,7 +100,7 @@
             </div>
             
             {% endif %}
-           <!-- feedback form -->
+           <!-- Feedback Section -->
             {% if user_has_purchased %}
             <form method="post" action="{% url 'product_feedback' product.id %}">
                 {% csrf_token %}

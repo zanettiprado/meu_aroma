@@ -3,10 +3,12 @@ from django.contrib import messages
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required 
 from .models import Product, Category, Inventory
+from checkout.models import Order, OrderLineItem
+from profiles.models import UserProfile
 from .forms import QuantityForm, ProductForm, InventoryForm, FeedbackForm 
 from django.http import JsonResponse, HttpResponseBadRequest
 from django.urls import reverse
-from profiles.views import has_purchased_product
+
 
 import logging
 
@@ -61,11 +63,12 @@ def product_detail(request, product_id):
     if not inventory:
         inventory = Inventory(product=product, quantity_in_stock=0, quantity_allocated=0)
     
-    user_has_purchased = False
+    has_purchased = False
     if request.user.is_authenticated:
-        user_has_purchased = has_purchased_product(request.user, product)
+        has_purchased = user_has_purchased(request.user, product)
     
     feedback_form = FeedbackForm()
+    
     
     if request.method == 'POST':
         form = QuantityForm(request.POST)
@@ -88,7 +91,7 @@ def product_detail(request, product_id):
         'form': form,
         'is_in_bag': str(product_id) in bag,
         'feedback_form': feedback_form,
-        'user_has_purchased': user_has_purchased
+        'user_has_purchased': has_purchased,
     }
     
     return render(request, 'product_detail.html', context)
@@ -259,3 +262,8 @@ def product_feedback(request, product_id):
     return render(request, 'products/product_feedback.html', context)
 
 
+def user_has_purchased(user, product):
+    """ Check if the given user has purchased the given product. """
+    # Using the user's profile to filter orders
+    user_profile = UserProfile.objects.get(user=user)
+    return OrderLineItem.objects.filter(order__user_profile=user_profile, product=product).exists()
