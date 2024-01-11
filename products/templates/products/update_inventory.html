@@ -2,12 +2,23 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-<div class="container mt-4">
-    <h2>Update Inventory for {{ product.name }}</h2>
-    <form method="post" class="form">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button type="submit" class="btn btn-primary">Update Inventory</button>
-    </form>
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <div class="card my-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Update Inventory for {{ product.name }}</h2>
+                    <form method="post" class="mt-4">
+                        {% csrf_token %}
+                        {{ form.quantity_in_stock|as_crispy_field }}
+                        {{ form.quantity_allocated|as_crispy_field }}
+                        <div class="d-grid gap-2 text-center">
+                            <button type="submit" class="btn btn-primary">Update Inventory</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -220,4 +220,4 @@ def update_inventory(request, product_id):
         'product': product
     }
 
-    return render(request, 'update_inventory.html', context)
+    return render(request, 'products/update_inventory.html', context)
