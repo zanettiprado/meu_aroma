@@ -217,7 +217,8 @@ def update_inventory(request, product_id):
         return redirect('product_detail', product_id=product_id)
 
     product = get_object_or_404(Product, pk=product_id)
-    inventory = Inventory.objects.get(product=product)
+    inventory, created = Inventory.objects.get_or_create(product=product)
+    
 
     if request.method == 'POST':
         form = InventoryForm(request.POST, instance=inventory)

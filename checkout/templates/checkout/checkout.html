@@ -92,7 +92,7 @@
                     <i class="fas fa-address-card text-white"> &nbsp</i> Billing Details
                 </div>
                 <div class="card-body">
-
+                    <h6>Insert your cupon discount </h6>
                     <!-- review the css style here later -->
                     <form action="{% url 'apply_coupon' %}" method="post">
                         {% csrf_token %}
@@ -112,8 +112,14 @@
                             <strong class="text-success">-€{{ discount_amount|floatformat:2 }}</strong>
                         </li>
                     </div>
+                    <div class="alert alert-success mt-3">
+                        Coupon code applied successfully!
+                    </div>
                     {% endif %}
 
+                    <hr>
+
+                    <h6>Personal informaion: </h6>
                     <form action="{% url 'checkout' %}" method="POST" id="payment-form" class="needs-validation"
                         novalidate>
                         {% csrf_token %}
@@ -173,8 +179,9 @@
 
                         <input type="hidden" value="{{ client_secret }}" name="client_secret">
 
-                        <button class="btn btn-success btn-lg btn-block mt-4" type="submit">Complete order <i
-                                class="fas fa-lock ml-2 text-white"> &nbsp</i></button>
+                        <button class="btn btn-success btn-lg btn-block mt-4" type="submit"
+                            id="complete-order-btn">Complete order <i class="fas fa-lock ml-2 text-white">
+                                &nbsp</i></button>
 
                     </form>
                 </div>
@@ -189,4 +196,53 @@
 {{ stripe_public_key|json_script:"id_stripe_public_key" }}
 {{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const completeOrderButton = document.getElementById('complete-order-btn');
+        const formElements = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select');
+    
+        // Function to check if all form elements are filled
+        function checkFormCompletion() {
+            let isFormComplete = true;
+            formElements.forEach(element => {
+                if (element.required && element.value.trim() === '') {
+                    isFormComplete = false;
+                }
+            });
+            return isFormComplete;
+        }
+    
+        // Function to enable or disable the button based on form completion
+        function updateButtonStatus() {
+            if (checkFormCompletion()) {
+                completeOrderButton.removeAttribute('disabled');
+            } else {
+                completeOrderButton.setAttribute('disabled', 'disabled');
+            }
+        }
+    
+        // Function to show an alert when the button is disabled
+        function showIncompleteFieldsAlert() {
+            if (!checkFormCompletion()) {
+                alert('Please fill in all mandatory fields before submitting your order.');
+            }
+        }
+    
+        // Add event listener to the complete order button
+        completeOrderButton.addEventListener('click', function(event) {
+            if (!checkFormCompletion()) {
+                event.preventDefault(); // Prevent form submission
+                showIncompleteFieldsAlert();
+            }
+        });
+    
+        // Add event listeners to form elements to update the button status
+        formElements.forEach(element => {
+            element.addEventListener('input', updateButtonStatus);
+        });
+    
+        // Initial check and button status update
+        updateButtonStatus();
+    });
+    </script>
 {% endblock %}

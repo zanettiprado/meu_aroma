@@ -39,12 +39,15 @@
                     <h5 class="card-title">{{ product.name }}</h5>
                     <p class="card-text">{{ product.description|truncatewords:20 }}</p>
                     <div class="buy-info d-flex justify-content-between align-items-center mt-3">
-                        <span class="price text-success">€{{ product.price }}</span>
+                        <span class="price-highlight">€{{ product.price }}</span>
+
                         <!-- Add to Bag Form -->
                         <form action="{% url 'add_to_bag' product.id %}" method="post">
                             {% csrf_token %}
                             <input type="hidden" name="redirect_url" value="{% url 'products' %}">
-                            <button type="submit" class="btn btn-success">Add to bag</button>
+                            <button type="submit" class="btn btn-success"
+                                {% if not product.inventory.quantity_in_stock %} disabled {% endif %}>Add to
+                                bag</button>
                         </form>
                     </div>
                 </div>
@@ -55,16 +58,24 @@
                         <i class="fas fa-star rated"></i>
                     </div>
                     {% else %}
-                    <small class="text-muted">Not yet rated</small>
+                    <small class="text-muted">
+                        {% if not product.inventory.quantity_in_stock %}
+                        <div class="out-of-stock-info text-danger">
+                            Out of Stock
+                        </div>
+                        {% endif %}
+                    </small>
                     {% endif %}
                 </div>
-                 <!-- Superuser Edit/Delete Buttons -->
-                 {% if request.user.is_superuser %}
-                 <div class="card-footer bg-white text-right">
-                     <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn-sm">Edit</a>
-                     <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm">Delete</a>
-                 </div>
-                 {% endif %}
+
+                <!-- Superuser Edit/Delete Buttons -->
+                {% if request.user.is_superuser %}
+                <div class="card-footer bg-white text-right">
+                    <a href="{% url 'edit_product' product.id %}" class="btn btn-primary btn-sm">Edit</a>
+                    <a href="{% url 'delete_product' product.id %}" class="btn btn-danger btn-sm">Delete</a>
+                </div>
+                {% endif %}
+
             </div>
         </div>
         {% empty %}
@@ -81,7 +92,7 @@
         var currentUrl = window.location.href;
         var newUrl = new URL(currentUrl);
         newUrl.searchParams.set('sort', sortingMethod);
-        window.location.href = newUrl; 
+        window.location.href = newUrl;
     }
 </script>
 
