@@ -2,6 +2,7 @@
 html, body {
     min-height: 100vh;
     font-family: 'Oswald', sans-serif;
+    background-color: rgba(255, 228, 197, 0.3);
 }
 
 .price-highlight {
@@ -139,6 +140,15 @@ body {
 }
 
 /* producs cards */
+.bg-products {
+    background-color: rgba(250, 214, 200, 0.7);
+    border-radius: 8px;
+}
+
+.bg-nav {
+    background-color: rgba(250, 214, 200, 0.7);
+}
+
 .product-card {
     height: 450px;  
     display: flex;
@@ -149,7 +159,8 @@ body {
 .product-card .card-img-top {
     width: 100%;  
     height: 200px; 
-    object-fit: cover; 
+    object-fit: cover;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .card-body {
@@ -470,6 +481,35 @@ body {
     margin: auto;
 }
 
+/* Styling cupon */
+.btn-custom-shop {
+    background-color: #c6f951b4; 
+    color: rgb(0, 0, 0);
+    height: 35px; 
+    padding: 8px 20px; 
+    border-radius: 2px; 
+    font-weight: bold;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgb(0, 0, 0);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.btn-custom-shop:hover {
+    background-color: #43924ea6; 
+    color: rgb(0, 0, 0);
+    box-shadow: 0 3px 8px rgb(0, 0, 0);
+}
+
+/* Adjustments for the coupon field */
+.coupon-field {
+    width: 25%; 
+    max-width: 135px;
+    margin-right: 10px; 
+    text-align: center; 
+}
+
 /* footer.css */
 .site-footer {
     background-color: white;
@@ -565,5 +605,28 @@ body {
     }
     #delivery-banner {
         font-size: 0.8em;  
+    }
+}
+
+@media (max-width: 530px) {
+    .bag-image-container, .description-container {
+        width: 100%;
+    }
+
+    .d-flex {
+        flex-direction: column;
+    }
+
+    .bag-image-container {
+        margin-bottom: 15px;
+    }
+
+    .description-container {
+        padding: 0 15px;
+    }
+
+    .bag-image-container .product-image {
+        width: 100%;
+        height: auto;
     }
 }

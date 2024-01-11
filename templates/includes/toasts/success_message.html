@@ -35,7 +35,7 @@
                 </div>
                 {% if free_delivery_delta > 0 %}
                 <div class="alert alert-warning mt-2" role="alert">
-                    Just €{{ free_delivery_delta }} away from Free Delivery!
+                    Just €{{ free_delivery_delta|floatformat:2 }} away from Free Delivery!
                 </div>
                 {% endif %}
                 <a href="{% url 'checkout' %}" class="btn btn-info btn-block mt-3">Proceed to Secure Checkout</a>

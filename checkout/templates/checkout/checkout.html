@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-center mb-4">
-                <h2 class="logo-font">Secure Checkout</h2>
+                <h2 class="logo-font mt-5">Secure Checkout</h2>
                 <p class="lead text-muted">Complete your order with a few simple steps.</p>
                 <!-- review the css style here later -->
             </div>
@@ -29,8 +29,9 @@
                             <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}"
                                 class="img-thumbnail mr-2" style="width: 50px; height: 50px;">
                             <div>
-                                <h6 class="my-0">{{ item.product.name }}</h6>
-                                <small class="text-muted">Qty: {{ item.quantity }}</small>
+                                <h6 class="my-0">{{ item.product.name }} <span><small class="text-muted">Qty:
+                                            {{ item.quantity }}</small></span></h6>
+
                             </div>
                             <span class="text-muted">€{{ item.subtotal|floatformat:2 }}</span>
                         </div>
@@ -87,10 +88,10 @@
                     <form action="{% url 'apply_coupon' %}" method="post">
                         {% csrf_token %}
                         <div class="input-group mb-3">
-                            <input type="text" name="code" class="form-control" placeholder="Coupon Code"
-                                aria-label="Coupon Code" aria-describedby="button-apply">
+                            <input type="text" name="code" class="form-control coupon-field" placeholder="Coupon Code"
+                                   aria-label="Coupon Code" aria-describedby="button-apply">
                             <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="submit" id="button-apply">Apply</button>
+                                <button class="btn btn-custom-shop" type="submit" id="button-apply">Apply</button>
                             </div>
                         </div>
                     </form>
@@ -187,10 +188,11 @@
 {{ client_secret|json_script:"id_client_secret" }}
 <script src="{% static 'checkout/js/stripe_elements.js' %}"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const completeOrderButton = document.getElementById('complete-order-btn');
-        const formElements = document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"], select');
-    
+        const formElements = document.querySelectorAll(
+            'input[type="text"], input[type="email"], input[type="tel"], select');
+
         // Function to check if all form elements are filled
         function checkFormCompletion() {
             let isFormComplete = true;
@@ -201,7 +203,7 @@
             });
             return isFormComplete;
         }
-    
+
         // Function to enable or disable the button based on form completion
         function updateButtonStatus() {
             if (checkFormCompletion()) {
@@ -210,29 +212,29 @@
                 completeOrderButton.setAttribute('disabled', 'disabled');
             }
         }
-    
+
         // Function to show an alert when the button is disabled
         function showIncompleteFieldsAlert() {
             if (!checkFormCompletion()) {
                 alert('Please fill in all mandatory fields before submitting your order.');
             }
         }
-    
+
         // Add event listener to the complete order button
-        completeOrderButton.addEventListener('click', function(event) {
+        completeOrderButton.addEventListener('click', function (event) {
             if (!checkFormCompletion()) {
                 event.preventDefault(); // Prevent form submission
                 showIncompleteFieldsAlert();
             }
         });
-    
+
         // Add event listeners to form elements to update the button status
         formElements.forEach(element => {
             element.addEventListener('input', updateButtonStatus);
         });
-    
+
         // Initial check and button status update
         updateButtonStatus();
     });
-    </script>
+</script>
 {% endblock %}
