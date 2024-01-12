@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Apply for Partnership" %}{% endblock %}
+
+{% block content %}
+<div class="container col-md-4 my-4 login-wrapper">
+    <hr>
+    <h2 class="logo-font text-center mb-4">{% trans "Apply for Partnership" %}</h2>
+    <hr>
+    <form method="post" class="login-form">
+        {% csrf_token %}
+        <div class="row">
+            {% for field in form %}
+                {% if field.name == 'additional_info' %}
+                    <div class="col-12 mb-3">
+                        {{ field|as_crispy_field }}
+                    </div>
+                {% else %}
+                    <div class="col-md-6 mb-3">
+                        {{ field|as_crispy_field }}
+                    </div>
+                {% endif %}
+                {% endfor %}
+        </div>
+        <div class="form-actions">
+            <button type="submit" class="btn shop-now-button btn-block">{% trans "Submit Application" %}</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

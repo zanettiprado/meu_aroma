@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from checkout.models import Order
 from .models import UserProfile
-from .forms import UserProfileForm
+from .forms import UserProfileForm, PartnerApplicationForm
 
 
 @login_required
@@ -30,6 +30,22 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
+def partner_application(request):
+    if request.method == 'POST':
+        form = PartnerApplicationForm(request.POST)
+        if form.is_valid():
+            partner_application = form.save(commit=False)
+            partner_application.user = request.user
+            partner_application.save()
+            # Add a success message or redirect
+            return redirect('profile')
+    else:
+        form = PartnerApplicationForm()
+
+    return render(request, 'profiles/partner_application.html', {'form': form})
+
+
 def order_history(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
@@ -45,3 +61,5 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
+
+

@@ -16,6 +16,20 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+
+class PartnerApplication(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    company_name = models.CharField(max_length=100, blank=True)
+    phone_number = models.CharField(max_length=20, blank=True)
+    additional_info = models.TextField(blank=True)
+    status = models.CharField(max_length=10, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')], default='Pending')
+    date_submitted = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name
 
 
 @receiver(post_save, sender=User)
