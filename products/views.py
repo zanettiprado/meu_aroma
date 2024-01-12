@@ -95,7 +95,7 @@ def product_detail(request, product_id):
         'feedbacks': feedbacks,
     }
     
-    return render(request, 'product_detail.html', context)
+    return render(request, 'products/product_detail.html', context)
 
 
 def remove_from_bag(request, item_id): # remember to include the info why this is here and not in the bag
