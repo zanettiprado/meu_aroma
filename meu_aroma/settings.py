@@ -16,6 +16,7 @@ if os.path.exists("env.py"):
   import env 
 import dj_database_url
 import stripe
+from env import RECIPIENT_EMAIL
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -211,6 +212,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 FREE_DELIVERY_THRESHOLD = 60
 STANDARD_DELIVERY_PERCENTAGE = 10
 
+recipient_email = RECIPIENT_EMAIL
 
 STRIPE_CURRENCY = 'eur'
 STRIPE_PUBLIC_KEY = os.getenv('STRIPE_PUBLIC_KEY', '')

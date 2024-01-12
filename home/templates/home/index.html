@@ -56,11 +56,19 @@
 
             <!-- Third Information Box -->
             <div class="info-box">
-                <h3>Become a Partner</h3>
-                <p>Are you intrigued by the prospect of embarking on a rewarding partnership with us and offering our
+                <h3>{% if user.is_authenticated %}Become a Partner{% else %}Create an Account{% endif %}</h3>
+                <p>{% if user.is_authenticated %}
+                    Are you intrigued by the prospect of embarking on a rewarding partnership with us and offering our
                     exquisite range of products to a wider audience? We invite you to take the first step by submitting
-                    your application to become our valued partner.</p>
-                <a href="{% url 'partner_application' %}" class="btn shop-now-button">Apply Now</a>
+                    your application to become our valued partner.
+                {% else %}
+                    If you don't have an account, you can create one to apply for our partnership program. Creating an account
+                    allows you to access exclusive benefits and apply for partnership.
+                {% endif %}</p>
+                <a href="{% if user.is_authenticated %}{% url 'partner_application' %}{% else %}{% url 'account_signup' %}{% endif %}"
+                   class="btn shop-now-button">
+                    {% if user.is_authenticated %}Apply Now{% else %}Create an Account{% endif %}
+                </a>
             </div>
         </div>
     </div>

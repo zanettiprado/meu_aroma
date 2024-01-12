@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.core.mail import send_mail
+from django.utils.html import strip_tags
+
 from checkout.models import Order
 from .models import UserProfile
 from .forms import UserProfileForm, PartnerApplicationForm
+
 
 
 @login_required
@@ -38,6 +42,27 @@ def partner_application(request):
             partner_application = form.save(commit=False)
             partner_application.user = request.user
             partner_application.save()
+            
+            # Send an email notification          
+            name = form.cleaned_data.get('name')
+            email = form.cleaned_data.get('email')
+            company_name = form.cleaned_data.get('company_name')
+            phone_number = form.cleaned_data.get('phone_number')
+            additional_info = form.cleaned_data.get('additional_info')
+
+            subject = 'New Partnership Application'
+            
+            message = f'New partnership application received from {name}.\n\n'
+            message += f'Email: {email}\n'
+            message += f'Company Name: {company_name}\n'
+            message += f'Phone Number: {phone_number}\n'
+            message += f'Additional Information: {additional_info}'
+
+            recipient_email = 'RECIPIENT_EMAIL' 
+            
+            sender_email = email
+            send_mail(subject, strip_tags(message), sender_email, [recipient_email], html_message=message)
+                       
             messages.success(request, 'Your application has been submitted successfully.')
             return redirect('partner_application_success')
     else:

@@ -40,4 +40,3 @@ class PartnerApplicationForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        # Add any custom initialization or styling here
