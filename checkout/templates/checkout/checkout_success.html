@@ -1,71 +1,86 @@
-{% extends "base.html" %}
-{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block content %}
-<div class="container mb-4 py-4">
-    <div class="row">
-        <div class="col text-center">
-            <h2 class="display-4 text-success">Thank You for Your Order!</h2>
-            <p class="lead mt-3">Your order number is <strong>{{ order.order_number }}</strong>.</p>
-            <p>A confirmation email has been sent to <strong>{{ order.email }}</strong>. Please check your inbox shortly
-                to review your order details.</p>
-            <hr class="my-4">
-        </div>
-    </div>
-    <div class="row justify-content-center">
-        <div class="col-12 col-lg-8">
-            <div class="card border-success mb-3">
-                <div class="card-header bg-success text-white">Order Summary</div>
-                
-                <ul class="list-group list-group-flush">
-                    {% for item in order.lineitems.all %}
-                    <li class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="me-3">
-                                <h6 class="my-0">{{ item.product.name }}</h6>
-                                <small class="text-muted">Qty: {{ item.quantity }}</small>
-                            </div>
-                            <span class="text-muted">€{{ item.lineitem_total|floatformat:2 }}</span>
-                        </div>
-                    </li>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Checkout Success</title>
 
-                    {% endfor %}
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total Price:</span>
-                        <span>€{{ order.order_total|floatformat:2 }}</span>
-                    </li>
+</head>
 
-                    <!-- Discount Applied -->
-                    {% if order.coupon %}
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Discount applied ({{ order.coupon.code }}):</span>
-                        <span>-€{{ discount_amount|floatformat:2 }}</span>
-                    </li>
-                    {% endif %}
+<body>
+    {% extends "base.html" %}
+    {% load static %}
 
-                    <!-- Delivery Charge -->
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Delivery:</span>
-                        <span>€{{ order.delivery_cost|floatformat:2 }}</span>
-                    </li>
-                    <!-- Grand Total -->
-                    <li class="list-group-item d-flex justify-content-between font-weight-bold">
-                        <span>Grand Total</span>
-                        <span>€{{ order.grand_total|floatformat:2 }}</span>
-                    </li>
-                </ul>
-
+    {% block content %}
+    <div class="container mb-4 py-4">
+        <div class="row">
+            <div class="col text-center">
+                <h2 class="display-4 text-success">Thank You for Your Order!</h2>
+                <p class="lead mt-3">Your order number is <strong>{{ order.order_number }}</strong>.</p>
+                <p>A confirmation email has been sent to <strong>{{ order.email }}</strong>. Please check your inbox
+                    shortly
+                    to review your order details.</p>
+                <hr class="my-4">
             </div>
-            {% if from_profile %}
-            <a href="{% url 'profile' %}" class="btn btn-success btn-lg btn-block">
-                <i class="fa-solid fa-arrow-right mr-2"></i>Back to Profile
-            </a>
-            {% else %}
-            <a href="{% url 'products' %}" class="btn btn-primary btn-lg btn-block">
-                <i class="fas fa-arrow-circle-left mr-2 text-white"></i>Continue Shopping
-            </a>
-            {% endif %}
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="card border-success mb-3">
+                    <div class="card-header bg-success text-white">Order Summary</div>
+
+                    <ul class="list-group list-group-flush">
+                        {% for item in order.lineitems.all %}
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="me-3">
+                                    <h6 class="my-0">{{ item.product.name }}</h6>
+                                    <small class="text-muted">Qty: {{ item.quantity }}</small>
+                                </div>
+                                <span class="text-muted">€{{ item.lineitem_total|floatformat:2 }}</span>
+                            </div>
+                        </li>
+
+                        {% endfor %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total Price:</span>
+                            <span>€{{ order.order_total|floatformat:2 }}</span>
+                        </li>
+
+                        <!-- Discount Applied -->
+                        {% if order.coupon %}
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Discount applied ({{ order.coupon.code }}):</span>
+                            <span>-€{{ discount_amount|floatformat:2 }}</span>
+                        </li>
+                        {% endif %}
+
+                        <!-- Delivery Charge -->
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Delivery:</span>
+                            <span>€{{ order.delivery_cost|floatformat:2 }}</span>
+                        </li>
+                        <!-- Grand Total -->
+                        <li class="list-group-item d-flex justify-content-between font-weight-bold">
+                            <span>Grand Total</span>
+                            <span>€{{ order.grand_total|floatformat:2 }}</span>
+                        </li>
+                    </ul>
+
+                </div>
+                {% if from_profile %}
+                <a href="{% url 'profile' %}" class="btn btn-success btn-lg btn-block">
+                    <i class="fa-solid fa-arrow-right mr-2"></i>Back to Profile
+                </a>
+                {% else %}
+                <a href="{% url 'products' %}" class="btn btn-primary btn-lg btn-block">
+                    <i class="fas fa-arrow-circle-left mr-2 text-white"></i>Continue Shopping
+                </a>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
-{% endblock %}
+    {% endblock %}
+</body>
+
+</html>

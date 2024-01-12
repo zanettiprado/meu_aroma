@@ -1,3 +1,14 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Shopping Bag</title>
+
+</head>
+
 {% extends "base.html" %}
 {% load static %}
 {% load custom_filters %}
@@ -38,7 +49,7 @@
                                     <!-- Image Container -->
                                     <div class="bag-image-container mr-3">
                                         <a href="{% url 'product_detail' item.product.id %}">
-                                            <img class="product-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+                                            <img class="product-image" src="{{ item.product.image.url }}" alt="{{ item.product.name }} - Handmade Natural Soap ">
                                         </a>
                                     </div>
                                     <!-- Description Container -->
@@ -142,3 +153,7 @@ function removeFromBag(form) {
     xhr.send('product_id=' + productId);
 }
 </script>
+
+</body>
+
+</html>

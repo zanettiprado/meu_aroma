@@ -40,29 +40,33 @@
   {% block extra_js %}
   {% endblock %}
 
-  <title>Meu Aroma - Handmade Soap {% block extra_title %}{% endblock %}</title>
+  <title>Discover the Essence of Nature - Handmade Soap {% block extra_title %}{% endblock %}</title>
+  <meta name="description" content="Welcome to our eco-friendly haven of handcrafted soaps, where we embrace the essence of nature to bring you the finest quality products. 
+    Founded with a mission to preserve the beauty of our world, our artisanal soaps are carefully crafted using all-natural ingredients. 
+    Join us in our commitment to sustainability and indulge in the goodness of nature with every lather">
+  <meta name="keywords" content="handmade soap, natural products, vegan products, eco-friendly, organic">
 
 </head>
 
 <body>
   <header class="navbar-class">
-      {% include 'includes/navbar.html' %}
+    {% include 'includes/navbar.html' %}
   </header>
 
   {% if messages %}
   <div class="message-container">
     {% for message in messages %}
-      {% if message.tags == 'success' %}
-        {% with last_added_product=last_added_product last_added_quantity=last_added_quantity %}
-          {% include 'includes/toasts/success_message.html' %}
-        {% endwith %}
-      {% elif message.tags == 'error' %}
-        {% include 'includes/toasts/error_message.html' %}
-      {% elif message.tags == 'info' %}
-        {% include 'includes/toasts/info_message.html' %}
-      {% elif message.tags == 'warning' %}
-        {% include 'includes/toasts/warning_message.html' %}
-      {% endif %}
+    {% if message.tags == 'success' %}
+    {% with last_added_product=last_added_product last_added_quantity=last_added_quantity %}
+    {% include 'includes/toasts/success_message.html' %}
+    {% endwith %}
+    {% elif message.tags == 'error' %}
+    {% include 'includes/toasts/error_message.html' %}
+    {% elif message.tags == 'info' %}
+    {% include 'includes/toasts/info_message.html' %}
+    {% elif message.tags == 'warning' %}
+    {% include 'includes/toasts/warning_message.html' %}
+    {% endif %}
     {% endfor %}
   </div>
   {% endif %}
@@ -80,17 +84,17 @@
   {% block postloadjs %}
 
   <script>
-    $(document).ready(function() {
-    // Initialize all toasts
-    $('.toast').toast('show');
+    $(document).ready(function () {
+      // Initialize all toasts
+      $('.toast').toast('show');
 
-    // remove the toast from the DOM when it's hidden
-    $('.toast').on('hidden.bs.toast', function () {
-      $(this).remove();
+      // remove the toast from the DOM when it's hidden
+      $('.toast').on('hidden.bs.toast', function () {
+        $(this).remove();
+      });
     });
-  });
   </script>
-  
+
   {% endblock %}
 
   {% include 'footer.html' %}
@@ -98,4 +102,3 @@
 </body>
 
 </html>
-

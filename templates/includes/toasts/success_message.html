@@ -1,3 +1,15 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Success Message</title>
+
+</head>
+
+
 <div aria-live="polite" aria-atomic="true" class="toast-container">
     <div class="toast custom-toast shadow" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
         
@@ -19,7 +31,7 @@
                 {% for item in bag_items %}
                 <div class="d-flex justify-content-start align-items-center my-2">
                     <div class="image-container mr-3">
-                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }}" style="max-width: 60px;">
+                        <img class="img-fluid" src="{{ item.product.image.url }}" alt="{{ item.product.name }} - Handmade Natural Soap " style="max-width: 60px;">
                     </div>
                     <div class="item-details">
                         <p class="mb-1 font-weight-bold">{{ item.product.name }}</p>
