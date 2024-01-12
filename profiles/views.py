@@ -58,7 +58,7 @@ def partner_application(request):
             message += f'Phone Number: {phone_number}\n'
             message += f'Additional Information: {additional_info}'
 
-            recipient_email = 'RECIPIENT_EMAIL' 
+            recipient_email = 'zanettipradospam@gmail.com' 
             
             sender_email = email
             send_mail(subject, strip_tags(message), sender_email, [recipient_email], html_message=message)
