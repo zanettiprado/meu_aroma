@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from checkout.models import Order
@@ -38,12 +38,16 @@ def partner_application(request):
             partner_application = form.save(commit=False)
             partner_application.user = request.user
             partner_application.save()
-            # Add a success message or redirect
-            return redirect('profile')
+            messages.success(request, 'Your application has been submitted successfully.')
+            return redirect('partner_application_success')
     else:
         form = PartnerApplicationForm()
 
     return render(request, 'profiles/partner_application.html', {'form': form})
+
+@login_required
+def partner_application_success(request):
+    return render(request, 'profiles/partner_application_success.html')
 
 
 def order_history(request, order_number):

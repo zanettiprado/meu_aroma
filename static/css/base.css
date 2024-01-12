@@ -263,7 +263,7 @@ body {
 }
 /* Button Customizations */
 .shop-now-button {
-    background-color: #99ec69;
+    background-color: #ff8363;
     border: none;
     padding: 10px 20px;
     border-radius: 50px;
@@ -272,7 +272,7 @@ body {
 }
 
 .shop-now-button:hover {
-    background-color: #dac6bf;
+    background-color: #e5673f;
     color: white;
 }
 

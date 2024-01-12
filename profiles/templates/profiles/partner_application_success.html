@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block head_title %}{% trans "Application Submitted" %}{% endblock %}
+
+{% block content %}
+<div class="container my-4 login-wrapper">
+    <hr>
+    <h2 class="logo-font text-center mb-4">{% trans "Application Submitted" %}</h2>
+    <hr>
+    <p class="text-center">{% trans "Your application was submitted successfully. We will contact you shortly." %}</p>
+    <div class="form-actions d-flex justify-content-center">
+        <a href="{% url 'home' %}" class="btn btn-primary" style="width: 20%;">{% trans "Return to Main Menu" %}</a>
+    </div>
+</div>
+{% endblock %}
