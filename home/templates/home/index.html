@@ -48,8 +48,11 @@
         <div class="info-boxes d-flex flex-wrap justify-content-around">
             <!-- Contact Us Box -->
             <div class="info-box">
-                <h3>Contact Us</h3>
-                <p>Form to contact us added in the future</p>
+                <h3>Discover Our Story & FAQs</h3>
+                <p>Step into our green world and find out what fellow nature lovers frequently ask about. Join the
+                    conversation and see how our commitment to the environment shapes every product we create for you.
+                    Your doubt is also here</p>
+                <a href="{% url 'faq' %}" class="btn shop-now-button">Learn More</a>
             </div>
 
             <!-- Sign Up for Newsletter Box -->
@@ -70,12 +73,13 @@
                     Are you intrigued by the prospect of embarking on a rewarding partnership with us and offering our
                     exquisite range of products to a wider audience? We invite you to take the first step by submitting
                     your application to become our valued partner.
-                {% else %}
-                    If you don't have an account, you can create one to apply for our partnership program. Creating an account
+                    {% else %}
+                    If you don't have an account, you can create one to apply for our partnership program. Creating an
+                    account
                     allows you to access exclusive benefits and apply for partnership.
-                {% endif %}</p>
+                    {% endif %}</p>
                 <a href="{% if user.is_authenticated %}{% url 'partner_application' %}{% else %}{% url 'account_signup' %}{% endif %}"
-                   class="btn shop-now-button">
+                    class="btn shop-now-button">
                     {% if user.is_authenticated %}Apply Now{% else %}Create an Account{% endif %}
                 </a>
             </div>
@@ -83,9 +87,6 @@
     </div>
 </div>
 {% endblock %}
-
-
-
 </body>
 
 </html>

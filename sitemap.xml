@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/accounts/signup/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/accounts/login/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/bag/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=New%20Arrivals</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Best%20Sellers</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Featured%20Products</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Moisturizing%20Soaps</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Exfoliating%20Soaps</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Soaps%20for%20Sensitive%20Skin</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Aromatherapy%20Soaps</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Citrus%20Collection</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Herbal%20Collection</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Earthy%20Collection</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Seasonal%20Discounts</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Bundle%20Deals</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Clearance</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/?category=Seasonal%20Discounts,Bundle%20Deals,Clearance</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/accounts/password/reset/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/3/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/17/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/2/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/4/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/5/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/6/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/7/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/8/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/9/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/10/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/11/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/12/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/13/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/14/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/15/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/18/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/20/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/19/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/21/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/22/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/23/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/24/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://meuaroma-7872e870b93d.herokuapp.com/products/product/25/</loc>
+  <lastmod>2024-01-12T21:54:52+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>

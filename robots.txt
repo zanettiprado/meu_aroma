@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /accounts/
+Disallow: /partner-application/
+Disallow: /partner-application-success/
+Sitemap: https://meuaroma-7872e870b93d.herokuapp.com/sitemap.xml
