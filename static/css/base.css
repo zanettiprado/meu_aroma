@@ -25,13 +25,12 @@ body {
 .hero-section {
     background: url('/media/bg_home.JPG') no-repeat center center;
     background-size: cover;
-    height: 60vh;
+    height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
     z-index: 1;
-    animation: hero-zoom 2s 1 alternate;
 }
 
 .bag-icon-container {
@@ -43,15 +42,6 @@ body {
 
 .bag-price {
     margin-top: 10px;
-}
-
-@keyframes hero-zoom {
-    from {
-        transform: scale(0.5);
-    }
-    to {
-        transform: scale(1);
-    }
 }
 
 /* Background Overlay */
@@ -227,17 +217,15 @@ body {
 /* Main Content Box Styles */
 .text-box {
     background-color: #97dd00;
-    opacity: 80%;
-    padding: 20px;
+    opacity: 90%;
     text-align: center;
+    padding: 5px;
     border-radius: 8px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
     position: absolute;
     width: 310px;
-    height: 240px;
-    font-size: 220%;
-    padding: 20px;
-    top: 20%;
+    height: 210px;
+    top: 15%;
     right: 15%x;
 }
 
@@ -564,6 +552,9 @@ body {
     #delivery-banner {
         font-size: 0.8em;
     }
+    .navbar {
+        height: 80px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -577,9 +568,7 @@ body {
     .text-box {
         margin: 15px;
         width: 180px;
-        height: 340px;
-
-        
+        height: 255px;       
     }
     .info-box {
         width: 100%;
@@ -589,6 +578,7 @@ body {
         right: 0;
         left: 0;
     }
+
     .social-icons a {
         margin-right: 10px;
     }
