@@ -512,8 +512,18 @@ body {
     margin-right: 10px;
     text-align: center;
 }
+/* MailChamp */
+#mc_embed_signup {
+    background: rgba(255, 213, 197, 0.95);
 
+    clear: left;
+    font: 14px Helvetica, Arial, sans-serif;
+    width: 100%;
+}
 
+.mc-field-group {
+    width: 40%;
+}
 
 /* footer.css */
 .site-footer {
