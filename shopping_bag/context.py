@@ -79,6 +79,9 @@ def bag_contents(request):
         'grand_total': grand_total,
         'last_added_product': last_added_product,
         'last_added_quantity': last_added_quantity,
+        'coupon_id': coupon_id,
     }
-
+    
+    print(context)
+    
     return context

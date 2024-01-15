@@ -220,14 +220,14 @@ body {
 .text-box {
     background-color: #97dd00;
     opacity: 90%;
-    text-align: center;
+    text-align: center; 
     padding: 10px;
     border-radius: 8px;
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.4);
     position: absolute;
     width: 310px;
     height: 240px;
-    bottom: 58px;
+    bottom: 70px;
     left: 33px;
     text-size-adjust: 80%;
 }
@@ -236,7 +236,7 @@ body {
 .profile-wrapper {
     padding: 20px;
     background-color: #f9f9f9;
-    /* Light background */
+    /* Light background */  
     border-radius: 4px;
     /* Rounded corners */
 }

@@ -5,6 +5,7 @@ from django.conf import settings
 from django.utils import timezone
 from products.models import Product
 from profiles.models import UserProfile
+from decimal import Decimal
 
 
 class Order(models.Model):
@@ -30,28 +31,31 @@ class Order(models.Model):
     coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
     
     def update_totals(self):
-        self.order_total = self.lineitems.aggregate(
-            Sum('lineitem_total')
-        )['lineitem_total__sum'] or 0
+        lineitem_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
+        if lineitem_total is None:
+            lineitem_total = Decimal('0.00')
+        else:
+            lineitem_total = Decimal(lineitem_total)
+
+        self.order_total = lineitem_total
 
         if self.order_total < settings.FREE_DELIVERY_THRESHOLD:
-            self.delivery_cost = self.order_total * settings.STANDARD_DELIVERY_PERCENTAGE / 100
+            self.delivery_cost = self.order_total * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE) / 100
         else:
-            self.delivery_cost = 0
+            self.delivery_cost = Decimal('0.00')
 
         if self.coupon and self.coupon.is_valid():
-            discount_amount = (self.order_total * self.coupon.discount) / 100
+            discount_percentage = Decimal(str(self.coupon.discount))
+            discount_amount = Decimal(round((self.order_total * discount_percentage) / 100, 2))
             self.grand_total = self.order_total + self.delivery_cost - discount_amount
         else:
             self.grand_total = self.order_total + self.delivery_cost
-            
-    
+
     def save(self, *args, **kwargs):
         if not self.order_number:
             self.order_number = uuid.uuid4().hex.upper()
 
         self.update_totals()
-
         super().save(*args, **kwargs)
         
     def __str__(self):

@@ -32,14 +32,25 @@ def checkout(request):
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     stripe.api_key = stripe_secret_key
-
+    
+    current_bag = bag_contents(request)
+    
     order_form = OrderForm(request.POST or None)
     if request.method == 'POST' and order_form.is_valid():
         bag = request.session.get('bag', {})
         order = order_form.save(commit=False)
         pid = request.POST.get('client_secret').split('_secret')[0]
-        order.payment_intent_id = pid
-        order.save()
+        order.payment_intent_id = pid  
+        
+        if current_bag['coupon_id']:
+            try:
+                
+                coupon = Coupon.objects.get(id=current_bag['coupon_id'])
+                order.coupon = coupon
+            except Coupon.DoesNotExist:
+                pass
+        order.save() 
+        
         for item_id, quantity in bag.items():
             try:
                 product = Product.objects.get(id=item_id)
@@ -63,8 +74,7 @@ def checkout(request):
             print("Rendering checkout page with form")
             return redirect(reverse('products'))
 
-        current_bag = bag_contents(request)
-        # total = current_bag['grand_total']
+        # total = current_bag['grand_total']       
         stripe_total = round(current_bag['grand_total'] * 100)
         try:
             intent = stripe.PaymentIntent.create(amount=stripe_total, 
