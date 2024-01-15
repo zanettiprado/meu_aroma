@@ -81,7 +81,5 @@ def bag_contents(request):
         'last_added_quantity': last_added_quantity,
         'coupon_id': coupon_id,
     }
-    
-    print(context)
-    
+        
     return context

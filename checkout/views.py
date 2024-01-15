@@ -3,6 +3,7 @@ from django.conf import settings
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.utils import timezone
+from decimal import Decimal
 from .forms import OrderForm, CouponApplyForm
 from .models import Order, OrderLineItem, Coupon
 from products.models import Product
@@ -149,6 +150,12 @@ def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     
+    if order.coupon:
+        discount_percentage = Decimal(order.coupon.discount)
+        discount_amount = (order.order_total * discount_percentage) / 100
+    else:
+        discount_amount = Decimal('0.00')
+    
     if request.user.is_authenticated:
         profile = UserProfile.objects.get(user=request.user)
       
@@ -178,7 +185,9 @@ def checkout_success(request, order_number):
     template = 'checkout/checkout_success.html'
     context = {
         'order': order,
+        'discount_amount': discount_amount.quantize(Decimal('0.01')),
         'grand_total': order.grand_total,
+        
     }
 
     return render(request, template, context)
