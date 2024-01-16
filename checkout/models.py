@@ -9,6 +9,9 @@ from decimal import Decimal
 
 
 class Order(models.Model):
+    """
+    Represents an order placed by a user.
+    """
     order_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     user_profile = models.ForeignKey(UserProfile,
                                      on_delete=models.SET_NULL,
@@ -63,6 +66,10 @@ class Order(models.Model):
     
     
 class OrderLineItem(models.Model):
+    """
+    Represents an individual line item within an order.
+    """
+    
     order = models.ForeignKey('Order', null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
     product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(null=False, blank=False, default=0)
@@ -79,6 +86,9 @@ class OrderLineItem(models.Model):
         return f'Item: {self.product.name} on Order: {self.order.order_number}'
 
 class Coupon(models.Model):
+    """
+    Represents a coupon that can be applied to an order for a discount.
+    """
     code = models.CharField(max_length=15, unique=True)
     description = models.TextField(null=True, blank=True)
     discount = models.DecimalField(max_digits=6, decimal_places=2, help_text='Amount of discount this coupon provides')

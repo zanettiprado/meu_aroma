@@ -6,6 +6,10 @@ from checkout.models import Coupon
 
 
 def bag_contents(request):
+    """
+    Calculate and return the contents of the shopping bag.
+
+    """
 
     bag_items = []
     total = 0

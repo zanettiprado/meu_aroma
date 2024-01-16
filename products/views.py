@@ -13,6 +13,10 @@ from django.urls import reverse
 import logging
 
 def all_products(request):
+    """
+    View function for displaying all products, with optional filtering and sorting.
+    """
+    
     products = Product.objects.all()
     query = None
     categories = None
@@ -57,6 +61,11 @@ def all_products(request):
 
 
 def product_detail(request, product_id):
+    """
+    View function for displaying the details of a specific product, including its
+    description, inventory, feedback, and options to add it to the shopping bag.
+    """
+    
     product = get_object_or_404(Product, pk=product_id)
     bag = request.session.get('bag', {})
     inventory = Inventory.objects.filter(product=product).first()
@@ -98,7 +107,11 @@ def product_detail(request, product_id):
     return render(request, 'products/product_detail.html', context)
 
 
-def remove_from_bag(request, item_id): # remember to include the info why this is here and not in the bag
+def remove_from_bag(request, item_id):
+    """
+    View function for removing a product from the shopping bag.
+    """
+    
     if request.method == 'POST':
         bag = request.session.get('bag', {})
         product_id = request.POST.get('product_id', None)
@@ -136,6 +149,10 @@ def remove_from_bag(request, item_id): # remember to include the info why this i
 
 @login_required 
 def add_product(request):
+    """
+    View function for adding a new product to the store.
+    """
+    
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not allowed to access this page.')
         return redirect(reverse('home'))
@@ -161,6 +178,10 @@ def add_product(request):
 
 @login_required 
 def edit_product(request, product_id):
+    """
+    View function for editing an existing product in the store.
+    """
+    
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not allowed to access this page.')
         return redirect(reverse('home'))
@@ -190,6 +211,10 @@ def edit_product(request, product_id):
 
 @login_required 
 def delete_product(request, product_id):
+    """
+    View function for deleting an existing product from the store.
+    """
+    
     if not request.user.is_superuser:
         messages.error(request, 'Sorry, you are not allowed to access this page.')
         return redirect(reverse('home'))
@@ -212,6 +237,10 @@ def delete_product(request, product_id):
 
 @login_required
 def update_inventory(request, product_id):
+    """
+    View function for updating the inventory of a product in the store.
+    """
+    
     if not request.user.is_superuser:
         messages.error(request, 'Only store managers can update inventory.')
         return redirect('product_detail', product_id=product_id)
@@ -240,6 +269,9 @@ def update_inventory(request, product_id):
 
 @login_required
 def product_feedback(request, product_id):
+    """
+    View function for allowing users to submit feedback for a product.
+    """
     product = get_object_or_404(Product, pk=product_id)
 
     if request.method == 'POST':
@@ -265,7 +297,9 @@ def product_feedback(request, product_id):
 
 
 def user_has_purchased(user, product):
-    """ Check if the given user has purchased the given product. """
+    """ 
+    Check if the given user has purchased the given product. 
+    """
     # Using the user's profile to filter orders
     user_profile = UserProfile.objects.get(user=user)
     return OrderLineItem.objects.filter(order__user_profile=user_profile, product=product).exists()

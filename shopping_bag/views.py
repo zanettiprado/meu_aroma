@@ -5,10 +5,26 @@ from products.models import Product
 
 
 def view_bag(request):
+    """
+    Add a product to the shopping bag.
+
+    - Retrieves product and quantity from the request.
+    - Updates the shopping bag session data.
+    - Displays success or error messages.
+    
+    Args:
+        request (HttpRequest): The request object.
+        product_id (int): The ID of the product to add.
+    
+    """
     return render(request, 'shopping_bag/bag.html')
 
 
 def add_to_bag(request, product_id):
+    """
+    Add a product to the shopping bag or update its quantity.
+
+    """
     
     if request.method == 'POST':
         product = Product.objects.get(pk=product_id)

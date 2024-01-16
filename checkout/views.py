@@ -15,6 +15,9 @@ import json
 import stripe 
 
 def cache_checkout_data(request):
+    """
+    Cache checkout data for Stripe payment intent.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -30,6 +33,9 @@ def cache_checkout_data(request):
         return HttpResponse(content=e, status=400)
 
 def checkout(request):
+    """
+    Display the checkout page and handle order submission.
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
     stripe.api_key = stripe_secret_key
@@ -147,6 +153,9 @@ def checkout(request):
     return render(request, 'checkout/checkout.html', context)
 
 def checkout_success(request, order_number):
+    """
+    Display the checkout success page after a successful order.
+    """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
     
@@ -194,6 +203,9 @@ def checkout_success(request, order_number):
 
 
 def apply_coupon_view(request):
+    """
+    handler cupon and apply if valid one is inserted
+    """
     if request.method == 'POST':
         form = CouponApplyForm(request.POST)
         if form.is_valid():

@@ -3,6 +3,14 @@ from .models import UserProfile, PartnerApplication
 
 
 class UserProfileForm(forms.ModelForm):
+    """
+    User profile form class.
+    
+    - Excludes the 'user' field.
+    - Adds placeholders and classes.
+    - Removes auto-generated labels.
+    - Sets autofocus on the first field.
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)
@@ -34,6 +42,11 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].label = False
 
 class PartnerApplicationForm(forms.ModelForm):
+    """
+    Partner application form class.
+    
+    - Includes fields: 'name', 'email', 'company_name', 'phone_number', 'additional_info'.
+    """
     class Meta:
         model = PartnerApplication
         fields = ['name', 'email', 'company_name', 'phone_number', 'additional_info']

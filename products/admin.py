@@ -7,7 +7,6 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(Product, ProductAdmin)
 
-
 class InventoryAdmin(admin.ModelAdmin):
     list_display = ('product', 'quantity_in_stock', 'quantity_allocated')
 

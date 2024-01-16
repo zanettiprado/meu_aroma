@@ -4,6 +4,9 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 
 class UserProfile(models.Model):
+    """
+    User profile model for storing additional user information.
+    """
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
@@ -19,6 +22,10 @@ class UserProfile(models.Model):
     
 
 class PartnerApplication(models.Model):
+    """
+    Partner application model for storing partnership applications.
+    """
+    
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     email = models.EmailField()
@@ -34,6 +41,10 @@ class PartnerApplication(models.Model):
 
 @receiver(post_save, sender=User)
 def create_or_update_user_profile(sender, instance, created, **kwargs):
+    """
+    Create or update user profile when a User object is saved.
+    """
+    
 
     if created:
         UserProfile.objects.create(user=instance)

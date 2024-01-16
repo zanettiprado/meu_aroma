@@ -6,6 +6,9 @@ from crispy_forms.bootstrap import InlineField
 
 
 class OrderForm(forms.ModelForm):
+    """
+    Form for capturing order information.
+    """
     class Meta:
         model = Order
         fields = (
@@ -14,6 +17,9 @@ class OrderForm(forms.ModelForm):
         )
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize the form with placeholders and autofocus.
+        """
 
         super(OrderForm, self).__init__(*args, **kwargs)
         placeholders = {
@@ -42,7 +48,11 @@ class OrderForm(forms.ModelForm):
             # Add a CSS class to all fields
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
 
+
 class CouponApplyForm(forms.Form):
+    """
+    Form for applying a coupon code.
+    """
     code = forms.CharField(label='Coupon Code', max_length=100, required=True)
 
     def __init__(self, *args, **kwargs):

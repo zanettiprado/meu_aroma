@@ -36,6 +36,19 @@ def profile(request):
 
 @login_required
 def partner_application(request):
+    """
+    Handle partner application form submission.
+
+    This view handles the submission of the partner application form. If the form is valid,
+    it creates a new partner application record and sends an email notification.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The rendered partner application form or a success page on successful submission.
+
+    """
     if request.method == 'POST':
         form = PartnerApplicationForm(request.POST)
         if form.is_valid():
@@ -72,10 +85,35 @@ def partner_application(request):
 
 @login_required
 def partner_application_success(request):
+    """
+    Display a success message after submitting a partner application.
+
+    This view displays a success message to the user after successfully submitting a partner application.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+
+    Returns:
+        HttpResponse: The rendered partner application success template.
+
+    """
     return render(request, 'profiles/partner_application_success.html')
 
 
 def order_history(request, order_number):
+    """
+    Display order history details for a specific order.
+
+    This view displays the order details for a specific order in the user's order history.
+
+    Args:
+        request (HttpRequest): The HTTP request object.
+        order_number (str): The order number to retrieve order details for.
+
+    Returns:
+        HttpResponse: The rendered order details template for the specified order.
+
+    """
     order = get_object_or_404(Order, order_number=order_number)
 
     messages.info(request, (

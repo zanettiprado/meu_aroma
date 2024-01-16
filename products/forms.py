@@ -3,12 +3,31 @@ from .widgets import CustomClearableFileInput
 from .models import Product, Inventory, Feedback
 
 class QuantityForm(forms.Form):
+    """
+    Form for specifying the quantity of a product.
+
+    Fields:
+        quantity (IntegerField): The quantity of the product.
+        
+    """
     quantity = forms.IntegerField(min_value=1, max_value=99, label='Quantity')
 
 
     image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)    
 
 class ProductForm(forms.ModelForm):
+    """
+    Form for creating or editing a product.
+
+    Meta:
+        model (Product): The Product model associated with the form.
+        fields (list): The fields to include in the form.
+        widgets (dict): Custom widgets for form fields.
+        
+    Methods:
+        __init__(): Initializes the form and sets custom attributes for form fields.
+
+    """
     class Meta:
         model = Product
         fields = '__all__'
@@ -23,6 +42,19 @@ class ProductForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control custom-class another-class'
             
 class InventoryForm(forms.ModelForm):
+    """
+    Form for updating inventory information.
+
+    Meta:
+        model (Inventory): The Inventory model associated with the form.
+        fields (list): The fields to include in the form.
+        widgets (dict): Custom widgets for form fields.
+        labels (dict): Custom labels for form fields.
+
+    Methods:
+        clean(): Validates form data and adds custom error messages if needed.
+
+    """
     class Meta:
         model = Inventory
         fields = ['quantity_in_stock', 'quantity_allocated']
@@ -47,6 +79,15 @@ class InventoryForm(forms.ModelForm):
             self.add_error('quantity_allocated', 'Quantity allocated cannot be negative.')
 
 class FeedbackForm(forms.ModelForm):
+    """
+    Form for submitting feedback.
+
+    Meta:
+        model (Feedback): The Feedback model associated with the form.
+        fields (list): The fields to include in the form.
+        widgets (dict): Custom widgets for form fields.
+
+    """
     class Meta:
         model = Feedback
         fields = ['comment']
