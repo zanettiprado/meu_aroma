@@ -8,7 +8,7 @@ Choosing Meu Aroma means choosing a product that cares for your body, mind, and 
 
 <br> 
 
-If you want to check the lastest version of my Blog 
+If you want to check the lastest version of Meu Aroma
 
 ## [Click here](https://meuaroma-7872e870b93d.herokuapp.com/)
 
@@ -30,6 +30,9 @@ The evolution of "Meu Aroma" is a narrative shaped by specific user stories, met
 - **Order Confirmation and Order by email**: Provides immediate feedback and order confirmation post-purchase, with essential details dispatched via email for record-keeping.
 - **Inventory Management**: Enables store owners to meticulously manage product listings, with functionalities to add, edit, or remove items, and harness the coupon system effectively.
 - **Smart Savings with Coupon System**: Introduces an intuitive coupon system, crafted to augment the shopping experience with meaningful savings. Tailored coupons, like `FIRSTBUY20`, await to delight both first-time buyers and regular shoppers alike.
+- **Apply for Partnership**: Easy proccess for partners application to become a regular seller of Meu Aroma products. 
+
+
 
 </details>
 
@@ -166,7 +169,21 @@ The journey of "Meu Aroma" is meticulously mapped out through a series of user s
 
 
 
+</details>
 
+<br>
+
+
+<details>
+<summary>Acceptance Criteria</summary>
+
+<br>
+Each issue is accompanied by its unique acceptance criteria, along with the tasks associated with it. This structure allows for clear tracking of whether each task has been completed or remains pending.
+
+<br>
+
+- ![Acceptance Agile and Tasks](media/documentation/agile_view_products.jpg)
+- ![Acceptance Agile and Tasks](media/documentation/agile_view_products_2.jpg)
 
 </details>
 
@@ -174,6 +191,144 @@ The journey of "Meu Aroma" is meticulously mapped out through a series of user s
 
 
 
+<details>
+<summary> User Story Prioritization - MoSCoW Method</summary>
+
+<br>
+
+In order to work and decide what task I would implement first and what task I could leave under an "if" categorie I applied the agile MoSCoW methodology.
+
+<br>
+
+- Must-have: Essential requirements that the project must deliver.
+- Should-have: Important but not essential; can be postponed if necessary.
+- Could-have: Desirable but not necessary; can be delayed or omitted.
+- Won't-have this time: Recognized as not being necessary for this delivery but could be considered in the future. (not applied in this project.)
+
+Within the development cycle, user stories are prioritized using the MoSCoW approach as I said. Below is an outline of our current sprint's story allocation:
+
+<br>
+
+| Priority       | User Story                                               | Story Points |
+|----------------|----------------------------------------------------------|--------------|
+| Must-have      | View Variety of Products                                 |Check         |
+| Must-have      | Secure Personal and Payment Information                  |Check         |
+| Must-have      | Easy Password Recovery                                   |Check         |
+| Must-have      | Secure Login and Logout                                  |Check         |
+| Must-have      | Seamless Payment Entry Process                           |Check         |
+| Must-have      | Monitor Ongoing Purchase Total                           |Check         |
+| Must-have      | Edit or Update Product Details                           |Check         |
+| Must-have      | Add New Products to Store                                |Check         |
+| Must-have      | Delete Products from Store                               |Check         |
+| Should-have    | Inventory for products                                   |Check         |
+| Should-have    | View and Sort Search Results                             |Check         |
+| Should-have    | Search Products by Name or Description                   |Check         |
+| Should-have    |Receive Email Confirmation Post-Purchase                  |Check         |
+| Should-have    | Sort Through Available Products                          |Check         |
+| Should-have    | Receive news from newsletters                            |Check         |
+| Should-have    |  Email Confirmation After Registration                   |Check         |
+| Should-have    | Effortless Account Registration                          |Check         |
+| Could-have     |See Detailed Product Information                          |Check             |
+| Could-have     |Personalized User Profile                                 |Check             |
+| Could-have     |Sort Products Within a Category                           |Check             |
+| Could-have     |View and Edit Shopping Bag                                |Check             |
+| Could-have     | Select Product and Quantity Accurately                   |Check             |
+| Could-have     | See Order Confirmation After Checkout                    |Check             |
+| Could-have     | Modify bag Quantity                                      |Check             |
+| Could-have     | Spot Deals and Special Offers                            |Check             |
+| Could-have     |Question section for clients feedback                     |Check             |
+| Could-have     |Cupons for discounts                                      |Check             |
+| Could-have     |Register as a Business Partner                            |Check             |
+| Could-have     | Sort Multiple Product Categories                         |Check             |
+
+<br>
+
+
+</details>
+
+
+
+<br>
+
+# Design
+<br>
+<details>
+<summary>Color Scheme</summary>
+
+**Color Scheme Decision: Bringing Nature to Life**
+
+In designing our project's color scheme, we aimed to create a visually appealing and harmonious experience that aligns with our brand identity and values. Our inspiration for the color scheme draws heavily from the colors featured in our logo, which include vibrant orange, deep red, and fresh green. These colors represent energy, passion, and growth, respectively, and serve as the foundation of our visual identity.
+
+**1. Vibrant Orange:** 
+   - **Inspiration:** The color orange, prominently featured in our logo, symbolizes enthusiasm, creativity, and vitality. It represents our commitment to delivering an exciting and engaging user experience.
+   - **Application:** We use vibrant orange sparingly to draw attention to important elements, such as call-to-action buttons and highlights. It adds a sense of warmth and energy to our design.
+
+**2. Deep Red:**
+   - **Inspiration:** Deep red represents strength, determination, and passion. It signifies our dedication to providing top-quality products and services.
+   - **Application:** We incorporate deep red in headers, headings, and accents to create a sense of authority and importance. It guides users' attention to critical information and emphasizes our commitment to excellence.
+
+**3. Fresh Green:**
+   - **Inspiration:** Green is the color of growth, renewal, and harmony. It reflects our eco-conscious approach and commitment to sustainability.
+   - **Application:** Fresh green is used to bring a natural, calming element to our design. It can be found in backgrounds, borders, and other non-intrusive areas, creating a sense of balance and tranquility.
+
+**4. Floral and Natural Elements:**
+   - **Inspiration:** In addition to our logo colors, we draw inspiration from nature, particularly flowers and plants. Floral patterns and natural motifs are subtly incorporated into our design elements, such as backgrounds, icons, and illustrations.
+   - **Application:** These elements add a touch of elegance and organic beauty to our project. They create a connection to the natural world, aligning with our commitment to eco-friendliness and sustainability.
+
+Overall, our color scheme reflects our brand's personality and values—vibrant, passionate, and eco-conscious. It aims to create an immersive and enjoyable experience for our users while highlighting our dedication to excellence and environmental responsibility.
+
+By incorporating the rich and meaningful colors of our logo and infusing them with natural elements, we are confident that our project's visual identity will resonate with our audience and convey the essence of our brand effectively.
+
+### Color Palette
+
+- **Green (Primary):** `#97dd00`
+- **Red (Secondary):** `#dc3545`
+- **White (Background):** `#fff`
+- **Orange (Accent):** `#ff8000`
+- **Peach (Translucent):** `rgba(255, 213, 197, 0.9)`
+
+```css
+
+/* Green (Primary) */
+background-color: #97dd00;
+
+/* Red (Secondary) */
+background-color: #dc3545;
+
+/* White (Background) */
+background-color: #fff;
+
+/* Orange (Accent) */
+background-color: #ff8000;
+
+/* Peach (Translucent) */
+background-color: rgba(255, 213, 197, 0.9);
+```
+
+<div style="background-color: #97dd00; width: 100px; height: 50px;"></div> <!-- Green (Primary) -->
+<div style="background-color: #dc3545; width: 100px; height: 50px;"></div> <!-- Red (Secondary) -->
+<div style="background-color: #ff8000; width: 100px; height: 50px;"></div> <!-- Orange (Accent) -->
+<div style="background-color: rgba(255, 213, 197, 0.9); width: 100px; height: 50px;"></div> <!-- Peach (Translucent) -->
+<div style="background-color: #fff; width: 100px; height: 50px;"></div> <!-- White (Background) -->
+
+</details>
+<br>
+
+<details>
+
+<summary>Mobile-Friendly Design</summary>
+
+The website has been optimized for mobile users with a responsive design. The navigation menu is toggled to accommodate smaller screens, ensuring a convenient browsing experience on mobile devices.
+
+- ![Mobile Navigation](media/documentation/iphone12pro.jpg)
+- ![Ipad ](media/documentation/ipad.jpg)
+- ![Large Screns](media/documentation/lg_screen.jpg)
+
+**Authentication:** Users who are not logged in can still browse and view posts. However, to actively participate by commenting or making suggestions, they must first log in. For new users without an account, the registration process is straightforward and allows them to become part of the community.
+
+- ![Login Request](media/documentation/login_request.jpg)
+
+</details>
 
 
 
@@ -181,9 +336,7 @@ The journey of "Meu Aroma" is meticulously mapped out through a series of user s
 
 
 
-
-
-
+ <br>
 <details>
 <summary>Technologies Used</summary>
 

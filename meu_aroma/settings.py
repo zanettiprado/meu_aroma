@@ -37,7 +37,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-us107.gitpod.io', 'meuaroma-7872e870b93d.herokuapp.com', 'meuaroma.herokuapp.com', 'localhost']
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io']
+CSRF_TRUSTED_ORIGINS = ['https://8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io', 'https://8000-zanettiprado-meuaroma-3zuul62szts.ws-us107.gitpod.io']
 
 # Application definition
 
