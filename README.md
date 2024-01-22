@@ -331,41 +331,491 @@ The website has been optimized for mobile users with a responsive design. The na
 </details>
 
 
+<br>
 
 
 
+<details>
+<summary>Typography Selection</summary>
+<br>
 
+In the realm of web design, typography plays a pivotal role in conveying the essence and personality of a brand. Our choice of font family for the SoapWeb page is not arbitrary but rooted in a deliberate decision-making process.
+
+**"Oswald" Typeface:**
+
+We have opted for the "Oswald" typeface as the cornerstone of our webpage's typography. Here's why:
+
+**1. Modern Aesthetic:** "Oswald" offers a sleek and contemporary appearance that aligns perfectly with the modern and refined image we wish to project. Its clean lines and geometric shapes give our content a fresh and stylish look.
+
+**2. Readability:** Ensuring that our content is easily readable is paramount. "Oswald" excels in this aspect with its clear and well-defined letterforms, making it effortless for visitors to engage with our soap-related content.
+
+**3. Versatility:** One of the defining features of "Oswald" is its versatility. It suits a wide range of content, from headers and titles to body text, maintaining consistency and harmony throughout the webpage.
+
+**4. Brand Cohesion:** The chosen typeface complements our brand's values and identity. It embodies qualities such as sophistication, cleanliness, and simplicity, which resonate with our soap products' purity and quality.
+
+**5. Mobile Optimization:** "Oswald" adapts well to various screen sizes, ensuring a seamless and visually pleasing experience for mobile users, a critical consideration in today's digital landscape.
+
+Our decision to embrace the "Oswald" font family represents a commitment to creating an appealing, user-friendly, and cohesive web environment for our soap enthusiasts. It's not just about letters on a screen; it's about crafting an immersive and memorable online experience that encapsulates the essence of our brand.
+
+As we continue to evolve and refine our SoapWeb page, typography remains a crucial element in conveying our dedication to quality, aesthetics, and customer satisfaction.
+</details>
 
  <br>
+
+ <details>
+<summary>Icons</summary>
+Font Awesome icons have been used throughout the site, including for the buttons and social media links.
+</details>
+
+<br>
+
+# Features
+
+<br>
+
 <details>
-<summary>Technologies Used</summary>
+<summary>Pages and elements</summary>
 
-The project is built using the following technologies:
 
-- **Django**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
-- **Bootstrap**: A front-end framework for developing responsive and mobile-first websites.
-- **Allauth**: Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
-- **Toast**: A JavaScript library for non-blocking notifications, used to enhance user interactions and display messages.
-- **Crispy Forms**: Helps to manage Django forms, providing an easy way to control their layout and rendering.
-- **Boto & AWS**: Used for storing static files and media in the cloud, ensuring scalability and reliability.
-- **ElephantSQL**: A PostgreSQL database service that offers quick and reliable database management and provisioning.
+
+<details>
+<summary>Home Page</summary>
+
+- **Description:** The home page is where you'll find the heart of our website. It features our logo, login information, a shopping bag icon, a convenient search bar, a navigation bar to select product types, quick access to frequently asked questions (FAQ), an option to subscribe to our newsletter, and an invitation to explore partnership opportunities.
+- **Image:**
+
+![Home Page](media/documentation/home.png)
+
+</details>
+
+<details>
+<summary>Products Page</summary>
+
+- **Description:** The products page is a curated list showcasing a wide range of our exquisite soap products. It provides an easy way to add items to your shopping bag, displays prices, and offers brief information about each product.
+- **Image:**
+
+![Products](media/documentation/products.jpg)
+
+</details>
+
+
+
+<details>
+<summary>Product Details Page</summary>
+
+- **Description:** Dive deeper into product details on this page. Here, you can explore product information, select the quantity you desire, and add products to your shopping bag.
+- **Image:**
+
+![Products details](media/documentation/products_details.png)
+
+</details>
+
+<details>
+<summary>Shopping Bag</summary>
+
+- **Description:** The shopping bag is your virtual cart where you can view and manage the items you've selected. It shows the number of soaps in your bag, provides details about each product, and offers options to remove items or update quantities. You can continue shopping or proceed to checkout from here.
+- **Image:**
+
+![Shopping Bag](media/documentation/shopping_bag.png)
+
+</details>
+
+<details>
+
+<summary>Checkout Page</summary>
+
+- **Description:** The checkout page is where you'll finalize your purchase. It displays the total price, allows you to enter your personal details, payment card information, and provides alerts about pricing and delivery. You can also apply coupons if you have them.
+- **Image:**
+
+![Checkout Page](media/documentation/checkout.png)
+
+</details>
+
+<details>
+<summary>Thank You Page</summary>
+
+- **Description:** After successfully completing your purchase, you'll be directed to the thank you page. It provides a brief summary of your order and expresses our gratitude for choosing our products.
+- **Image:**
+
+![Success purchase](media/documentation/success_message.jpg)
+
+</details>
+
+<details>
+<summary>Authentication Pages</summary>
+
+- **Description:** Easily access login, registration, and logout pages from the navigation bar. These pages ensure secure access to your account and convenient management of your shopping experience.
+- **Image:**
+
+![Login](media/documentation/login.jpg)
+![Signup](media/documentation/signup.jpg)
+![Password_reset](media/documentation/password_reset.jpg)
+
+</details>
+
+<details>
+<summary>404 Error Page</summary>
+
+- **Description:** In case you encounter a page that doesn't exist or an error occurs, our 404 error page is there to assist you in returning to the product pages seamlessly.
+- **Image:**
+
+![404](media/documentation/404.jpg)
+
+</details>
+</details>
+
+<br>
+<details>
+<summary>Accessibility and User-Friendly Design</summary>
+
+
+At **Meu Aroma Saboaria**, accessibility is at the core of our design philosophy. We've taken extensive measures to ensure our website is not only visually appealing but also user-friendly for everyone. Here's how we've achieved this:
+
+1. **Semantic HTML:** Our web pages are meticulously crafted using semantic HTML tags. This not only keeps our code clean and organized but also ensures that screen readers and assistive technologies can seamlessly understand and navigate the content.
+
+2. **Descriptive Alt Attributes:** Images on our site serve more than just an aesthetic purpose; they provide valuable information. We've invested in providing detailed and meaningful alt attributes for each image. This empowers screen readers to convey content accurately to users who rely on them.
+
+3. **Icons with Text Descriptions:** While icons can enhance user experience, they can also be confusing for some users. To make sure everyone understands their purpose, we've incorporated text descriptions alongside icons wherever necessary. This approach guarantees that all users, regardless of their abilities, can interact effectively with our site.
+
+4. **Color Contrast:** We recognize the significance of legibility. To prioritize user experience, we've maintained a high level of color contrast throughout our site. This not only improves text and content readability but also ensures that our site is inclusive and accessible to all.
+
+**Meu Aroma Saboaria** isn't just a website; it's a commitment to inclusivity and user-friendliness. We believe that everyone should have a seamless and enjoyable experience on our platform, irrespective of their abilities or assistive technologies.
+
+## Features at a Glance
+
+- **Django-Powered:** Our website is built using Django, a robust and reliable web framework. This ensures the stability and performance of our platform.
+
+- **Vibrant Colors:** We've carefully selected a vibrant color palette to create a visually appealing and engaging user interface.
+
+- **HTML and CSS Excellence:** Our codebase adheres to industry best practices for HTML and CSS, ensuring a smooth and efficient browsing experience.
+
+- **SEO Optimization:** We've implemented SEO best practices to enhance the discoverability of our content and reach a wider audience.
+
+- **Newsletter Functionality:** Stay updated with our latest offerings and news by subscribing to our newsletter, designed to keep you in the loop.
+
+- **Ecommerce Simplicity:** Our ecommerce page is designed to be straightforward and user-friendly, catering to users of all levels of technical expertise.
+
+At **Meu Aroma Saboaria**, we're committed to delivering an accessible, user-friendly, and visually appealing platform that serves the needs of all our valued users. Explore our website and experience the difference for yourself!
+
+
+</details>
+
+<br>
+
+# Technologies Used in the Project
+
+
+
+<summary>Meu Aroma technologies</summary>
+
+
+<details>
+<summary>Languages</summary>
+
+- **HTML**: The foundation of our website, responsible for structuring the main site content. We have 13 HTML files in the project, ensuring a well-organized and structured user interface.
+- **CSS**: Provides the styling and layout to create an attractive and user-friendly interface, ensuring a visually appealing design.
+- **JavaScript**: Adds interactive elements and enhances user engagement, making the site more dynamic and responsive.
+- **Python 3.8.11**: The backbone of our back-end functionality, powering the server and business logic, ensuring robust and efficient server-side operations.
+</details>
+
+<details>
+<summary>Databases Used</summary>
+
+- **ElephantSQL (Postgres Database)**: Our reliable data storage solution, offering scalability and data management capabilities, ensuring data integrity.
+- **Cloudinary**: An online static file storage service used for managing media assets like images and videos, enhancing performance and media handling.
+</details>
+
+<details>
+<summary>Frameworks Used</summary>
+
+- **Django**: A high-level Python web framework that encourages rapid development and clean, pragmatic design. It streamlines development and ensures the stability and performance of our platform.
+- **Bootstrap (Version 5.2.3)**: A CSS framework that accelerates front-end design, providing responsive and mobile-first layouts.
+- **Allauth**: An integrated set of Django applications addressing authentication, registration, account management, and 3rd party (social) account authentication, ensuring user-friendly authentication and account management.
+- **Toast**: A JavaScript library for non-blocking notifications, enhancing user interactions and providing user-friendly messages.
+- **Crispy Forms**: Helps manage Django forms, providing an easy way to control their layout and rendering, ensuring visually appealing and user-friendly forms.
+- **Boto & AWS**: Used for storing static files and media in the cloud, ensuring scalability and reliability in serving media assets.
+</details>
+
+<details>
+<summary>Development Tools</summary>
+
+- **Pip**: A vital tool for installing Python packages, simplifying package management and installation.
+- **Jinja**: Our templating engine, facilitating dynamic content rendering and ensuring efficient rendering of dynamic content.
+</details>
+
+<details>
+<summary>Version Control</summary>
+
+- **Git**: The backbone of our version control system, enabling collaborative development and efficient code management.
+- **GitHub**: Our repository for saving and managing project files, ensuring version tracking and collaboration.
+</details>
+
+<details>
+<summary>Development Environment</summary>
+
+- **Gitpod**: A cloud-based integrated development environment (IDE) for seamless development, ensuring a consistent and accessible development environment.
+</details>
+
+<details>
+<summary>Hosting and Deployment</summary>
+
+- **Heroku**: Our hosting platform for the deployed back-end site, ensuring accessibility and availability to users.
+</details>
+
+<details>
+<summary>Typography and Styling</summary>
+
+- **Google Fonts**: Imported fonts to enhance site aesthetics, ensuring visually appealing typography and design.
+</details>
+
+<details>
+<summary>Testing and Debugging</summary>
+
+- **Google Chrome Dev Tools**: Essential for troubleshooting, testing, and ensuring responsiveness and styling, guaranteeing a smooth user experience.
+- **Am I Responsive?**: Used to display website images on various devices, ensuring responsiveness across different screen sizes and devices.
+</details>
+
+<details>
+<summary>Additional Python Packages (requirements.txt)</summary>
+
+- **asgiref==3.7.2**
+- **boto3==1.34.14**
+- **botocore==1.34.14**
+- **dj-database-url==0.5.0**
+- **Django==4.2.8**
+- **django-allauth==0.59.0**
+- **django-crispy-forms==1.14.0**
+- **django-storages==1.14.2**
+- **gunicorn==21.2.0**
+- **jmespath==1.0.1**
+- **oauthlib==3.2.2**
+- **Pillow==10.1.0**
+- **psycopg2==2.9.9**
+- **PyJWT==2.8.0**
+- **python3-openid==3.2.0**
+- **requests-oauthlib==1.3.1**
+- **s3transfer==0.10.0**
+- **sqlparse==0.4.4**
+- **stripe==7.10.0**
+- **urllib3==1.26.18**
+
+
+    
 
 </details>
 
 <br>
 
 
+# Deployment & Local Development
 
+<br>
 
-## Apps and Functionality
-The platform consists of several interconnected apps, each catering to specific aspects of the e-commerce process:
-
-- **Home**: The landing page of the website, showcasing featured products and promotions.
-- **Profiles**: Manages user profiles, allowing customers to view their order history, save default shipping information, and manage personal details.
-- **Checkout**: Handles the checkout process, order confirmation, and payment processing securely.
-- **Products**: Manages product listings, including the ability to add, edit, or delete products from the inventory.
-- **Shopping Bag**: Allows customers to view and modify items in their shopping cart, including quantity adjustments and removing items.
-- **Templates**: Provides consistent styling and layout across the platform, ensuring a cohesive user experience.
+<details>
+<summary>Fork the Repository</summary>
 
 
 
+1. Log in or Sign up: Go to GitHub and log in with your account. If you don't have an account, sign up.
+2. Navigate to the Repository: Go to the repository for your project (replace your-repo-name with the actual repository name). <br>
+Click here [BuzzEireBrazil](https://github.com/zanettiprado/buzzeirebrazil)
+```
+https://github.com/zanettiprado/buzzeirebrazil
+```
+
+3 - Fork the Repository: Click the "Fork" button in the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
+</details>
+
+<br>
+
+<details>
+<summary>Clone the Repository</summary>
+
+
+## 
+1. Log in to GitHub: If you're not already logged in, log in to GitHub.
+
+2. Navigate to the Repository: Go to the repository for your project.<br>
+Click here [BuzzEireBrazil](https://github.com/zanettiprado/meu_aroma)
+```
+https://github.com/zanettiprado/meu_aroma
+```
+3. Clone the Repository: Click on the "Code" button on the repository page. Select your preferred method for cloning: HTTPS, SSH, or GitHub CLI. Copy the provided link.
+
+4. Open Terminal: Open your terminal (command prompt or Git Bash on Windows, Terminal on macOS, or any terminal emulator on Linux).
+
+5. Change Directory: Use the cd command to navigate to the location where you want to store the cloned repository.
+
+```
+cd /path/to/your/directory
+```
+6. Clone the Repository: In your terminal, run the following command, pasting the link you copied from step 3:
+</details>
+
+<br>
+
+<details>
+<summary>Install Project Dependencies</summary>
+
+
+1. Navigate to Project Directory: Ensure you are in the project directory where the `requirements.txt` file is located.
+
+2. Install Dependencies: In your terminal, run the following command to install the required packages:
+
+```
+pip install -r requirements.txt
+```
+</details>
+
+<br>
+
+<details>
+<summary>ElephantSQL Database</summary>
+
+In this project, we use ElephantSQL to store our data in a special database called PostgreSQL. To get your own database, follow these steps:
+
+1. Sign up using your GitHub account.
+2. Click on "Create New Instance" to make a new database.
+3. Give it a name (usually the project's name, like "tribe").
+4. Choose the "Tiny Turtle (Free)" plan.
+5. You can ignore the "Tags" part.
+6. Pick a Region and Data Center that's closest to where you are.
+7. Once it's created, click on the new database's name to see the database URL and Password. You'll need these later.
+
+</details>
+
+<br>
+
+<details>
+<summary>Cloudinary API</summary>
+
+
+We use the Cloudinary API in our project to keep our pictures and videos online because Heroku, where we host our project, doesn't save this kind of data. Here's how to get your own Cloudinary API key:
+
+1. Create an account and log in to Cloudinary.
+2. When they ask what you're interested in, pick "Programmable Media" because it's about images and videos.
+3. If you want, change your cloud name to something you can remember easily.
+4. On your Cloudinary Dashboard, you'll find your API Environment Variable. It looks like a long code.
+5. Make sure to remove the "CLOUDINARY_URL=" part from the code because that part is your key.
+
+</details>
+
+<br>
+
+<details>
+<summary>Heroku Account and dployment</summary>
+
+<br>
+
+1. Set Up Your Heroku Account
+
+If you don't have a Heroku account, sign up for one at https://www.heroku.com/. It's free to get started.
+
+2. Install Heroku CLI
+
+Download and install the Heroku Command Line Interface (CLI) for your operating system. You can find installation instructions here: https://devcenter.heroku.com/articles/heroku-cli
+
+3. Log In to Heroku
+
+Open your terminal or command prompt and log in to Heroku by running:
+```
+heroku login
+```
+Follow the prompts to enter your Heroku credentials.
+
+4. Initialize a Git Repository
+
+If your project isn't already in a Git repository, you'll need to initialize one. Navigate to your project's root directory in the terminal and run:
+
+```
+git init
+git add .
+git commit -m "Initial commit"
+```
+5. Create a requirements.txt File
+
+If you don't already have a requirements.txt file, create one. This file lists all the Python packages required for your project. You can generate it by running:
+```
+pip freeze > requirements.txt
+```
+6. Create a Procfile
+
+Create a file named Procfile (without any file extension) in your project's root directory. This file tells Heroku how to run your application. Inside the Procfile, add:
+
+```
+web: python your_app_name/manage.py runserver 0.0.0.0:$PORT
+```
+7. Install Gunicorn
+
+Gunicorn is a WSGI HTTP server for Python applications. Install it by running:
+```
+pip install gunicorn
+```
+
+8. Add Heroku Buildpacks
+Heroku uses buildpacks to determine how to build and run your application. You'll need to add Python and Node.js buildpacks if your project uses JavaScript or CSS. Run the following commands to add buildpacks:
+```
+heroku buildpacks:add heroku/python
+```
+9. Set Environment Variables
+
+Set the environment variables in Heroku that you mentioned earlier. You can do this by running:
+```
+heroku config:set CLOUDINARY_URL=your_cloudinary_api_key
+heroku config:set DATABASE_URL=your_database_url
+heroku config:set DISABLE_COLLECTSTATIC=1
+heroku config:set SECRET_KEY=your_secret_key 
+```
+
+Replace your_cloudinary_api_key, your_database_url, and your_secret_key with your actual keys and URLs.
+
+10. Deploy to Heroku
+
+Now it's time to deploy your project to Heroku. Run:
+``` 
+git push heroku master
+```
+
+This command will push your code to Heroku's servers and trigger the deployment process.
+
+11. Run Migrations
+
+After deploying, run the following command to apply database migrations:
+``` 
+heroku run python manage.py migrate 
+```
+
+12. Open Your App
+
+Your app should be deployed and live on Heroku now! You can open it in your browser using
+``` 
+heroku open
+```
+
+</details>
+
+<br>
+
+<details>
+
+<br>
+
+<summary>AWS S3 Bucket for Static Files</summary>
+
+In this project, we use Amazon S3 to store static files like images and media. Here's how to set up your AWS S3 bucket:
+
+1. **Sign in to the AWS Management Console**.
+
+2. **Open the Amazon S3 console**.
+
+3. **Create a new S3 bucket**: Click the "Create bucket" button, and follow the prompts to configure your bucket. Make sure to choose a unique name and configure your bucket's permissions.
+
+4. **Note the bucket name**: You'll need this name later to configure your project.
+
+5. **Set up IAM (Identity and Access Management)**: Create a new IAM user with programmatic access and attach a policy that grants access to your S3 bucket. Make sure to save the access key and secret access key.
+
+6. **Configure your project**: In your project settings, update the configuration to use your S3 bucket for static and media files. You'll need to provide your AWS access key, secret key, and the bucket name.
+
+</details>
+
+<br>

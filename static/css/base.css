@@ -1,11 +1,14 @@
 /* Base Elements */
 html,
+
+/* Set the font family and background color for the entire page */
 body {
     min-height: 100vh;
     font-family: 'Oswald', sans-serif;
     background-color: rgba(255, 228, 197, 0.3);
 }
 
+/* Additional styling for the body, such as background image, padding, and margin */
 body {
     background-size: cover;
     min-height: 100vh;
