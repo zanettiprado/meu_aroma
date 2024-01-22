@@ -1,110 +1,218 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Meu Aroma E-Commerce Platform
 
-Welcome zanettiprado,
+## Introduction
+"Meu Aroma" is an advanced e-commerce platform designed to provide a seamless and intuitive shopping experience for a wide range of products. Our goal is to create a user-friendly platform where customers can easily browse, select, and purchase products that meet their needs. This project leverages modern web technologies to ensure a secure, efficient, and enjoyable shopping process from product selection to checkout and secure payment. 
+Meu Aroma is a real and very small family business so I decided to take this chance to create this mock web page for selling the products. Meu Aroma approaches to making our products is all about being kind to the environment. We craft our real, handmade soaps with the best practices in mind, using ingredients that are good for you and the planet. Our products are made with natural essential oils and plant-based materials, ensuring everything we offer is vegan and environmentally friendly.
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+Choosing Meu Aroma means choosing a product that cares for your body, mind, and our earth. It's not just about buying something nice for yourself; it's about joining a community that values living in a better, more sustainable way.
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **September 1, 2021**
+<br> 
 
-## Gitpod Reminders
+If you want to check the lastest version of my Blog 
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+## [Click here](https://meuaroma-7872e870b93d.herokuapp.com/)
 
-`python3 -m http.server`
+<br>    
 
-A blue button should appear to click: _Make Public_,
+# User Experience
 
-Another blue button should appear to click: _Open Browser_.
+<details>
+<summary>User Stories and Goals</summary>
 
-To run a backend Python file, type `python3 app.py`, if your Python file is named `app.py` of course.
+The evolution of "Meu Aroma" is a narrative shaped by specific user stories, meticulously capturing the essence of both the shopper's journey and the store owner's operational needs. These stories, following the agile methodology, stand as the pillars of our development process, ensuring that every feature, every interaction, and every enhancement aligns perfectly with the real-world requirements of our users. Here's a glimpse into the key user stories that have been the driving force behind the platform:
 
-A blue button should appear to click: _Make Public_,
+- **View Variety of Products**: Empowers users to explore a diverse selection of products, enriching the shopping experience with variety and choice.
+- **Detailed Product Information**: Offers comprehensive details on each product, including price, description, ratings, and available sizes, enabling informed purchasing decisions.
+- **Deals and Special Offers**: Highlights promotions prominently, providing an opportunity for users to capitalize on savings and special offers.
+- **Monitor Purchase Total**: Equips the platform with tools to effortlessly track the total cost of purchases, aiding in effective budget management.
+- **Effortless Account Management**: Simplifies account registration, login, and management processes, complemented by features for password recovery and account confirmation.
+- **Secure Checkout Process**: Ensures the security of personal and payment information, fortifying user trust and maintaining the integrity of the platform.
+- **Order Confirmation and Order by email**: Provides immediate feedback and order confirmation post-purchase, with essential details dispatched via email for record-keeping.
+- **Inventory Management**: Enables store owners to meticulously manage product listings, with functionalities to add, edit, or remove items, and harness the coupon system effectively.
+- **Smart Savings with Coupon System**: Introduces an intuitive coupon system, crafted to augment the shopping experience with meaningful savings. Tailored coupons, like `FIRSTBUY20`, await to delight both first-time buyers and regular shoppers alike.
 
-Another blue button should appear to click: _Open Browser_.
+</details>
 
-In Gitpod you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
+<br>
 
-To log into the Heroku toolbelt CLI:
+<details>
+<summary>User Experience and Features</summary>
 
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+"Meu Aroma" is dedicated to providing an exceptional user experience tailored to meet the specific needs of our customers. We've designed a platform that not only looks great but is also functional and user-friendly.
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+- **Streamlined Profile Creation and Management**: Setting up and managing your profile. With just a few clicks, you can create a profile, save your personal information, and manage your address. Our straightforward process for registration, password changes, and recovery ensures that you're always in control of your account.
 
-------
+- **Branded Aesthetic**: Our website radiates the warmth and vitality of our brand with a color palette that includes yellow, olive green, orange, and red, complemented by standard Bootstrap colors for notifications, ensuring a visually appealing and intuitive user experience.
 
-## Release History
+- **Simplified Shopping Bag and Checkout**: Our shopping bag and checkout process are designed for your convenience. Add products to your bag and proceed to checkout in just a few steps, with a clear and secure process for entering card details.
 
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
+- **Diverse Product Selection and Advanced Sorting**: Dive into our wide range of products, neatly organized into categories. Our advanced search bar and sorting features allow you to easily find products by name or price, ensuring you find exactly what you're looking for.
 
-**September 20 2023:** Update Python version to 3.9.17.
+- **Exclusive Coupon System**: Enjoy special discounts with our coupon system, especially designed for first-time buyers. Apply your coupon at checkout and watch the price drop, making your first purchase even more delightful.
 
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
+- **Automated Delivery with Free Shipping Threshold**: Our delivery system automatically calculates your shipping cost, and we offer free delivery for orders over 60 euros, adding more value to your shopping experience.
 
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
+- **Informative FAQ and Newsletter Page**: Stay in the loop with our FAQ and newsletter pages. Whether you're a returning buyer or a first-time visitor, you'll find all the information you need about our products, services, and special offers.
 
-**July 2 2021:** Remove extensions that are not available in Open VSX.
+- **Real-Time Inventory Management**: Our real-time inventory management ensures that the products displayed are available and up-to-date, providing you with accurate information and a smooth shopping experience.
 
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
+- **Personalized Product Recommendations**: Based on your browsing history and preferences, we offer personalized product recommendations, making it easier for you to discover new items and revisit your favorites. (to be implemented)
 
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
+</details>
 
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
+<br>
 
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
+<details>
 
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
+<br>
 
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
+<summary>Agile Methodology in Meu Aroma</summary>
 
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
+In "Meu Aroma", agile methodologies have been central to our approach in managing and advancing the project effectively. Utilizing GitHub Project Boards, I have meticulously organized and prioritized tasks to streamline in the development process. Here's an insight into our agile journey:
 
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
+1. **Epic Categorization:** I kickstarted the project by identifying key themes that are pivotal to my platform. These encompass essential features like Product Catalog, User Account Management, Shopping Experience, Payment Integration, and Inventory Management. This strategic categorization allowed me to outline epics, shaping a clear developmental pathway.
 
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
+2. **User Story Mapping:** With a focus on delivering value to the users, I crafted detailed user stories. To streamline this process, I introduced a standardized issue template on GitHub, ensuring that each user story is comprehensive and actionable.
 
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
+3. **Structured Task Management:** In the GitHub repository, I configured settings to facilitate task management effectively. My Issue Template has been a cornerstone, guiding developers with the necessary details to focus on delivering the Minimum Viable Product (MVP), keeping our development lean and purpose-driven.
 
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
+4. **Rigorous Development Workflow:** The development of "Meu Aroma" I realized through Python and Django, reflecting my commitment to robust and scalable solutions. The deployment phase was meticulously handled, setting Debug = `False` creating also a 404 error page, to ensure a seamless and secure transition from development to a live environment.
 
-------
+<br>
 
-## FAQ about the uptime script
+</details>
 
-**Why have you added this script?**
+<br>
 
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
+<details>
+<summary>User Stories</summary>
 
-**How will this affect me?**
+<br>
 
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
+The journey of "Meu Aroma" is meticulously mapped out through a series of user stories that encapsulate the aspirations and needs of its diverse user base. These stories guide the platform's evolution, ensuring a user-centric approach that resonates with shoppers and store owners alike:
 
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
+- ![Milestones](media/documentation/milestone.jpg)
+- ![Agile Methodology](media/documentation/user_stories.jpg)
 
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
+<br>
 
-**So….?**
+1. Project Planning and Setup
 
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
+    - USER STORY: **View Variety of Products**: As a shopper, I want to view a variety of products so I can select items for purchase. Goal: Select items for purchase
 
-**Can I opt out?**
+    - USER STORY: **See Detailed Product Information**:  As a shopper, I want to see detailed information about each product, including its price, description, rating, image, and sizes available. Goal: Make informed purchasing decisions
 
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+    - USER STORY: **Spot Deals and Special Offers**:  As a shopper, I aim to quickly spot deals, discounted items, and special offers to make cost-effective purchases. Goal: Take advantage of special offers and savings
 
-```
-pkill uptime.sh
-rm .vscode/uptime.sh
-```
+2. User Account Management
 
-**Anything more?**
+    - USER STORY: **Search Products by Name or Description**:  As a shopper, I wish to search for products by name or description to determine if they meet my purchasing needs. Goal: Find products meeting specific criteria
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+    - USER STORY: **Personalized User Profile**:  As a site user, I desire a personalized profile to review my order history, confirmations, and save my payment details. Goal: Personalize and manage my shopping experience
 
----
+    - USER STORY: **Effortless Account Registration**:  As a site user, I want to register for an account effortlessly to manage my personal profile and view my activity. Goal: Manage personal profile and activity
 
-Happy coding!
+    - USER STORY:  **Secure Login and Logout**:  As a site user, I need a straightforward way to log in and out of my account to access my personal information securely. Goal: Securely access personal account information
+
+    - USER STORY:  **Email Confirmation After Registration**:  As a site user, I expect to receive an email confirmation after registering to confirm the successful creation of my account. Goal: Verify account registration
+
+    - USER STORY:  **Easy Password Recovery**:  As a site user, I want an easy method to recover my password, ensuring I can regain access to my account if forgotten. Goal: Recover access to account
+
+    - USER STORY:  **Register as a Business Partner**: As a user interested in becoming a business partner, I want to easily register my interest through a simple form, So that I can apply to become a partner and start selling products.
+
+3. Shopping Cart and Checkout Process
+
+    - USER STORY:  **Receive Email Confirmation Post-Purchase**:  As a shopper, I expect to receive an email confirmation post-purchase to keep a record of my transactions. Goal: Keep a record of transactions
+
+    - USER STORY:  **Secure Personal and Payment Information**:  As a shopper, I want assurance that my personal and payment information is secure to confidently make transactions. Goal: Secure personal and payment information
+
+    - USER STORY:  **Add New Products to Store**:  As the store owner, I want to add new products to expand my store's offerings. Goal: Expand store offerings
+
+    - USER STORY:  **Edit or Update Product Details**:  As the store owner, I need to edit or update product details to ensure accurate and current product information. Goal: Maintain accurate product information
+
+    - USER STORY:  **Seamless Payment Entry Process**:  As a shopper, I need a seamless process to enter my payment information, ensuring a hassle-free checkout experience. Goal: Streamline the checkout process.
+
+    - USER STORY:  **See Order Confirmation After Checkout**:  As a shopper, I wish to see an order confirmation after checkout to confirm the accuracy of my order. Goal: Confirm order details
+
+    - USER STORY:  **Modify bag Quantity**: As a shopper, I want to easily modify the quantity of items in my cart to adjust my purchase as needed. Goal: Adjust purchase quantities
+
+    - USER STORY: **Monitor Ongoing Purchase Total**:  As a shopper, I want to easily monitor the total cost of my ongoing purchases to manage my budget effectively. Goal: Manage budget and avoid overspending
+
+    - USER STORY:  **View and Edit Shopping Bag**:  As a shopper, I need to view and edit items in my shopping bag, ensuring I am aware of the total cost and contents before checkout. Goal: Review and finalize purchases
+
+    - USER STORY:  **Select Product and Quantity Accurately**:  As a shopper, I want to select product and quantity accurately to avoid mistakes in my order. Goal: Ensure accurate product selection
+
+4. Product Interaction and Management
+
+    - USER STORY:  **Sort Through Available Products**:  As a shopper, I want to sort through the list of available products to quickly find items that meet my criteria like price or rating. Goal: Efficiently find desired products
+
+    - USER STORY:  **Sort Multiple Product Categories**:  As a shopper, I want to simultaneously sort multiple product categories to efficiently find the best options across different segments like clothing or home goods. Goal: Compare products across categories
+
+    - USER STORY:  **View and Sort Search Results**:  As a shopper, I need to easily view and sort my search results to quickly decide on potential purchases. Goal: Easily decide on potential purchases
+
+    - USER STORY:  **Sort Products Within a Category**:  As a shopper, I need the ability to sort products within a specific category to find the best-priced or best-rated items easily. Goal: Find the best options in a category
+
+    - USER STORY:  **Receive News from Newsletters**: As a site user, I want to subscribe to newsletters and updates to stay informed about new products and deals. Goal: Stay informed about store updates.
+
+    - USER STORY:  **Coupons for Discounts**: As a shopper, I want to apply discount codes to my purchases so that I can benefit from special offers and save money. Goal: Utilize discounts and save money.
+
+    - USER STORY:  **Question Section for Client Feedback**: As a Buyer I want to check the reviews and feedback from other previous customers to make sure I'm buying a good product
+
+5. Store Management
+
+    - USER STORY:  **Delete Products from Store**:  As the store owner, I want to delete products that are no longer for sale to keep my store's inventory current. Goal: Manage store inventory
+
+    - USER STORY:  **Inventory for Products**: As a shopper, I want to see if products are in stock to make informed decisions about my purchases. Goal: Make informed purchasing decisions based on stock availability.
+
+
+
+
+
+</details>
+
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<details>
+<summary>Technologies Used</summary>
+
+The project is built using the following technologies:
+
+- **Django**: A high-level Python web framework that encourages rapid development and clean, pragmatic design.
+- **Bootstrap**: A front-end framework for developing responsive and mobile-first websites.
+- **Allauth**: Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication.
+- **Toast**: A JavaScript library for non-blocking notifications, used to enhance user interactions and display messages.
+- **Crispy Forms**: Helps to manage Django forms, providing an easy way to control their layout and rendering.
+- **Boto & AWS**: Used for storing static files and media in the cloud, ensuring scalability and reliability.
+- **ElephantSQL**: A PostgreSQL database service that offers quick and reliable database management and provisioning.
+
+</details>
+
+<br>
+
+
+
+
+## Apps and Functionality
+The platform consists of several interconnected apps, each catering to specific aspects of the e-commerce process:
+
+- **Home**: The landing page of the website, showcasing featured products and promotions.
+- **Profiles**: Manages user profiles, allowing customers to view their order history, save default shipping information, and manage personal details.
+- **Checkout**: Handles the checkout process, order confirmation, and payment processing securely.
+- **Products**: Manages product listings, including the ability to add, edit, or delete products from the inventory.
+- **Shopping Bag**: Allows customers to view and modify items in their shopping cart, including quantity adjustments and removing items.
+- **Templates**: Provides consistent styling and layout across the platform, ensuring a cohesive user experience.
+
+
+

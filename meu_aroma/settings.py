@@ -35,7 +35,7 @@ DEBUG = 'DEVELOPMENT' in os.environ
 
 # DEBUG = 'DEBUG' in os.environ
 
-ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io', 'meuaroma-7872e870b93d.herokuapp.com', 'meuaroma.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['8000-zanettiprado-meuaroma-3zuul62szts.ws-us107.gitpod.io', 'meuaroma-7872e870b93d.herokuapp.com', 'meuaroma.herokuapp.com', 'localhost']
 
 CSRF_TRUSTED_ORIGINS = ['https://8000-zanettiprado-meuaroma-3zuul62szts.ws-eu107.gitpod.io']
 
@@ -139,7 +139,6 @@ else:
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
