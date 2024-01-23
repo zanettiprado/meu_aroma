@@ -18,7 +18,6 @@
     margin-top: 20px;
 }
 
-
 .signup-wrapper, .social-signup ul {
     list-style-type: none;
     padding: 0;
@@ -30,16 +29,14 @@
     margin: 0 5px;
 }
 
-
+/* Styles for the text inside the container */
 .container .text-center p {
-    /* Styles for the text inside the container */
     font-size: 1rem;
     line-height: 1.5;
 }
 
 .logo-font {
     font-weight: bold;
-    /* Add more styles if needed */
 }
 
 .signup-closed-wrapper {

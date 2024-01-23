@@ -107,7 +107,6 @@ body {
     color: black;
 }
 
-
 /* Icon Customizations */
 .fas,
 .fa {
@@ -208,7 +207,6 @@ body {
 .faq-banner {
     background-color: #97dd00;
 }
-
 
 #delivery-banner h4 {
     margin: 0;
@@ -550,10 +548,6 @@ body {
     color: #C13584;
 }
 
-.newsletter {
-    color: #ff9807;
-}
-
 .fab {
     font-size: 28px;
 }
@@ -592,7 +586,6 @@ body {
 }
 
 @media (max-width: 768px) {
-
     .custom-navbar-nav .custom-nav-item {
         margin-right: 0;
         margin-bottom: 0.5rem;
@@ -604,12 +597,12 @@ body {
         height: 200px;
         bottom: -77px;
         left: -80px;
-
     }
 
     .text-small {
         font-size: 18px;
     }
+
     .text-small-p {
         font-size: 16px;
     }
@@ -643,7 +636,6 @@ body {
 }
 
 @media (max-width: 530px) {
-
     .bag-image-container,
     .description-container {
         width: 100%;
