@@ -865,6 +865,8 @@ Please take note that while certain issues mentioned above have been successfull
 
 <summary>Code Validation</summary>
 
+<br>
+
 <details>
 
 <br>
@@ -905,17 +907,12 @@ While the majority of the code passed the validation and was fixed to adhere to 
 <details>
 <summary>Markup Validation Service</summary>
 
-During the project's development phase, we conducted thorough checks against best practices and standards using a validator jigsaw. Many changes were made to address issues and ensure compliance. However, despite our efforts, certain errors remain unresolved due to the unique challenges posed by the project's integration of Python Django with HTML.
+During the project's development phase, we conducted thorough checks against best practices and standards using a validator jigsaw. Many changes were made to address issues and ensure compliance. However, despite our efforts, certain errors remain unresolved due to the unique challenges posed by the project's integration of Python Django with HTML. 
 
-The issues presented in the table below represent those that have not yet been fully resolved. For more specific details on each issue, please refer to the 'Resolved Bugs' section
+The issues presented in the table below represent those that have not yet been fully resolved. For more specific details on each issue, please refer to the 'Resolved Bugs' section. Due the high number of templates we are going to list the erros in the below table.
 
 | Issue Description                                      | Resolution Status |
 |--------------------------------------------------------|-------------------|
-| Profile management to add new products. You cannot access the page from small screens or mobiles. | unresolved         |
-| A variable price in the delivery cost view before checkout and when you finalize the purchase. There is a small difference that you can check. | unresolved         |
-| Inventory shows product availability but does not decrement when new customers make purchases. | unresolved         |
-| Error: Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.) At line 33, column 70 | unresolved         |
-| Error: Text not allowed in element ul in this context. From line 36, column 1; to line 36, column 47 | unresolved         |
 | Error: Bad value {{ item.product.image.url }} for attribute src on element img: Illegal character in path segment: { is not allowed. From line 39, column 29; to line 40, column 94 | unresolved         |
 | Error: Text not allowed in element ul in this context. From line 50, column 1; to line 50, column 31 | unresolved         |
 | Error: Text not allowed in element ul in this context. From line 52, column 1; to line 52, column 32 | unresolved         |
@@ -936,6 +933,209 @@ The issues presented in the table below represent those that have not yet been f
 | Warning: Attribute %} is not serializable as XML 1.0. From line 59, column 29; to line 60, column 102 | unresolved         |
 | Error: Attribute {% not allowed on element button at this point. From line 59, column 29; to line 60, column 102 | unresolved         |
 
+</details>
+</details>
+
+<br>
+
+<details>
+<summary>Manual Features Testing</summary>
+
+
+| Page | User Action | Expected Result| Notes |
+| --- | --- | --- | --- |
+|  **Home Page**    - **Register Process**|  |  | |
+| Landing - unlogged user - register and login process | Click on Logo | Redirection to Home page | Pass |
+| | Click on My account button  | Give option to login or register | Pass |
+| | Click on Register button  | Redirection to Sign Up page | Pass |
+| | Click to fill all fields - click sign up  | Redirection to Sign Up page email| Pass |
+| | Get the email and click in the address to authentication  | Redirection login page | Pass |
+| | Login process for new user  | Redirection to index home page | Pass |
+
+## Process registered below 
+
+![SignUp page](media/documentation/signup.jpg)
+![Info email confirmation](media/documentation/email_confirmation.jpg)
+![Email box](media/documentation/exemple_mail.jpg)
+![Email confirmed ](media/documentation/email_confirmed.jpg)
+
+<br>
+
+
+| Page | User Action | Expected Result| Notes |
+| --- | --- | --- | --- |
+|  **Buying - From Selection to checkout** |  |  | |
+| | Main Menu go to nav bar  | Select your section preference and click | Pass |
+| | Products view  | click on "add to bag" | Pass |
+| | Products view  | info banner about products added to the bag | Pass |
+| | Products view  | clicking in the product card for more details | Pass |
+| | Products details  | Select quantity form more than 1 to 99 using arrows | Pass |
+| | Products details  | Select quantity beyond 99 using keybord numbers arrows - not allowed notification | Pass |
+| | Products details  | In Stock or Out of stock information - blocking the add button | Pass |
+| | Products details  | Keep shopping button to return main menu | Pass |
+| | Products details  | In Stock or Out of stock information - blocking the add button | Pass |
+| | Products details  | add more than 1 product to the bag - banner information display | Pass |
+| | Products details  | remove button displayed once you have that specific product in your bag | Pass |
+| | Products details  | remove button displayed once you have that specific product in your bag | Pass |
+| | Products details  | click to proceed to checkout in the banner button | Pass |
+| | Products details  | click to bag button to view all products in the bag | Pass |
+| | bag  | view a list of products detailed one by one | Pass |
+| | bag  | remove selected product clicking "remove" button | Pass |
+| | bag  | update button avaiable for editing quantity | Pass |
+| | bag  | update button returning to the correct page for delete or add more soaps | Pass |
+| | bag  | keep shopping button avaiable and working to return product - full catalog | Pass |
+| | bag  | update button avaiable for editing quantity | Pass |
+| | Secure Checkout  | list of the order displayed on the left hand menu | Pass |
+| | Secure Checkout  | personal information detailed fields | Pass |
+| | Secure Checkout  | complete order blocked if mandatory fields are blank | Pass |
+| | Secure Checkout  | get the complete order button released after filling all information | Pass |
+| | Secure Checkout  | cupon system avaiable on the checkout page | Pass |
+| | Secure Checkout  | Reedem valid "FIRSTBUY20" cupon | Pass |
+| | Secure Checkout  | discount applied on the subtotal after cupon | Pass |
+| | Secure Checkout  | delivery automactlly - checking the amount of the purchase to apply free delivery | Pass |
+| | Secure Checkout  | card details function check - error message | Pass |
+| | Secure Checkout  | secure and success process of charging using stripe | Pass |
+| | thank you page  | order details listed | Pass |
+| | thank you page  | banner info about email sent | Pass |
+| | thank you page  | displayed message about the success order and email sent | Pass |
+| | email sent to the customer  | displayed message about the order | Pass |
+| if user is logged | --- | --- | --- |
+| my account | profile | Default Delivery Information | Pass |
+|  | profile | clicking to confirm udpdate informaton button - update fields | Pass |
+|  | profile | list information of past orders | Pass |
+
+
+<br>
+
+| Page | User Action | Expected Result| Notes |
+| --- | --- | --- | --- |
+|  **Product management - superuser** |  |  | |
+| Index- main menu | clicking my account  | open dropdowm menu| Pass |
+| | clicking product management | open  Product Management - add product form | Pass |
+| | clicking product management | select category, product details, price, image and submit add new product button | Pass |
+| | clicking product management | submitting form with mandatory fields empty - not allowed | Pass |
+| | clicking product management | cancel -  return to products | Pass |
+| | product view | see button to edit and delete product | Pass |
+| | product view | click edit button - open product management form to update | Pass |
+| | product view | click delete button - open new page to confirm deletion | Pass |
+| | product details | update inventory button - open Update Inventory for that product  | Pass |
+| | update inventory | select the quantity of avaiable products in stock  | Pass |
+| | update inventory | update for more than one product - in stock product detail view | Pass |
+| | update inventory | update for equal to zero - out of stock detail view | Pass |
+
+<br>
+
+| Page | User Action | Expected Result| Notes |
+| --- | --- | --- | --- |
+|  **Other buttons** |  |  | |
+| Index- main menu | navbar - logo | load or redirect to home | Pass |
+| | search bar | easy selection of product by name, category or details | Pass |
+| | search bar | easy selection of product by name, category or details | Pass |
+| | FAQ | open FAQ page | Pass |
+| | newsletter request | filling email address for receiving newsletter | Pass |
+| | partnership form | open partenership page for sending request details| Pass |
+| | footer - instagram page | open real instagram meu aroma page | Pass |
+| | footer - facebook page | open real facebook meu aroma page | Pass |
+
+<br>
+
+
+</details>
+
+<br>
+
+<details>
+<summary>Light HouseTest</summary>
+
+
+## Using Lighthouse for Project Analysis
+
+We've applied Lighthouse to our project, which includes a large volume of information, images, code, and an extensive e-commerce page. As expected, the results indicated areas for improvement, primarily related to performance. 
+
+However, it's important to note that our current user experience and overall outcome are acceptable and meet expectations. We can deliver the desired functionality to our users without significant issues.
+
+To illustrate the results, we've provided a selection of screenshots from our Lighthouse tests. Due to the project's size and complexity, these screenshots represent a subset of the tested pages and templates.
+
+**Lighthouse Test Screenshots:**
+
+- ![Alt text](media/documentation/lh_all_product_detail3.jpg) 
+- ![Alt text](media/documentation/lh_all_products.jpg) 
+- ![Alt text](media/documentation/lh_chekcout.jpg) 
+- ![Alt text](media/documentation/lh_faq.jpg) 
+- ![Alt text](media/documentation/lh_login.jpg) 
+- ![Alt text](media/documentation/lh_logout.jpg) 
+- ![Alt text](media/documentation/lh_menu.jpg) 
+- ![Alt text](media/documentation/lh_partner.jpg) 
+- ![Alt text](media/documentation/lh_shoppingbag.jpg) 
+- ![Alt text](media/documentation/lh_signup.jpg) 
+- ![Alt text](media/documentation/lh_success_checkout.jpg)
+
+We're committed to improving the user experience further by addressing the identified issues, but for now, our project is delivering the expected outcomes.
+
+If you have any questions or need additional information, please feel free to reach out to us.
+
+Thank you for your understanding and support.
 
 
 
+</details>
+
+<br>
+
+
+# Credits and References
+
+<details>
+<summary>References</summary>
+
+
+* [Code Institute](https://learn.codeinstitute.net/dashboard) 
+
+* [Pip instalation ](https://pip.pypa.io/en/stable/installation/) 
+
+* [Cental Django](https://djangocentral.com/building-a-blog-application-with-django/)
+
+* [GitHub Documentation](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/)
+
+* [Collapsed sections](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/organizing-information-with-collapsed-sections)
+
+* [Bootstrap](https://getbootstrap.com/docs/5.3/getting-started/introduction/)
+
+* [Allauth](https://docs.allauth.org/en/latest/)
+
+* [Cloudinary documentation ](https://cloudinary.com/documentation/diagnosing_error_codes_tutorial)
+
+* [Djangoproject testing](https://docs.djangoproject.com/en/4.2/topics/testing/tools/#django.test.Client.get)
+
+* [Rocket validator ](https://rocketvalidator.com/d/f22a1876-43ee-4e70-a3bc-ebc7afa2767a)
+
+* [Python validator](https://pep8ci.herokuapp.com/#)
+
+* [ Markup Validation Service](https://validator.w3.org/#validate_by_input)
+
+* [CSS Validation Service](https://jigsaw.w3.org/css-validator/)
+
+* [Stripe](https://stripe.com/)
+
+* [AWS (Amazon Web Services)](https://aws.amazon.com/)
+
+* [Web/JavaScript (Mozilla Developer Network)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+
+* [Heroku](https://www.heroku.com/)
+
+* [ElephantSQL](https://www.elephantsql.com/)
+
+## Disclaimer:
+For the installation and initial setup of this project, we drew inspiration from two valuable resources:
+
+1. The "I think therefore I blog" and "Boutique Ado" project from Code Institute.
+2. The tutorial on building a blog application with Django available at Django Central.
+These resources provided foundational insights and guidance in implementing key features of our project. While we have customized and expanded upon these foundations to meet the specific needs of our platform, we acknowledge and appreciate the contribution of these resources to our development process. We thank Code Institute and Django Central for sharing their knowledge and making it accessible to the developer community.
+
+</details>
+
+<br>
+
+
+# Author
+Felipe Zanetti - Project Milestone 5 for Code Institute
