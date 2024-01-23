@@ -324,7 +324,7 @@ The website has been optimized for mobile users with a responsive design. The na
 - ![Ipad ](media/documentation/ipad.jpg)
 - ![Large Screns](media/documentation/lg_screen.jpg)
 
-**Authentication:** Users who are not logged in can still browse and view posts. However, to actively participate by commenting or making suggestions, they must first log in. For new users without an account, the registration process is straightforward and allows them to become part of the community.
+**Authentication:** Users who are not logged in can still browse, view and buy the products. However, to view order history and keep save the address they will be required to login. Also the partnershipment is allowed only registered users. For new users without an account, the registration process is straightforward.
 
 - ![Login Request](media/documentation/login_request.jpg)
 
