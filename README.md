@@ -618,9 +618,9 @@ At **Meu Aroma Saboaria**, we're committed to delivering an accessible, user-fri
 
 1. Log in or Sign up: Go to GitHub and log in with your account. If you don't have an account, sign up.
 2. Navigate to the Repository: Go to the repository for your project (replace your-repo-name with the actual repository name). <br>
-Click here [BuzzEireBrazil](https://github.com/zanettiprado/buzzeirebrazil)
+Click here [Meu Aroma](https://github.com/zanettiprado/meu_aroma)
 ```
-https://github.com/zanettiprado/buzzeirebrazil
+https://github.com/zanettiprado/meu_aroma
 ```
 
 3 - Fork the Repository: Click the "Fork" button in the top right corner of the repository page. This will create a copy of the repository under your GitHub account.
@@ -636,7 +636,7 @@ https://github.com/zanettiprado/buzzeirebrazil
 1. Log in to GitHub: If you're not already logged in, log in to GitHub.
 
 2. Navigate to the Repository: Go to the repository for your project.<br>
-Click here [BuzzEireBrazil](https://github.com/zanettiprado/meu_aroma)
+Click here [Meu Aroma](https://github.com/zanettiprado/meu_aroma)
 ```
 https://github.com/zanettiprado/meu_aroma
 ```
@@ -819,3 +819,123 @@ In this project, we use Amazon S3 to store static files like images and media. H
 </details>
 
 <br>
+
+# Testing
+
+<br>
+
+<details>
+<summary>Browser Compatibility Testing </summary>
+
+
+We have verified that our project functions flawlessly on multiple web browsers, including Chrome, Firefox, Opera, Safari, and Internet Explorer(Edge).
+
+- ![Browser](media/documentation/browser.PNG)
+
+<br>
+
+</details>
+
+<br>
+
+<details>
+
+<summary>Bugs Resolved and unresolved</summary>
+
+
+The following table highlights the challenges that emerged during the project's development phase. While certain issues have been successfully addressed, others remain unresolved due to the project's unique technological requirements, notably the utilization of Python Django within an HTML environment.
+
+| Issue Description                                      | Resolution Status |
+|--------------------------------------------------------|-------------------|
+| Non-space characters found without a doctype declaration. Expected <!DOCTYPE html>. | unresolved         |
+| Element head is missing a required instance of the child element title. | unresolved         |
+| Profile management to add new products. You cannot access the page from small screens or mobiles. | unresolved         |
+| A variable price in the delivery cost view before checkout and when you finalize the purchase. There is a small difference that you can check. | unresolved         |
+| Inventory shows product availability but does not decrement when new customers make purchases. | unresolved         |
+
+
+Please take note that while certain issues mentioned above have been successfully resolved, there may still be unresolved challenges and constraints associated with the project's chosen technology stack up until the project submission date. It may be necessary to conduct additional testing and validation to effectively address any remaining issues and ensure a complete resolution.
+
+
+</details>
+
+<br>
+
+<details>
+
+<summary>Code Validation</summary>
+
+<details>
+
+<br>
+
+<summary>PEP8 Python Validation</summary>
+
+
+During the development of the code, you conducted a PEP8 Python validation to ensure that your code conforms to PEP8 style guidelines, which are widely accepted standards for writing clean and readable Python code.
+
+While the majority of the code passed the validation and was fixed to adhere to the PEP8 guidelines, there were certain parts of the code that couldn't be automatically fixed. These issues were reported in their respective sections or locations in the codebase as "unresolved issues."
+
+"Below, you'll find a list that is not exhaustive
+
+- ![context_shoppingbag](media/documentation/context_shoppingbag.jpg) 
+- ![models_product](media/documentation/models_product.jpg) 
+- ![products_form](media/documentation/products_form.jpg) 
+- ![products_view](media/documentation/products_view.jpg) 
+- ![profile_models](media/documentation/profile_models.jpg) 
+- ![profile_view](media/documentation/profile_view.jpg) 
+- ![shopping_bag_view](media/documentation/shopping_bag_view.jpg)
+
+</details>
+
+<br>
+
+
+<details>
+<summary>CSS validation</summary>
+
+![Alt text](media/documentation/allauth.css.jpg)
+![Alt text](media/documentation/base.css.jpg)
+
+</details>
+
+<br>
+
+
+<details>
+<summary>Markup Validation Service</summary>
+
+During the project's development phase, we conducted thorough checks against best practices and standards using a validator jigsaw. Many changes were made to address issues and ensure compliance. However, despite our efforts, certain errors remain unresolved due to the unique challenges posed by the project's integration of Python Django with HTML.
+
+The issues presented in the table below represent those that have not yet been fully resolved. For more specific details on each issue, please refer to the 'Resolved Bugs' section
+
+| Issue Description                                      | Resolution Status |
+|--------------------------------------------------------|-------------------|
+| Profile management to add new products. You cannot access the page from small screens or mobiles. | unresolved         |
+| A variable price in the delivery cost view before checkout and when you finalize the purchase. There is a small difference that you can check. | unresolved         |
+| Inventory shows product availability but does not decrement when new customers make purchases. | unresolved         |
+| Error: Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.) At line 33, column 70 | unresolved         |
+| Error: Text not allowed in element ul in this context. From line 36, column 1; to line 36, column 47 | unresolved         |
+| Error: Bad value {{ item.product.image.url }} for attribute src on element img: Illegal character in path segment: { is not allowed. From line 39, column 29; to line 40, column 94 | unresolved         |
+| Error: Text not allowed in element ul in this context. From line 50, column 1; to line 50, column 31 | unresolved         |
+| Error: Text not allowed in element ul in this context. From line 52, column 1; to line 52, column 32 | unresolved         |
+| Error: Bad value {% url 'products' %} for attribute href on element a: Illegal character in path segment: { is not allowed. From line 85, column 13; to line 85, column 111 | unresolved         |
+| Error: Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.) At line 86, column 53 | unresolved         |
+| Error: Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.) At line 93, column 69 | unresolved         |
+| Error: Bad value {% url 'apply_coupon' %} for attribute action on element form: Illegal character in path segment: { is not allowed. From line 98, column 21; to line 98, column 74 | unresolved         |
+| Error: Element li not allowed as child of element div in this context. (Suppressing further errors from this subtree.) From line 111, column 25; to line 111, column 83 | unresolved         |
+| Error: Bad value {% url 'checkout' %} for attribute action on element form: Illegal character in path segment: { is not allowed. From line 124, column 21; to line 125, column 35 | unresolved         |
+| Error: Named character reference was not terminated by a semicolon. (Or & should have been escaped as &amp;.) At line 185, column 38 | unresolved         |
+| Error: Bad value {% static 'checkout/js/stripe_elements.js' %} for attribute src on element script: Illegal character in path segment: { is not allowed. From line 199, column 1; to line 199, column 60 | unresolved         |
+| Error: Bad value {% url 'product_detail' product.id %} for attribute href on element a: Illegal character in path segment: { is not allowed. From line 39, column 17; to line 39, column 64 | unresolved         |
+| Error: Bad value {{ product.image.url }} for attribute src on element img: Illegal character in path segment: { is not allowed. From line 40, column 21; to line 40, column 125 | unresolved         |
+| Error: Bad value {% url 'add_to_bag' product.id %} for attribute action on element form: Illegal character in path segment: { is not allowed. From line 56, column 25; to line 56, column 87 | unresolved         |
+| Error: Duplicate attribute {% and %} at line 60, column 93 | unresolved         |
+| Error: Duplicate attribute %} at line 60, column 102 | unresolved         |
+| Warning: Attribute {% is not serializable as XML 1.0. From line 59, column 29; to line 60, column 102 | unresolved         |
+| Warning: Attribute %} is not serializable as XML 1.0. From line 59, column 29; to line 60, column 102 | unresolved         |
+| Error: Attribute {% not allowed on element button at this point. From line 59, column 29; to line 60, column 102 | unresolved         |
+
+
+
+

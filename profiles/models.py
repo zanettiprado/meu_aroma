@@ -10,12 +10,24 @@ class UserProfile(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    default_phone_number = models.CharField(max_length=20, null=True, blank=True)
-    default_street_address1 = models.CharField(max_length=80, null=True, blank=True)
-    default_street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    default_town_or_city = models.CharField(max_length=40, null=True, blank=True)
-    default_county = models.CharField(max_length=80, null=True, blank=True)
-    default_postcode = models.CharField(max_length=20, null=True, blank=True)
+    default_phone_number = models.CharField(max_length=20,
+                                            null=True,
+                                            blank=True)
+    default_street_address1 = models.CharField(max_length=80,
+                                               null=True,
+                                               blank=True)
+    default_street_address2 = models.CharField(max_length=80,
+                                               null=True,
+                                               blank=True)
+    default_town_or_city = models.CharField(max_length=40,
+                                            null=True,
+                                            blank=True)
+    default_county = models.CharField(max_length=80,
+                                      null=True,
+                                      blank=True)
+    default_postcode = models.CharField(max_length=20,
+                                        null=True,
+                                        blank=True)
 
     def __str__(self):
         return self.user.username
@@ -26,13 +38,21 @@ class PartnerApplication(models.Model):
     Partner application model for storing partnership applications.
     """
     
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    company_name = models.CharField(max_length=100, blank=True)
+    company_name = models.CharField(max_length=100,
+                                    blank=True)
     phone_number = models.CharField(max_length=20, blank=True)
     additional_info = models.TextField(blank=True)
-    status = models.CharField(max_length=10, choices=[('Pending', 'Pending'), ('Approved', 'Approved'), ('Rejected', 'Rejected')], default='Pending')
+    status = models.CharField(max_length=10, choices=[('Pending',
+                                                       'Pending'),
+                                                      ('Approved',
+                                                       'Approved'),
+                                                      ('Rejected',
+                                                       'Rejected')],
+                              default='Pending')
     date_submitted = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

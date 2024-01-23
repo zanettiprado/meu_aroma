@@ -2,7 +2,7 @@ from decimal import Decimal
 from django.conf import settings
 from django.shortcuts import get_object_or_404
 from products.models import Product
-from checkout.models import Coupon  
+from checkout.models import Coupon
 
 
 def bag_contents(request):
@@ -16,13 +16,15 @@ def bag_contents(request):
     product_count = 0
     bag = request.session.get('bag', {})
 
-    last_added_product_id = request.session.get('last_added_product_id', None)
+    last_added_product_id = request.session.get('last_added_product_id',
+                                                None)
     last_added_product = None
     last_added_quantity = 0
 
     for item_id, quantity in bag.items():
         product = get_object_or_404(Product, pk=item_id)
-        item_subtotal = quantity * product.price  # Calculate the subtotal for each item
+        # Calculate the subtotal for each item
+        item_subtotal = quantity * product.price  
         total += item_subtotal
         product_count += quantity
         bag_items.append({
@@ -44,7 +46,7 @@ def bag_contents(request):
         delivery = 0
         free_delivery_delta = 0
 
-    # Updated the context with the cupon check if is necessary 
+    # Updated the context with the cupon check if is necessary
     # Calculate discount (if coupon is valid)
     coupon_id = request.session.get('coupon_id')
     discount_amount = 0  # Initialize the discount amount to 0
@@ -53,20 +55,20 @@ def bag_contents(request):
         try:
             coupon = Coupon.objects.get(id=coupon_id)
             if coupon.is_valid():
-                # Calculate the discount amount based on the coupon's discount percentage
+    # Calculate the discount amount based on the coupon's discount percentage
                 discount_amount = (total * coupon.discount) / 100
         except Coupon.DoesNotExist:
             pass
-    
+
     subtotal_after_discount = total - discount_amount
-    
+
     if subtotal_after_discount < settings.FREE_DELIVERY_THRESHOLD:
         delivery = subtotal_after_discount * Decimal(settings.STANDARD_DELIVERY_PERCENTAGE / 100)
         free_delivery_delta = settings.FREE_DELIVERY_THRESHOLD - subtotal_after_discount
     else:
         delivery = 0
         free_delivery_delta = 0
-    
+
     # Apply the coupon discount to the grand total check if is correct
     grand_total = subtotal_after_discount + delivery
     print(f'grand_total: {grand_total}')
@@ -85,5 +87,5 @@ def bag_contents(request):
         'last_added_quantity': last_added_quantity,
         'coupon_id': coupon_id,
     }
-        
+
     return context

@@ -7,11 +7,14 @@ class Category(models.Model):
 
     Attributes:
         name (str): The name of the category.
-        description (str, optional): A description of the category (optional).
+        description (str, optional): 
+        A description of the category (optional).
 
     Meta:
-        verbose_name (str): The singular name for the category in the admin interface.
-        verbose_name_plural (str): The plural name for the category in the admin interface.
+        verbose_name (str):
+        The singular name for the category in the admin interface.
+        verbose_name_plural (str):
+        The plural name for the category in the admin interface.
 
     """
     name = models.CharField(max_length=100)
@@ -41,10 +44,14 @@ class Product(models.Model):
 
     """
     
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products', null=True)
+    category = models.ForeignKey(Category,
+                                 on_delete=models.CASCADE,
+                                 related_name='products',
+                                 null=True)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
+    price = models.DecimalField(max_digits=6,
+                                decimal_places=2)
     image = models.ImageField(upload_to='product_images/')
 
     def __str__(self):
@@ -56,19 +63,26 @@ class Inventory(models.Model):
     Model representing inventory for a product.
 
     Attributes:
-        product (Product): The product associated with the inventory.
-        quantity_in_stock (int): The quantity of the product in stock.
-        quantity_allocated (int): The quantity of the product allocated for purchase.
+        product (Product): The product
+        associated with the inventory.
+        quantity_in_stock (int): The quantity
+        of the product in stock.
+        quantity_allocated (int): The quantity
+        of the product allocated for purchase.
 
     Methods:
-        allocate_stock(quantity): Allocates stock for a purchase, reducing quantity_in_stock.
-        deallocate_stock(quantity): Deallocates stock that is no longer needed.
+        allocate_stock(quantity): Allocates stock
+        for a purchase, reducing quantity_in_stock.
+        deallocate_stock(quantity): Deallocates stock
+        that is no longer needed.
         restock(quantity): Adds stock to quantity_in_stock.
         __str__(): Returns a string representation of the inventory.
 
     """
     
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='inventory')
+    product = models.OneToOneField(Product,
+                                   on_delete=models.CASCADE,
+                                   related_name='inventory')
     quantity_in_stock = models.PositiveIntegerField(default=0)
     quantity_allocated = models.PositiveIntegerField(default=0)
 
@@ -118,8 +132,10 @@ class Feedback(models.Model):
         __str__(): Returns a string representation of the feedback.
 
     """
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='feedback')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE,
+                                related_name='feedback')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL,
+                             on_delete=models.CASCADE)
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
 

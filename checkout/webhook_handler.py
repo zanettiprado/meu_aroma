@@ -10,6 +10,7 @@ from profiles.models import UserProfile
 import json
 import time
 
+
 class StripeWH_Handler:
     """
     Handle Stripe webhooks
@@ -17,7 +18,7 @@ class StripeWH_Handler:
 
     def __init__(self, request):
         self.request = request
-        
+
     def _send_confirmation_email(self, order):
         """Send the user a confirmation email"""
         cust_email = order.email
@@ -27,13 +28,13 @@ class StripeWH_Handler:
         body = render_to_string(
             'checkout/confirmation_emails/confirmation_email_body.txt',
             {'order': order, 'contact_email': settings.DEFAULT_FROM_EMAIL})
-        
+
         send_mail(
             subject,
             body,
             settings.DEFAULT_FROM_EMAIL,
             [cust_email]
-        )        
+        )
 
     def handle_event(self, event):
         """
@@ -44,12 +45,12 @@ class StripeWH_Handler:
             status=200)
 
     def handle_payment_intent_succeeded(self, event):
-      
+
         intent = event.data.object
         # Check if the order associated with the payment intent exists
         try:
             order = Order.objects.get(payment_intent_id=intent.id)
-            
+
             # Send the confirmation email for the order
             if order.grand_total != (intent.amount / 100):
                 self._send_confirmation_email(order)
@@ -68,6 +69,3 @@ class StripeWH_Handler:
         return HttpResponse(
             content=f'Webhook received: {event["type"]}',
             status=200)
-        
-
-    

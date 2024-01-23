@@ -5,7 +5,7 @@ from .models import UserProfile, PartnerApplication
 class UserProfileForm(forms.ModelForm):
     """
     User profile form class.
-    
+
     - Excludes the 'user' field.
     - Adds placeholders and classes.
     - Removes auto-generated labels.
@@ -41,15 +41,18 @@ class UserProfileForm(forms.ModelForm):
             self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
             self.fields[field].label = False
 
+
 class PartnerApplicationForm(forms.ModelForm):
     """
     Partner application form class.
-    
-    - Includes fields: 'name', 'email', 'company_name', 'phone_number', 'additional_info'.
+
+    - Includes fields: 'name', 'email', 'company_name',
+    'phone_number', 'additional_info'.
     """
     class Meta:
         model = PartnerApplication
-        fields = ['name', 'email', 'company_name', 'phone_number', 'additional_info']
+        fields = ['name', 'email', 'company_name',
+                  'phone_number', 'additional_info']
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

@@ -9,17 +9,18 @@ from .models import UserProfile
 from .forms import UserProfileForm, PartnerApplicationForm
 
 
-
 @login_required
 def profile(request):
     """ Display the user's profile. """
     profile = get_object_or_404(UserProfile, user=request.user)
 
     if request.method == 'POST':
-        form = UserProfileForm(request.POST, instance=profile)
+        form = UserProfileForm(request.POST,
+                               instance=profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Profile updated successfully')
+            messages.success(request,
+                             'Profile updated successfully')
 
     form = UserProfileForm(instance=profile)
     orders = profile.orders.all()
@@ -39,14 +40,18 @@ def partner_application(request):
     """
     Handle partner application form submission.
 
-    This view handles the submission of the partner application form. If the form is valid,
-    it creates a new partner application record and sends an email notification.
+    This view handles the submission of the partner
+    application form. If the form is valid,
+    it creates a new partner application record
+    and sends an email notification.
 
     Args:
         request (HttpRequest): The HTTP request object.
 
     Returns:
-        HttpResponse: The rendered partner application form or a success page on successful submission.
+        HttpResponse: The rendered
+        partner application form
+        or a success page on successful submission.
 
     """
     if request.method == 'POST':
@@ -55,8 +60,8 @@ def partner_application(request):
             partner_application = form.save(commit=False)
             partner_application.user = request.user
             partner_application.save()
-            
-            # Send an email notification          
+
+            # Send an email notification
             name = form.cleaned_data.get('name')
             email = form.cleaned_data.get('email')
             company_name = form.cleaned_data.get('company_name')
@@ -64,31 +69,36 @@ def partner_application(request):
             additional_info = form.cleaned_data.get('additional_info')
 
             subject = 'New Partnership Application'
-            
+
             message = f'New partnership application received from {name}.\n\n'
             message += f'Email: {email}\n'
             message += f'Company Name: {company_name}\n'
             message += f'Phone Number: {phone_number}\n'
             message += f'Additional Information: {additional_info}'
 
-            recipient_email = 'zanettipradospam@gmail.com' 
-            
+            recipient_email = 'zanettipradospam@gmail.com'
+
             sender_email = email
-            send_mail(subject, strip_tags(message), sender_email, [recipient_email], html_message=message)
-                       
-            messages.success(request, 'Your application has been submitted successfully.')
+            send_mail(subject, strip_tags(message),
+                      sender_email, [recipient_email],
+                      html_message=message)
+
+            messages.success(request,
+                             'Your application has been submitted successfully.')
             return redirect('partner_application_success')
     else:
         form = PartnerApplicationForm()
 
     return render(request, 'profiles/partner_application.html', {'form': form})
 
+
 @login_required
 def partner_application_success(request):
     """
     Display a success message after submitting a partner application.
 
-    This view displays a success message to the user after successfully submitting a partner application.
+    This view displays a success message to the user
+    after successfully submitting a partner application.
 
     Args:
         request (HttpRequest): The HTTP request object.
@@ -104,14 +114,17 @@ def order_history(request, order_number):
     """
     Display order history details for a specific order.
 
-    This view displays the order details for a specific order in the user's order history.
+    This view displays the order details for
+    a specific order in the user's order history.
 
     Args:
         request (HttpRequest): The HTTP request object.
-        order_number (str): The order number to retrieve order details for.
+        order_number (str): The order number to
+        retrieve order details for.
 
     Returns:
-        HttpResponse: The rendered order details template for the specified order.
+        HttpResponse: The rendered order details
+        template for the specified order.
 
     """
     order = get_object_or_404(Order, order_number=order_number)
@@ -128,5 +141,3 @@ def order_history(request, order_number):
     }
 
     return render(request, template, context)
-
-

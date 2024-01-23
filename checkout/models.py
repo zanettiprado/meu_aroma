@@ -12,26 +12,46 @@ class Order(models.Model):
     """
     Represents an order placed by a user.
     """
-    order_number = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    order_number = models.UUIDField(primary_key=True,
+                                    default=uuid.uuid4,
+                                    editable=False)
     user_profile = models.ForeignKey(UserProfile,
                                      on_delete=models.SET_NULL,
                                      null=True, blank=True,
                                      related_name='orders')
-    full_name = models.CharField(max_length=50, null=False, blank=False)
-    email = models.EmailField(max_length=254, null=False, blank=False)
-    phone_number = models.CharField(max_length=20, null=False, blank=False)
-    country = models.CharField(max_length=40, null=False, blank=False)
-    postcode = models.CharField(max_length=20, null=True, blank=True)
-    town_or_city = models.CharField(max_length=40, null=False, blank=False)
-    street_address1 = models.CharField(max_length=80, null=False, blank=False)
-    street_address2 = models.CharField(max_length=80, null=True, blank=True)
-    county = models.CharField(max_length=80, null=True, blank=True)
+    full_name = models.CharField(max_length=50,
+                                 null=False, blank=False)
+    email = models.EmailField(max_length=254,
+                              null=False, blank=False)
+    phone_number = models.CharField(max_length=20,
+                                    null=False, blank=False)
+    country = models.CharField(max_length=40,
+                               null=False, blank=False)
+    postcode = models.CharField(max_length=20,
+                                null=True, blank=True)
+    town_or_city = models.CharField(max_length=40,
+                                    null=False, blank=False)
+    street_address1 = models.CharField(max_length=80,
+                                       null=False, blank=False)
+    street_address2 = models.CharField(max_length=80,
+                                       null=True, blank=True)
+    county = models.CharField(max_length=80, null=True,
+                              blank=True)
     date = models.DateTimeField(auto_now_add=True)
-    delivery_cost = models.DecimalField(max_digits=6, decimal_places=2, null=False, default=0)
-    order_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
-    payment_intent_id = models.CharField(max_length=255, null=True, blank=True)
-    coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL, null=True, blank=True, related_name='orders')
+    delivery_cost = models.DecimalField(max_digits=6,
+                                        decimal_places=2, null=False,
+                                        default=0)
+    order_total = models.DecimalField(max_digits=10,
+                                      decimal_places=2,
+                                      null=False, default=0)
+    grand_total = models.DecimalField(max_digits=10,
+                                      decimal_places=2,
+                                      null=False, default=0)
+    payment_intent_id = models.CharField(max_length=255,
+                                         null=True, blank=True)
+    coupon = models.ForeignKey('Coupon', on_delete=models.SET_NULL,
+                               null=True, blank=True,
+                               related_name='orders')
     
     def update_totals(self):
         lineitem_total = self.lineitems.aggregate(Sum('lineitem_total'))['lineitem_total__sum']
@@ -70,10 +90,18 @@ class OrderLineItem(models.Model):
     Represents an individual line item within an order.
     """
     
-    order = models.ForeignKey('Order', null=False, blank=False, on_delete=models.CASCADE, related_name='lineitems')
-    product = models.ForeignKey(Product, null=False, blank=False, on_delete=models.CASCADE)
-    quantity = models.PositiveIntegerField(null=False, blank=False, default=0)
-    lineitem_total = models.DecimalField(max_digits=8, decimal_places=2, null=False, blank=False, editable=False)
+    order = models.ForeignKey('Order', null=False,
+                              blank=False, on_delete=models.CASCADE,
+                              related_name='lineitems')
+    product = models.ForeignKey(Product,
+                                null=False, blank=False,
+                                on_delete=models.CASCADE)
+    quantity = models.PositiveIntegerField(null=False,
+                                           blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digits=8, decimal_places=2,
+                                         null=False, blank=False,
+                                         editable=False)
+
 
     def save(self, *args, **kwargs):
 
@@ -90,8 +118,11 @@ class Coupon(models.Model):
     Represents a coupon that can be applied to an order for a discount.
     """
     code = models.CharField(max_length=15, unique=True)
-    description = models.TextField(null=True, blank=True)
-    discount = models.DecimalField(max_digits=6, decimal_places=2, help_text='Amount of discount this coupon provides')
+    description = models.TextField(null=True,
+                                   blank=True)
+    discount = models.DecimalField(max_digits=6,
+                                   decimal_places=2,
+                                   help_text='Amount of discount this coupon provides')
     valid_from = models.DateTimeField()
     valid_to = models.DateTimeField()
     active = models.BooleanField(default=True)
