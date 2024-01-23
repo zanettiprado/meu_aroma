@@ -606,6 +606,198 @@ At **Meu Aroma Saboaria**, we're committed to delivering an accessible, user-fri
 
 <br>
 
+# E-commerce features 
+
+<details>
+<summary>Stripe</summary>
+
+## E-commerce Features with Stripe Integration
+
+### Step 1: Create a Stripe Account
+
+1. **Visit the Stripe Website:**
+   Go to the [Stripe website](https://stripe.com/) and click on the "Sign Up" or "Create Account" button to start the registration process.
+
+2. **Provide Your Details:**
+   Fill in the required information, including your email address, password, and business details. Follow the on-screen instructions to complete the registration.
+
+3. **Verify Your Email:**
+   After registration, Stripe will send you a verification email. Click the link in the email to verify your account.
+
+### Step 2: Get Your API Keys
+
+1. **Log In to Your Stripe Dashboard:**
+   Access your Stripe account by logging in to the [Stripe Dashboard](https://dashboard.stripe.com/).
+
+2. **Retrieve API Keys:**
+   In the Dashboard, navigate to "Developers" > "API Keys." Here, you'll find your **Publishable Key** and **Secret Key**. These keys are required for integrating Stripe into your project.
+
+### Step 3: Integrate Stripe into Your Project
+
+1. **Include Stripe JavaScript Library:**
+   In your project's HTML or template files, include the Stripe JavaScript library using the following script tag:
+
+   ```html
+   <script src="https://js.stripe.com/v3/"></script>
+   ```
+
+### Step 4: Integrate Stripe into Your Project
+
+1. **Initialize Stripe:**
+   In your JavaScript code, initialize Stripe with your Publishable Key:
+
+   ```javascript
+   const stripe = Stripe('YOUR_PUBLISHABLE_KEY');
+   ```
+
+2. **Create a Payment Intent:**
+   Use Stripe to create a Payment Intent on your server. This involves setting up the payment amount, currency, and any relevant metadata.
+
+3. **Collect Payment Details:**
+   In your frontend, create a form to collect payment details from the user. Use Stripe Elements or Checkout for a seamless payment experience.
+
+4. **Handle Payment Submission:**
+   When the user submits the payment form, use Stripe.js to tokenize the payment details securely. Send this token to your server for processing.
+
+5. **Process the Payment:**
+   On your server, use the Stripe Secret Key to confirm the Payment Intent and charge the user's card. Handle any errors and exceptions gracefully.
+
+### Step 5: Set Up Webhooks
+
+1. **Access Webhooks Settings:**
+   In your Stripe Dashboard, navigate to "Developers" > "Webhooks."
+
+2. **Create a Webhook Endpoint:**
+   Create an endpoint in your project to receive webhook events from Stripe. Ensure that it's secure and can handle incoming POST requests.
+
+3. **Configure Webhook Events:**
+   In the Stripe Dashboard, configure the types of events you want to listen to, such as payment success, disputes, or refunds.
+
+4. **Add the Endpoint URL:**
+   Provide the URL of your webhook endpoint in the Stripe Dashboard. Stripe will send event data to this URL whenever a relevant event occurs.
+
+5. **Test Webhooks:**
+   Use Stripe's webhook testing feature to simulate events and verify that your webhook endpoint processes them correctly.
+
+6. **Handle Webhook Events:**
+   In your project's backend, implement logic to handle incoming webhook events. Verify the event signatures and update your database or take necessary actions based on the events.
+
+### Step 6: Test Payments and Webhooks
+
+1. **Test Payments:**
+   Before going live, use Stripe's testing environment to make payments and ensure that the payment flow works smoothly.
+
+2. **Test Webhooks:**
+   Simulate webhook events and verify that your webhook endpoint handles them correctly. Ensure that your project responds appropriately to various events.
+
+### Step 7: Go Live
+
+1. **Switch to Live Mode:**
+   In your Stripe Dashboard, toggle your account from "View test data" to "View live data" to start accepting real payments.
+
+2. **Update API Keys:**
+   Replace your Publishable Key and Secret Key with the live versions, which you can find in the Dashboard.
+
+3. **Monitor Transactions:**
+   Continuously monitor transactions, payments, and webhook events to ensure the smooth operation of your e-commerce system.
+
+<br>
+
+As we can see, the Stripe payment function has been successfully implemented, providing a secure and efficient payment processing system for our users. Additionally, our inventory management system, known as 'indentet,' is fully operational, ensuring accurate tracking and management of product availability. These critical components contribute to a seamless and reliable e-commerce experience for our customers.
+
+<br>
+
+![Webhook](<media/documentation/stripe webhook.jpg>)
+
+<br>
+
+![Evens payments](media/documentation/stripe_events_payments.jpg)
+
+<br>
+</details>
+
+<br>
+
+<details>
+<summary>SEO and Marketing</summary>
+
+<br>
+
+<details>
+<summary>SEO</summary>
+
+### SEO Implementation
+
+In this section, we implemented the SEO (Search Engine Optimization) strategies and implementations that have been successfully incorporated into our project. All of these elements have been well-documented in our commits and can be found within the project repository.
+
+1. **Robots.txt File:**
+   We have included a `robots.txt` file in the project to instruct search engines on which pages to crawl and index. This file helps improve the visibility of our content in search engine results.
+
+2. **Sitemap.xml File:**
+   Our project includes a `sitemap.xml` file that provides search engines with a structured map of our website's content. This aids in efficient crawling and indexing of our pages.
+
+![robot and txt ](media/documentation/robot_&_txt.jpg)
+
+3. **Descriptive Meta Tags:**
+   To enhance the search engine ranking of our pages, we have implemented descriptive meta tags, including title tags, meta descriptions, and other relevant metadata. These tags provide valuable information to search engines and users alike.
+
+4. **rel Attributes on Links to External Resources:**
+   We have incorporated `rel` attributes on links to external resources, ensuring that our website maintains a strong connection with trusted sources. This helps establish authority and trustworthiness in the eyes of search engines.
+
+</details>
+
+<br>
+
+<details>
+<summary>Marketing</summary>
+
+### Marketing Techniques
+
+In this section, we'll outline the marketing techniques that have been successfully integrated into our project to enhance user engagement and reach.
+
+1. **Facebook Business Page:**
+   We have created either a real Facebook business page and not a mock up one. As explained before it was a real small business of my father I helped him creating a facebook and instagram page. To achieve the project results you can see that the facebook page shows this E-Commerce as the main web page for selling. The page was abadonned years so but updated for the project construction
+
+   ![Facebook](<media/documentation/facebook .jpg>)
+
+   ![Adm view](media/documentation/facebook_admview.jpg)
+
+2. **Newsletter Signup Form:**
+   To facilitate user engagement and communication, we have implemented a newsletter signup form to achieve the project requirments. Users can subscribe to updates and news about our project, either through a service like MailChimp or a custom-built solution.
+
+   ![Newsletter](media/documentation/newsletter.jpg)
+
+These SEO and marketing strategies have been thoughtfully integrated into our project, contributing to improved visibility, user engagement, and overall success.
+
+</details>
+</details>
+
+<br>
+
+<details>
+
+<br>
+
+<summary>E-commerce business model Implementation</summary>
+
+We have successfully developed a robust e-commerce application that caters to both Business-to-Business (B2B) and Business-to-Consumer (B2C) needs, as previously outlined. Our application features a seamless checkout process, ensuring a smooth and convenient shopping experience for users.
+
+In addition to the core e-commerce functionality, we have enriched the project with several valuable features:
+
+1. **Inventory Models:** We have implemented sophisticated inventory management models, ensuring accurate tracking and management of product availability. This feature enables us to provide real-time inventory information to our users if is in stock or out of stock.
+
+2. **Coupon System:** To enhance customer engagement and loyalty, we have integrated a coupon system. Users can apply and redeem coupons during their transactions, promoting discounts and special offers. For test purpose of this project try the valid cupon "FIRSTBUY20".
+
+3. **Feedback Mechanism:** We believe in listening to our users and continuously improving their experience. As such, we have included a robust feedback mechanism that allows customers to provide valuable insights and suggestions. This feedback loop helps us enhance our products and services.
+
+4. **Partnership Opportunities:** Recognizing the potential for collaboration, we've incorporated a partnership module. This feature enables us to explore mutually beneficial partnerships with other businesses, fostering growth and expansion opportunities. The subscription will be easily find for a logged user in the home page, in few steps send a form for subscription. 
+
+With these added elements, our e-commerce application not only meets the core requirements but also offers a rich and dynamic experience for both our B2B and B2C users. We are committed to delivering excellence and continuously improving our platform to provide the best possible service.
+
+</details> 
+
+
+<br>
 
 # Deployment & Local Development
 
